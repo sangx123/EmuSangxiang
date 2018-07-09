@@ -1,0 +1,35 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml:1:1-10:12
+INJECTED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml:1:1-10:12
+INJECTED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml:1:1-10:12
+	package
+		ADDED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml:2:5-35
+		INJECTED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml
+		INJECTED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml:1:11-69
+application
+ADDED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml:4:3-9:17
+provider#com.squareup.picasso.PicassoProvider
+ADDED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml:5:5-8:35
+	android:authorities
+		ADDED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml:7:9-68
+	android:exported
+		ADDED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml:8:9-33
+	android:name
+		ADDED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml:6:9-40
+uses-sdk
+INJECTED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml
+INJECTED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml
+INJECTED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml
+INJECTED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml
+		ADDED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml
+		INJECTED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml
+		ADDED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml
+		INJECTED from /Users/sangxiang/Downloads/work/libraries/picasso/src/main/AndroidManifest.xml

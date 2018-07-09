@@ -1,0 +1,100 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:2491478405476082456",
+      "lastPropertyId": "4:8252171661808213098",
+      "name": "ShopNameArr",
+      "properties": [
+        {
+          "id": "1:7878093769117495528",
+          "name": "shopName"
+        },
+        {
+          "id": "2:4716664588133874928",
+          "name": "shopID"
+        },
+        {
+          "id": "3:6135978567208100966",
+          "name": "id"
+        },
+        {
+          "id": "4:8252171661808213098",
+          "indexId": "1:4778906989361132888",
+          "name": "userModelId"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:8728601700630457033",
+      "lastPropertyId": "11:7568093912491670354",
+      "name": "UserModelDB",
+      "properties": [
+        {
+          "id": "1:4442169261818426803",
+          "name": "id"
+        },
+        {
+          "id": "2:2302622263976917744",
+          "name": "userToken"
+        },
+        {
+          "id": "3:919520618766102471",
+          "name": "headImgUrl"
+        },
+        {
+          "id": "4:6781445949281710549",
+          "name": "userName"
+        },
+        {
+          "id": "5:4902004675186388153",
+          "name": "userType"
+        },
+        {
+          "id": "6:6232733434387500891",
+          "name": "departmentType"
+        },
+        {
+          "id": "7:3935639095337465938",
+          "name": "departmentID"
+        },
+        {
+          "id": "8:1061041926293550681",
+          "name": "departmentName"
+        },
+        {
+          "id": "9:3822250173627075417",
+          "name": "userId"
+        },
+        {
+          "id": "10:3820977825929113093",
+          "name": "usePlan"
+        },
+        {
+          "id": "11:7568093912491670354",
+          "name": "isShopManager"
+        }
+      ],
+      "relations": [
+        {
+          "id": "1:606720011825974856",
+          "name": "shopNameArr"
+        }
+      ]
+    }
+  ],
+  "lastEntityId": "2:8728601700630457033",
+  "lastIndexId": "1:4778906989361132888",
+  "lastRelationId": "1:606720011825974856",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
