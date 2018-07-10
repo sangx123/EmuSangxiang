@@ -23,13 +23,16 @@ import java.io.IOException
 class App : MultiDexApplication() {
 
     private lateinit var rootFileDir: File
-
+    private lateinit var cacheImage: File
     companion object {
 
         lateinit var mInstance: App
         lateinit var lastIp: File
         lateinit var requestLog: File
         lateinit var mBoxStore: BoxStore
+        fun getInstance(): App {
+            return mInstance
+        }
     }
 
     override fun onCreate() {
@@ -52,7 +55,7 @@ class App : MultiDexApplication() {
         imagePicker.isMultiMode = false
 
         initMaterialDrawer()
-        rootFileDir = File(Environment.getExternalStorageDirectory(), "example")
+        rootFileDir = File(Environment.getExternalStorageDirectory(), "ASangxiang")
         if (!rootFileDir.exists()) {
             rootFileDir.mkdir()
         }
@@ -64,6 +67,11 @@ class App : MultiDexApplication() {
                 e.printStackTrace()
             }
 
+        }
+
+        cacheImage = File(rootFileDir, "cacheImage")
+        if (!cacheImage.exists()) {
+            cacheImage.mkdirs()
         }
 
         requestLog = File(rootFileDir, "requestLog")

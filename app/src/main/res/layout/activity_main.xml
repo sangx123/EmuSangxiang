@@ -14,5 +14,15 @@
         android:text="eventbus"
         android:id="@+id/eventbusBtn"
         />
-
+    <ImageView
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/photoImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="testFun"
+        android:id="@+id/testFun"
+        />
 </LinearLayout>

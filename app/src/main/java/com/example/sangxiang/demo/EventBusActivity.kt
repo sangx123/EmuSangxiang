@@ -11,6 +11,7 @@ import com.jakewharton.rxbinding2.view.RxView
 import kotlinx.android.synthetic.main.activity_event_bus.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
+import org.jetbrains.anko.dip
 import org.jetbrains.anko.startActivity
 
 class EventBusActivity : BaseActivity() {
