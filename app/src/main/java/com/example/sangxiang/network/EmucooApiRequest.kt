@@ -1,10 +1,8 @@
 package com.example.sangxiang.network
 
-import android.provider.SyncStateContract
 import android.widget.Toast
 import com.example.sangxiang.App
 import com.example.sangxiang.BuildConfig
-import com.example.sangxiang.LogUtil
 import com.example.sangxiang.network.model.EmucooEnvelopModel
 import com.example.sangxiang.network.param.SubmitableClass
 import com.example.sangxiang.network.param.asSubmitableClass

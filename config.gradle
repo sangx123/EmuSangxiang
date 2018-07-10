@@ -21,6 +21,7 @@ ext {
     retrofitVersion='2.3.0'
     gsonVersion='2.8.2'
     rxbindingVersion='2.1.1'
+    eventBusVersion='3.1.1'
 
 
 }

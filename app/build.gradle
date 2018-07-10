@@ -16,12 +16,73 @@ android {
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a', 'x86'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+    }
+    sourceSets {
+        main {
+            jni.srcDirs = []
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    signingConfigs {
+        release {
+            keyAlias 'emucoo'
+            keyPassword 'emucoo'
+            storeFile file('../certificates/emucoo_key_v1.jks')
+            storePassword 'emucoo'
+        }
+        debug {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('../certificates/debug.keystore')
+            storePassword 'android'
+
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue "string", "jinkens_app", System.getenv("jinkens_app") ?: ""
+        }
+        debug {
+            signingConfig signingConfigs.release
+            resValue "string", "jinkens_app", System.getenv("jinkens_app") ?: ""
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+    productFlavors {
+    }
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "emucoo-v${variant.mergedFlavor.versionName}-${variant.buildType.name}.apk".replaceAll("/", "-")
+        }
+    }
+}
+
+androidExtensions {
+    experimental = true
+}
+
+
+kapt {
+    arguments {
+        arg('eventBusIndex', 'com.example.sangxiang.EmucooEventBusIndex')
+        arg("objectbox.debug", true)
     }
 }
 
@@ -53,7 +114,6 @@ dependencies {
     //implementation "org.jetbrains.anko:anko-commons:$anko_version"
 
 
-
     implementation rootProject.ext.supportAppCompat
     implementation rootProject.ext.supportV4
     implementation rootProject.ext.supportDesign
@@ -78,7 +138,10 @@ dependencies {
     implementation project(':WheelView')
     implementation project(':boommenu')
     implementation project(':MaterialDrawer')
-    implementation  "com.android.support:multidex:$multidexVersion"
+    implementation "com.android.support:multidex:$multidexVersion"
+    //eventbus
+    implementation "org.greenrobot:eventbus:$eventBusVersion"
+    kapt "org.greenrobot:eventbus-annotation-processor:$eventBusVersion"
     // Retrofit库
     implementation "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
@@ -87,15 +150,17 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
     implementation "com.google.code.gson:gson:$gsonVersion"
-    //implementation 'com.squareup.okhttp3:okhttp:3.1.2'
     implementation 'com.jakewharton.threetenabp:threetenabp:1.1.0'
     debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
     releaseImplementation "io.objectbox:objectbox-android:$objectboxVersion"
     kapt "io.objectbox:objectbox-processor:$objectboxVersion"
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+
+
 }
 apply plugin: 'io.objectbox'
 //在正常的dependencies中添加如下依赖
-dependencies{
+dependencies {
 //主要是针对kotlin
     compile "io.objectbox:objectbox-kotlin:$objectboxVersion"
 }

@@ -201,9 +201,9 @@ public class Utils {
 
     public static void loadNormalPicToIv( String url, ImageView imageView) {
         if (!TextUtils.isEmpty(url) && !TextUtils.isEmpty(url.trim())) {
-            //Picasso.with().load(url).noFade().fit().placeholder(R.drawable.icon_head_not_load).error(R.drawable.icon_head_not_load).into(imageView);
+            Picasso.with().load(url).noFade().fit().placeholder(R.mipmap.default_image).error(R.mipmap.default_image).into(imageView);
         } else {
-            //Picasso.with().load(R.mipmap.default_image).placeholder(R.drawable.icon_head_not_load).error(R.drawable.icon_head_not_load).into(imageView);
+            Picasso.with().load(R.mipmap.default_image).placeholder(R.mipmap.default_image).error(R.mipmap.default_image).into(imageView);
         }
     }
 

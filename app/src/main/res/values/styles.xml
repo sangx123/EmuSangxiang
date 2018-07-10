@@ -19,7 +19,6 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="editTextStyle">@style/EditTextDefault</item>
         <item name="android:windowIsTranslucent">false</item>
-        <item name="android:background">#ffffff</item>
         <!--item name="android:fontFamily">@font/dongq</item-->
     </style>
 
