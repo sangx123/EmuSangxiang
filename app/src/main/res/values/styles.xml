@@ -31,5 +31,13 @@
         <item name="android:windowAnimationStyle">@android:style/Animation</item>
     </style>
 
+    <declare-styleable name="KeyValueLayout">
 
+        <attr name="kvl_text_hint" format="string" />
+        <attr name="kvl_has_right_arrow" format="boolean" />
+        <attr name="kvl_has_task_icon" format="boolean" />
+        <attr name="kvl_text_warning" format="string" />
+        <attr name="kvl_has_full_line" format="boolean" />
+        <attr name="kvl_right_icon" format="reference"/>
+    </declare-styleable>
 </resources>

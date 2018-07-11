@@ -34,7 +34,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".demo.EventBusActivity"></activity>
+        <activity android:name=".demo.EventBusActivity" />
+        <activity android:name=".work.UserSelectActivity"></activity>
     </application>
 
 </manifest>

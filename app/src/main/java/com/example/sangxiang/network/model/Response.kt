@@ -94,3 +94,4 @@ data class EmucooEnvelopModel<T>(
         @SerializedName("pageNumber") val pageNumber: Int = 0,
         @SerializedName("sign") val sign: String = ""
 )
+

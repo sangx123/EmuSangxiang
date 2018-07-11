@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+        >
+        <LinearLayout
+            android:layout_marginLeft="15dp"
+            android:id="@+id/tv_title_layout"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp">
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/taskIcon"
+                    android:layout_width="15dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/icon_personal_task"
+                    android:layout_marginRight="8dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="#333333"
+                    android:textSize="16sp"
+                    android:text="开始时间"/>
+
+        </LinearLayout>
+
+
+
+
+        <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="28dp"
+                android:layout_toRightOf="@id/tv_title_layout"
+                android:gravity="right"
+                android:layout_marginLeft="10dp"
+                android:textColor="#626471"
+                android:textSize="14sp"
+                />
+
+        <!--子view 的大小应该是 35dp x 35dp-->
+        <LinearLayout
+            android:id="@+id/layout_executor_count"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="9dp"
+            android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/tv_executor_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#999999"
+                    android:textSize="14sp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    />
+                <ImageView
+                    android:visibility="gone"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/iv_right_image"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/create_task_right_arrow"
+                    />
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/iv_arrow"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/create_task_right_arrow"
+                    />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/ll_executor_container"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/layout_executor_count"
+                android:layout_toRightOf="@id/tv_title_layout"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                >
+        </LinearLayout>
+        
+
+        <View
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#e0e0e0"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="9dp"
+                android:layout_alignParentBottom="true"
+                />
+
+        <View
+            android:visibility="gone"
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#e0e0e0"
+            android:layout_alignParentBottom="true"
+            />
+
+</RelativeLayout>
+
