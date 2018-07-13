@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sangxiang">
+    package="com.emucoo.business_manager">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -35,7 +35,11 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".demo.EventBusActivity" />
-        <activity android:name=".work.UserSelectActivity"></activity>
+        <activity android:name=".work.UserSelectActivity" />
+        <activity android:name=".work.OrganizationSelectActivity" />
+        <activity android:name=".work.OrganizationDeptUserSelectActivity" />
+        <activity android:name=".work.OrganizationShopUserSelectActivity" />
+        <activity android:name=".work.UserSearchActivity"></activity>
     </application>
 
 </manifest>

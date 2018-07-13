@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.emucoo.business_manager.widgets.KeyValueLayout
+        android:id="@+id/kvl_info"
+        app:kvl_text_hint="组织架构选择"
+        app:kvl_has_right_arrow="true"
+        app:kvl_has_full_line="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+    </com.emucoo.business_manager.widgets.KeyValueLayout>
+</RelativeLayout>

@@ -1,4 +1,4 @@
-package com.example.sangxiang
+package com.emucoo.business_manager
 
 import org.junit.Test
 

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        >
+    <RelativeLayout
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="8dp"
+            android:layout_centerVertical="true"
+            >
+
+    <ImageView
+            android:id="@+id/mIvTitleLeft"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:scaleType="center"
+            android:src="@drawable/home_navi_left"
+            />
+        <ImageView
+                android:id="@+id/mRedDot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/home_navi_red_dot"
+                android:visibility="gone"
+                android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    <TextView
+            android:id="@+id/mTvLeft"
+            android:layout_centerVertical="true"
+            android:text="取消"
+            android:visibility="gone"
+            android:textSize="16sp"
+            android:layout_marginLeft="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/mTvTitleContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="200dp"
+            android:layout_centerInParent="true"
+            android:maxLines="1"
+            android:text="首页"
+            android:ellipsize="end"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            />
+
+
+    <ImageView
+            android:id="@+id/mIvTitleRight"
+            android:src="@drawable/chart"
+            android:scaleType="centerInside"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:layout_width="35dp"
+            android:layout_height="35dp"/>
+
+    <ImageView
+            android:id="@+id/mIvTitleRightSecond"
+            android:src="@drawable/chart"
+            android:visibility="gone"
+            android:scaleType="centerInside"
+            android:layout_marginRight="8dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/mIvTitleRight"
+            android:layout_width="35dp"
+            android:layout_height="35dp"/>
+
+
+
+
+    <TextView
+            android:id="@+id/mTvRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:textColor="@color/white"
+            android:text="确定"
+            android:visibility="gone"
+            android:textSize="16sp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+
+
+
+
+    <EditText
+            android:id="@+id/et_search_bar"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_toLeftOf="@+id/tv_search"
+            android:background="@drawable/search_bar"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
+            android:textSize="13sp"
+            android:textCursorDrawable="@null"
+            android:visibility="gone"
+            android:layout_height="35dp"/>
+
+    <ImageView
+            android:id="@+id/iv_search_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/mIvTitleRight"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:visibility="invisible"
+            android:src="@drawable/search_bar_icon"
+            />
+
+    <TextView
+            android:id="@+id/tv_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:textColor="@color/white"
+            android:text="搜索"
+            android:visibility="invisible"
+            android:textSize="16sp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    <View
+            android:id="@+id/mLine"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#d2d3d7"
+            android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
+
+
+    

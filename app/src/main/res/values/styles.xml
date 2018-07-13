@@ -40,4 +40,17 @@
         <attr name="kvl_has_full_line" format="boolean" />
         <attr name="kvl_right_icon" format="reference"/>
     </declare-styleable>
+
+    <declare-styleable name="EmucooToolBar">
+        <attr name="left_icon" format="reference" />
+        <attr name="title" format="string" />
+        <attr name="title_color" format="color" />
+        <attr name="right_icon" format="reference" />
+        <attr name="right_icon_two" format="reference" />
+        <attr name="background_color" format="reference" />
+        <attr name="right_text_color" format="color" />
+        <attr name="right_text" format="string" />
+        <attr name="left_text" format="string" />
+        <attr name="left_text_color" format="color" />
+    </declare-styleable>
 </resources>

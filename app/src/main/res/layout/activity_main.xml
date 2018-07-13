@@ -25,5 +25,10 @@
         android:text="testFun"
         android:id="@+id/testFun"
         />
-   
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:id="@+id/nextBtn"
+        />
 </LinearLayout>
