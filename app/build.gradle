@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId "com.emucoo.business_manager"
         minSdkVersion 18
-        targetSdkVersion 27
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         multiDexEnabled true

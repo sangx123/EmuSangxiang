@@ -13,6 +13,7 @@ import com.emucoo.business_manager.R
 import com.emucoo.business_manager.network.EmucooApiRequest
 import com.emucoo.business_manager.network.model.ContactsResult
 import com.emucoo.business_manager.network.param.ContactsParam
+import com.emucoo.business_manager.utils.LruCacheManager
 import com.emucoo.business_manager.work.UserSearchAdapter.CallListenter
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
@@ -123,5 +124,4 @@ class UserSearchActivity : BaseActivity() {
 
                 })
     }
-
 }

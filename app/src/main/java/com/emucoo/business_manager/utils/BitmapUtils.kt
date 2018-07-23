@@ -16,73 +16,91 @@ import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
+import android.graphics.drawable.Drawable
+import java.lang.ref.SoftReference
+import kotlin.collections.HashMap
 
 
 class BitmapUtils {
+    var imageCache: HashMap<String, SoftReference<Bitmap>> = HashMap()
+
     companion object :AnkoLogger{
         fun getNameBitmap(name: String, containerWidth: Int, containerHeight: Int, textSize: Float = 16f): Bitmap? {
             var fileName= "$name$containerWidth$containerWidth.png".replace("/","").replace("\\","")
             var filePath= Environment.getExternalStorageDirectory().absolutePath+"/ASangxiang/cacheImage/"
             var cacheFile=findCacheFile(fileName)
-            if(cacheFile!=null){
-                return  BitmapFactory.decodeFile(filePath+fileName)
+            //此处是用来获取的
+            var bm=LruCacheManager.getLruCacheManager().getBitmap(fileName)
+            if(bm!=null){
+                error { "从lrucache中获取图片" }
+                return bm
             }else {
-                val bmp = Bitmap.createBitmap(containerWidth, containerHeight, Bitmap.Config.ARGB_4444)
-                val rect = Rect(0, 0, containerWidth, containerHeight)
-                val canvas = Canvas(bmp)
+
+                if (cacheFile != null) {
+                    bm=BitmapFactory.decodeFile(filePath + fileName)
+                    LruCacheManager.getLruCacheManager().putBitmap(fileName,bm)
+                    error { "文件缓存中存在，将文件存入缓存：$fileName" }
+                    return bm
+                } else {
+                    val bmp = Bitmap.createBitmap(containerWidth, containerHeight, Bitmap.Config.ARGB_4444)
+                    val rect = Rect(0, 0, containerWidth, containerHeight)
+                    val canvas = Canvas(bmp)
 //                 val bgPaint = Paint();
 //                bgPaint.color = ResourcesUtils.getColor(R.color.white)
 //                bgPaint.isAntiAlias = true
 //                bgPaint.style = Paint.Style.FILL
 //                canvas.drawRect(rect,bgPaint)
-                //绘制圆形背景
-                val circlePaint = Paint()
-                circlePaint.color = Color.rgb(32, 143, 221)
-                circlePaint.isAntiAlias = true
-                circlePaint.style = Paint.Style.FILL
-                circlePaint.strokeWidth = 1f
-                canvas.drawColor(Color.TRANSPARENT)
-                canvas.drawCircle(containerWidth / 2.0f, containerHeight / 2.0f, containerWidth / 2.0f - 1, circlePaint)
-                //设置字体大小
-                var textSize = 0f
-                textSize = if (containerWidth > App.mInstance.dip(40)) {
-                    //如果字体大小大于40的话
-                    if (name.length > 4) {
-                        10f
+                    //绘制圆形背景
+                    val circlePaint = Paint()
+                    circlePaint.color = Color.rgb(32, 143, 221)
+                    circlePaint.isAntiAlias = true
+                    circlePaint.style = Paint.Style.FILL
+                    circlePaint.strokeWidth = 1f
+                    canvas.drawColor(Color.TRANSPARENT)
+                    canvas.drawCircle(containerWidth / 2.0f, containerHeight / 2.0f, containerWidth / 2.0f - 1, circlePaint)
+                    //设置字体大小
+                    var textSize = 0f
+                    textSize = if (containerWidth > App.mInstance.dip(40)) {
+                        //如果字体大小大于40的话
+                        if (name.length > 4) {
+                            10f
+                        } else {
+                            12f
+                        }
                     } else {
-                        12f
+                        if (name.length > 4) {
+                            8f
+                        } else {
+                            10f
+                        }
                     }
-                } else {
-                    if (name.length > 4) {
-                        8f
-                    } else {
-                        10f
-                    }
-                }
 
-                val textPaint = TextPaint();
-                textPaint.textSize = App.mInstance.sp(textSize).toFloat()
-                textPaint.color = Color.WHITE
-                textPaint.isAntiAlias = true
-                textPaint.textAlign = Paint.Align.CENTER
-                textPaint.style = Paint.Style.FILL
-                textPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
-                //获得自动换行后的文字
-                val vector = getTextLinesVector(textPaint, name, rect.height().toFloat(), rect.width().toFloat())
-                var str = ""
-                for (item in vector) {
-                    str += item
+                    val textPaint = TextPaint();
+                    textPaint.textSize = App.mInstance.sp(textSize).toFloat()
+                    textPaint.color = Color.WHITE
+                    textPaint.isAntiAlias = true
+                    textPaint.textAlign = Paint.Align.CENTER
+                    textPaint.style = Paint.Style.FILL
+                    textPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
+                    //获得自动换行后的文字
+                    val vector = getTextLinesVector(textPaint, name, rect.height().toFloat(), rect.width().toFloat())
+                    var str = ""
+                    for (item in vector) {
+                        str += item
+                    }
+                    //文字自动换行
+                    val layout = StaticLayout(str, textPaint, rect.width(), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, true)
+                    canvas.save()
+                    textPaint.textAlign = Paint.Align.CENTER
+                    //文字的位置
+                    canvas.translate(rect.left.toFloat() + rect.width() / 2, rect.top + (rect.height() - getFontHeight(textPaint) * vector.size) / 2)
+                    layout.draw(canvas)
+                    canvas.restore()
+                    saveBitmap(filePath, fileName, bmp)
+                    LruCacheManager.getLruCacheManager().putBitmap(fileName,bmp)
+                    error { "文件缓存中创建文件，将文件存入缓存：$fileName" }
+                    return bmp
                 }
-                //文字自动换行
-                val layout = StaticLayout(str, textPaint, rect.width(), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, true)
-                canvas.save()
-                textPaint.textAlign = Paint.Align.CENTER
-                //文字的位置
-                canvas.translate(rect.left.toFloat() + rect.width() / 2, rect.top + (rect.height() - getFontHeight(textPaint) * vector.size) / 2)
-                layout.draw(canvas)
-                canvas.restore()
-                saveBitmap(filePath,fileName,bmp)
-                return bmp
             }
         }
 

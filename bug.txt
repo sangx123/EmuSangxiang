@@ -1,0 +1,6 @@
+1，recycleview notifydatesetchange()图片闪烁问题
+解决方法：
+使用 notifyItemRangeChanged(0,mData.size)
+(mRecyclerView.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
+
+2，
