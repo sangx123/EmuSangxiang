@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Environment
 import android.support.multidex.MultiDexApplication
 import android.widget.ImageView
+import cn.jpush.android.api.JPushInterface
 import com.sangxiang.android.network.model.MyObjectBox
 import com.sangxiang.android.utils.PicassoImageLoader
 import com.jakewharton.threetenabp.AndroidThreeTen
@@ -41,6 +42,10 @@ class App : MultiDexApplication() {
         AndroidThreeTen.init(this)
         EventBus.builder().addIndex(EmucooEventBusIndex()).installDefaultEventBus()
         CrashReport.initCrashReport(this, "0ce6d37649", true)
+
+        JPushInterface.setDebugMode(true)
+        JPushInterface.init(this)
+
         val imagePicker = ImagePicker.getInstance()
         imagePicker.imageLoader = PicassoImageLoader()   //设置图片加载器
         imagePicker.isShowCamera = false  //显示拍照按钮

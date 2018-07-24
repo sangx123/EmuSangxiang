@@ -21,6 +21,11 @@ android {
             abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a', 'x86'
             // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
         }
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "c2d3f4af06f5047b61c5be82",
+                JPUSH_CHANNEL: "developer-default",
+        ]
     }
     sourceSets {
         main {
@@ -155,6 +160,9 @@ dependencies {
     releaseImplementation "io.objectbox:objectbox-android:$objectboxVersion"
     kapt "io.objectbox:objectbox-processor:$objectboxVersion"
     implementation 'com.tencent.bugly:crashreport:latest.release'
+    //jpush
+    compile 'cn.jiguang.sdk:jpush:3.1.1'
+    compile 'cn.jiguang.sdk:jcore:1.1.9'
 
 
 }
