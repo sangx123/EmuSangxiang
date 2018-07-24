@@ -10,7 +10,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <com.emucoo.business_manager.widgets.EmucooToolBar
+        <com.sangxiang.android.widgets.EmucooToolBar
             android:layout_width="match_parent"
             android:layout_height="@dimen/title_bar_height"
             android:id="@+id/mToolbar"
@@ -47,22 +47,22 @@
                 android:layout_marginLeft="15dp"/>
         </RelativeLayout>
         <include layout="@layout/line"/>
-        <com.emucoo.business_manager.widgets.KeyValueLayout
+        <com.sangxiang.android.widgets.KeyValueLayout
             android:id="@+id/kvl_info"
             app:kvl_text_hint="组织架构选择"
             app:kvl_has_right_arrow="true"
             app:kvl_has_full_line="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        </com.emucoo.business_manager.widgets.KeyValueLayout>
-        <com.emucoo.business_manager.widgets.KeyValueLayout
+        </com.sangxiang.android.widgets.KeyValueLayout>
+        <com.sangxiang.android.widgets.KeyValueLayout
             android:id="@+id/kvl_info1"
             app:kvl_text_hint="组织架构选择(多选)"
             app:kvl_has_right_arrow="true"
             app:kvl_has_full_line="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        </com.emucoo.business_manager.widgets.KeyValueLayout>
+        </com.sangxiang.android.widgets.KeyValueLayout>
         <TextView
             android:layout_margin="15dp"
             android:layout_width="wrap_content"

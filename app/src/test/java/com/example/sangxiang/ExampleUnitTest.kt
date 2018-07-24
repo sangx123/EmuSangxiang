@@ -1,4 +1,4 @@
-package com.emucoo.business_manager
+package com.sangxiang.android
 
 import org.junit.Test
 

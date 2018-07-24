@@ -10,7 +10,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.emucoo.business_manager.widgets.EmucooToolBar
+        <com.sangxiang.android.widgets.EmucooToolBar
             android:layout_width="match_parent"
             android:layout_height="@dimen/title_bar_height"
             android:id="@+id/mToolbar"
