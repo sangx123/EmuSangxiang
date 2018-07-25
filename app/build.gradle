@@ -160,11 +160,13 @@ dependencies {
     releaseImplementation "io.objectbox:objectbox-android:$objectboxVersion"
     kapt "io.objectbox:objectbox-processor:$objectboxVersion"
     implementation 'com.tencent.bugly:crashreport:latest.release'
+
     //jpush
     compile 'cn.jiguang.sdk:jpush:3.1.1'
     compile 'cn.jiguang.sdk:jcore:1.1.9'
 
-
+    //自动更新
+    compile 'com.qianwen:update-app:3.5.2'
 }
 apply plugin: 'io.objectbox'
 //在正常的dependencies中添加如下依赖

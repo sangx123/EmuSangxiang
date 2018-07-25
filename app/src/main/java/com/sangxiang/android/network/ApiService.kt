@@ -4,9 +4,10 @@ import com.sangxiang.android.network.model.UserModel
 import com.sangxiang.android.network.param.ContactsParam
 import com.sangxiang.android.network.param.LoginSubmit
 import com.google.gson.annotations.SerializedName
+import com.sangxiang.android.utils.appUpdate.VersionModel
 import io.reactivex.Observable
-import retrofit2.http.Body
-import retrofit2.http.POST
+import okhttp3.ResponseBody
+import retrofit2.http.*
 
 
 /**
@@ -29,5 +30,9 @@ interface ApiService {
     @InterfaceUseCase("按照名称关键词查询")
     @POST("/api/contacts/search/byname")
     fun searchByname(@Body model: ContactsParam): Observable<ContactsResult>
+
+    @InterfaceUseCase("版本管理")
+    @POST("/api/version/checkUpdate")
+    fun checkUpdate(@Body request: Map<String, String>): Observable<String>
 }
 
