@@ -2,6 +2,8 @@ package com.sangxiang.android.utils.appUpdate;
 
 import android.support.annotation.NonNull;
 
+import com.vector.update_app.HttpManager;
+
 import org.reactivestreams.Subscriber;
 
 import java.io.File;
@@ -34,13 +36,13 @@ public class DownloadUtils {
 
     private Retrofit retrofit;
 
-    private JsDownloadListener listener;
+    private HttpManager.FileCallback listener;
 
     private String baseUrl;
 
     private String downloadUrl;
 
-    public DownloadUtils(String baseUrl, JsDownloadListener listener) {
+    public DownloadUtils(String baseUrl, HttpManager.FileCallback listener) {
 
         this.baseUrl = baseUrl;
         this.listener = listener;
@@ -68,9 +70,7 @@ public class DownloadUtils {
      * @param subscriber
      */
     public void download(@NonNull String url, final String filePath, Observer subscriber) {
-
-        listener.onStartDownload();
-
+        listener.onBefore();
         // subscribeOn()改变调用它之前代码的线程
         // observeOn()改变调用它之后代码的线程
         retrofit.create(DownloadService.class)
@@ -122,9 +122,9 @@ public class DownloadUtils {
             fos.close();
 
         } catch (FileNotFoundException e) {
-            listener.onFail("FileNotFoundException");
+            listener.onError("FileNotFoundException");
         } catch (IOException e) {
-            listener.onFail("IOException");
+            listener.onError("IOException");
         }
 
     }

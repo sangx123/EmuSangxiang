@@ -104,46 +104,23 @@ public class UpdateAppHttpUtil implements HttpManager {
     public void download(@NonNull String url, @NonNull  String path, @NonNull String fileName, @NonNull final FileCallback callback) {
         url="https://yf.emucoo.net/cfb/download/emucoo_test.apk";
         final String filePath=path;
-        final JsDownloadListener listener = new JsDownloadListener() {
-            @Override
-            public void onStartDownload() {
-                callback.onBefore();
-            }
 
-            @Override
-            public void onProgress(int progress) {
-                callback.onProgress(progress/100f, 1);
-            }
-
-            @Override
-            public void onFinishDownload(File file) {
-                callback.onResponse(file);
-            }
-
-            @Override
-            public void onFail(String errorInfo) {
-                callback.onError(errorInfo);
-            }
-        };
-
-
-        DownloadUtils downloadUtils = new DownloadUtils("https://yf.emucoo.net/", listener);
+        DownloadUtils downloadUtils = new DownloadUtils("https://yf.emucoo.net/", callback);
 
         downloadUtils.download(url, filePath, new Observer(){
 
             @Override
             public void onSubscribe(Disposable d) {
-
             }
 
             @Override
             public void onNext(Object o) {
-                listener.onFinishDownload(new File(filePath));
+                callback.onResponse(new File(filePath));
             }
 
             @Override
             public void onError(Throwable t) {
-                listener.onFail(t.toString());
+                callback.onError(t.toString());
             }
 
             @Override

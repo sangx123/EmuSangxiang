@@ -3,6 +3,8 @@ package com.sangxiang.android.utils.appUpdate;
 
 import android.util.Log;
 
+import com.vector.update_app.HttpManager;
+
 import java.io.IOException;
 
 import okhttp3.MediaType;
@@ -22,14 +24,14 @@ public class JsResponseBody extends ResponseBody {
 
     private ResponseBody responseBody;
 
-    private JsDownloadListener downloadListener;
+    private HttpManager.FileCallback callback;
 
     // BufferedSource 是okio库中的输入流，这里就当作inputStream来使用。
     private BufferedSource bufferedSource;
 
-    public JsResponseBody(ResponseBody responseBody, JsDownloadListener downloadListener) {
+    public JsResponseBody(ResponseBody responseBody, HttpManager.FileCallback callback) {
         this.responseBody = responseBody;
-        this.downloadListener = downloadListener;
+        this.callback = callback;
     }
 
     @Override
@@ -60,9 +62,9 @@ public class JsResponseBody extends ResponseBody {
                 // read() returns the number of bytes read, or -1 if this source is exhausted.
                 totalBytesRead += bytesRead != -1 ? bytesRead : 0;
                 Log.e("download", "read: "+ (int) (totalBytesRead * 100 / responseBody.contentLength()));
-                if (null != downloadListener) {
+                if (null != callback) {
                     if (bytesRead != -1) {
-                        downloadListener.onProgress((int) (totalBytesRead * 100 / responseBody.contentLength()));
+                        callback.onProgress(((int) (totalBytesRead * 100 / responseBody.contentLength()))/100f,1);
                     }
 
                 }

@@ -1,5 +1,7 @@
 package com.sangxiang.android.utils.appUpdate;
 
+import com.vector.update_app.HttpManager;
+
 import java.io.IOException;
 
 import okhttp3.Interceptor;
@@ -15,9 +17,9 @@ import okhttp3.Response;
  */
 public class JsDownloadInterceptor implements Interceptor {
 
-    private JsDownloadListener downloadListener;
+    private HttpManager.FileCallback downloadListener;
 
-    public JsDownloadInterceptor(JsDownloadListener downloadListener) {
+    public JsDownloadInterceptor(HttpManager.FileCallback downloadListener) {
         this.downloadListener = downloadListener;
     }
 
