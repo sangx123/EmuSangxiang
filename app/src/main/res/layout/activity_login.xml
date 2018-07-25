@@ -13,10 +13,12 @@
     tools:context=".LoginActivity">
     <EditText
         android:id="@+id/edit1"
+        android:text="13914724233"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
         android:id="@+id/edit2"
+        android:text="123456"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button

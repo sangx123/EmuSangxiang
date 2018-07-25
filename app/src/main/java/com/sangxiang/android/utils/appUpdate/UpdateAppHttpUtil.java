@@ -104,10 +104,7 @@ public class UpdateAppHttpUtil implements HttpManager {
     public void download(@NonNull String url, @NonNull  String path, @NonNull String fileName, @NonNull final FileCallback callback) {
         url="https://yf.emucoo.net/cfb/download/emucoo_test.apk";
         final String filePath=path;
-
-        DownloadUtils downloadUtils = new DownloadUtils("https://yf.emucoo.net/", callback);
-
-        downloadUtils.download(url, filePath, new Observer(){
+        new DownloadUtils("https://yf.emucoo.net/", callback).download(url, filePath, new Observer(){
 
             @Override
             public void onSubscribe(Disposable d) {
