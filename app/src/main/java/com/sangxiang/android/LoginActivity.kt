@@ -1,5 +1,6 @@
 package com.sangxiang.android
 
+import android.Manifest
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.annotation.TargetApi
@@ -23,11 +24,14 @@ import android.widget.TextView
 
 import java.util.ArrayList
 import android.Manifest.permission.READ_CONTACTS
+import com.jakewharton.rxbinding2.view.RxView
 import com.sangxiang.android.network.Constants
 import com.sangxiang.android.network.EmucooApiRequest
 import com.sangxiang.android.network.model.UserModel
 import com.sangxiang.android.network.param.LoginSubmit
 import com.sangxiang.android.utils.Utils
+import com.tbruyelle.rxpermissions2.Permission
+import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -47,16 +51,51 @@ class LoginActivity : BaseActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
         setStatusBarDefaultColor()
         if(Constants.getUser()==null) {
             //edit1.setText("emu")
             //edit2.setText("123456")
-            btn.setOnClickListener { Login(edit1.text.toString(),edit2.text.toString()) }
+            val rxPermissions = RxPermissions(this)
+            rxPermissions.setLogging(true)
+            RxView.clicks(btn)
+                    // Ask for permissions when button is clicked
+                    .compose(rxPermissions.ensureEach(Manifest.permission.WRITE_EXTERNAL_STORAGE))
+                    .subscribe(object:Observer<Permission>{
+                        override fun onComplete() {
+
+                        }
+
+                        override fun onSubscribe(d: Disposable) {
+
+                        }
+
+                        override fun onNext(permission: Permission) {
+                            error("Permission result $permission")
+                            if (permission.granted) {
+                                Login(edit1.text.toString(),edit2.text.toString())
+                            } else if (permission.shouldShowRequestPermissionRationale) {
+                                // Denied permission without ask never again
+                                toast("Denied permission without ask never again")
+                            } else {
+                                // Denied permission with ask never again
+                                // Need to go to the settings
+                                toast("Permission denied, can't enable the camera")
+                            }
+                        }
+
+                        override fun onError(e: Throwable) {
+                            toast("onError")
+                        }
+
+                    })
+
         }
         else{
             startActivity<MainActivity>()
             finish()
         }
+
     }
 
     private fun Login(emailStr:String,passwordStr:String) {

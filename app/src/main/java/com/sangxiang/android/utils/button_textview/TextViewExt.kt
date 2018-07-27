@@ -1,6 +1,8 @@
 package com.sangxiang.android.utils.button_textview
 
 import android.widget.TextView
+import com.sangxiang.android.R
+import com.sangxiang.android.utils.ResourcesUtils
 import com.vector.update_app.utils.ColorUtil
 
 /**
@@ -8,7 +10,7 @@ import com.vector.update_app.utils.ColorUtil
  * on 2017/7/18 0018.
  */
 
-fun TextView.setSolidTheme(color: Int = ColorUtil.getRandomColor(), strokeWidth: Int = 6, cornerRadius: Int = 10) {
+fun TextView.setSolidTheme(color: Int = ResourcesUtils.getColor(R.color.color_22a2e4), strokeWidth: Int = 6, cornerRadius: Int = 10) {
     DrawableUtil.setTextSolidTheme(this, strokeWidth, cornerRadius, color)
 }
 

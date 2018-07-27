@@ -5,14 +5,14 @@ ext {
     minSdkVersion=15
     targetSdkVersion=27
     compileSdkVersion= 27
-    supportVersion = '27.0.2'
+    supportVersion = '27.1.0'
     buildToolsVersion = '27.0.3'
     //基础类库
     supportV4 = "com.android.support:support-v4:$supportVersion"
     supportAnnotations = "com.android.support:support-annotations:$supportVersion"
     supportAppCompat = "com.android.support:appcompat-v7:$supportVersion"
     supportDesign = "com.android.support:design:$supportVersion"
-    supportConstraintLayout = "com.android.support.constraint:constraint-layout:1.1.2"
+    supportConstraintLayout = "com.android.support.constraint:constraint-layout:+"
     recyclerviewV7 = "com.android.support:recyclerview-v7:$supportVersion"
     supportCardView = "com.android.support:cardview-v7:$supportVersion"
     multidexVersion='1.0.2'

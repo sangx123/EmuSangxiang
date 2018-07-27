@@ -14,7 +14,7 @@ import java.util.*
  * Created by Zhang.
  */
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity(),AnkoLogger {
 
 //    var mOnResultListener: ((mNotificationRequestCode: Int, resultCode: Int, data: Intent?) -> Unit)? = null
 

@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId "com.sangxiang.android"
         minSdkVersion 18
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -162,34 +162,21 @@ dependencies {
     implementation 'com.tencent.bugly:crashreport:latest.release'
 
     //jpush
-    compile 'cn.jiguang.sdk:jpush:3.1.1'
-    compile 'cn.jiguang.sdk:jcore:1.1.9'
+    implementation 'cn.jiguang.sdk:jpush:3.1.1'
+    implementation 'cn.jiguang.sdk:jcore:1.1.9'
 
     //自动更新
-    compile 'com.qianwen:update-app:3.5.2'
+    implementation 'com.qianwen:update-app:3.5.2'
 
-    //使用通用BaseRecyclerViewAdapterHelper
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+    //BaseRecyclerViewAdapterHelper
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+
+    //rxpermissions
+    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
 }
 apply plugin: 'io.objectbox'
 //在正常的dependencies中添加如下依赖
 dependencies {
 //主要是针对kotlin
     compile "io.objectbox:objectbox-kotlin:$objectboxVersion"
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
 }

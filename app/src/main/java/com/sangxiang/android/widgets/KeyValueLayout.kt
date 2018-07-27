@@ -2,6 +2,7 @@ package com.sangxiang.android.widgets
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.os.Parcelable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,7 @@ import com.sangxiang.android.App
 import com.sangxiang.android.R
 import com.sangxiang.android.utils.BitmapUtils.Companion.getNameBitmap
 import com.sangxiang.android.utils.Utils
-import com.sangxiang.android.work.UserModel
+import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.layout_key_value_item.view.*
 import org.jetbrains.anko.dip
 import org.jetbrains.anko.textColor
@@ -244,7 +245,29 @@ class KeyValueLayout(context: Context, attrs: AttributeSet?, defStyleAttr: Int) 
             Utils.loadHeadPicToVh(headUrl,imageView)
         }
     }
+
+    @Parcelize
+    data class UserModel(
+             val contactsID: Long = 0,
+             val contactsName: String = "",
+             val contactsHeadUrl: String = ""
+    ) : Parcelable {
+        var selected = false; //用于界面显示，是否被选中
+
+        fun nextSelectedStatus() {
+            selected = !selected
+        }
+
+//    class Generator : GenerateFakeData<UserModel> {
+//        override fun onGenerateOne(): UserModel {
+//            return UserModel(NumberGenerate.gengerateLong(), NameGenerator.getName(), HeadPicGenerator.generateNotNull())
+//        }
+//    }
+    }
 }
+
+
+
 
 
 

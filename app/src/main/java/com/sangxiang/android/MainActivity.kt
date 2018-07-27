@@ -8,6 +8,7 @@ import android.os.Environment
 import android.text.TextUtils
 import android.widget.Toast
 import com.sangxiang.android.demo.EventBusActivity
+import com.sangxiang.android.demo.PermissionActivity
 import com.sangxiang.android.demo.RecycleViewActivity
 import com.sangxiang.android.utils.BitmapUtils
 import com.sangxiang.android.utils.ResourcesUtils
@@ -15,7 +16,6 @@ import com.sangxiang.android.utils.appUpdate.CProgressDialogUtils
 import com.sangxiang.android.utils.appUpdate.HProgressDialogUtils
 import com.sangxiang.android.utils.appUpdate.UpdateAppHttpUtil
 import com.sangxiang.android.utils.button_textview.setSolidTheme
-import com.sangxiang.android.work.UserSelectActivity
 import com.vector.update_app.UpdateAppBean
 import com.vector.update_app.UpdateAppManager
 import com.vector.update_app.UpdateCallback
@@ -43,16 +43,17 @@ class MainActivity : BaseActivity(), AnkoLogger {
             //str="热门"
             photoImage.setImageBitmap(BitmapUtils.getNameBitmap(str, dip(35f), dip(35f)))
         }
-        nextBtn.onClick {
-            startActivity<UserSelectActivity>()
-        }
-        testFun.setSolidTheme(ResourcesUtils.getColor(R.color.color_22a2e4))
+        testFun.setSolidTheme()
         update.onClick {
             val url = "https://yf.emucoo.net/cfb/download/emucoo_test.apk"
             diyUpdate(url,true,this@MainActivity)
         }
         recycleView.onClick {
             startActivity<RecycleViewActivity>()
+        }
+
+        nextBtn.onClick {
+            startActivity<PermissionActivity>()
         }
     }
 
