@@ -2,7 +2,6 @@ package com.sangxiang.android.utils.button_textview
 
 import android.widget.TextView
 import com.vector.update_app.utils.ColorUtil
-import com.vector.update_app.utils.DrawableUtil
 
 /**
  * Created by Vector

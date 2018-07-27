@@ -129,9 +129,9 @@ public class DrawableUtil {
      * @param color        颜色
      */
     public static void setTextStrokeTheme(TextView textView, int strokeWidth, int cornerRadius, int color) {
-        textView.setBackgroundDrawable(getStrokeSolidDrawable(cornerRadius, strokeWidth, color, Color.WHITE));
-        textView.setTextColor(getColorStateList(Color.WHITE, color));
-        textView.getPaint().setFlags(Paint.FAKE_BOLD_TEXT_FLAG);
+        textView.setBackground(getSolidStrokeDrawable(cornerRadius, strokeWidth, Color.WHITE, color));
+        textView.setTextColor(getColorStateList(color, Color.WHITE));
+        textView.getPaint().setAntiAlias(true);
     }
 
     /**
@@ -139,9 +139,9 @@ public class DrawableUtil {
      * @param textView 文本控件
      * @param color 颜色
      */
-    public static void setTextStrokeTheme(TextView textView, int color) {
-        setTextStrokeTheme(textView, 6, 10, color);
-    }
+//    public static void setTextStrokeTheme(TextView textView, int color) {
+//        setTextStrokeTheme(textView, 6, 10, color);
+//    }
 
     /**
      * 默认实心 设置TextView 主题，
@@ -152,11 +152,9 @@ public class DrawableUtil {
      * @param color        颜色
      */
     public static void setTextSolidTheme(TextView textView, int strokeWidth, int cornerRadius, int color) {
-        textView.setBackgroundDrawable(getSolidStrokeDrawable(cornerRadius, strokeWidth, Color.WHITE, color));
+        textView.setBackground(getSolidStrokeDrawable(cornerRadius, strokeWidth, Color.WHITE, color));
         textView.setTextColor(getColorStateList(color, Color.WHITE));
-        //textView.getPaint().setFlags(Paint.FAKE_BOLD_TEXT_FLAG);
         textView.getPaint().setAntiAlias(true);
-        //textView.setDrawFilter(new PaintFlagsDrawFilter(0,Paint.ANTI_ALIAS_FLAG|Paint.FILTER_BITMAP_FLAG));
     }
 
     /**
