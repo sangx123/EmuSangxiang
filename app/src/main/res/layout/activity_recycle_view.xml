@@ -21,6 +21,10 @@
             app:right_text_color="@color/color_202235"
             app:right_text="清空数据"
             app:left_icon="@drawable/icon_back_black"/>
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:id="@+id/mSwipeRefreshLayout"
+            android:layout_height="match_parent">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/mRecyclerView"
             android:layout_width="match_parent"
@@ -33,5 +37,6 @@
             android:scrollbarStyle="outsideOverlay"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             />
+        </android.support.v4.widget.SwipeRefreshLayout>
     </LinearLayout>
 </RelativeLayout>
