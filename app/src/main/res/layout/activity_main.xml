@@ -9,7 +9,7 @@
     android:background="@color/white"
     tools:context=".MainActivity">
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="eventbus"
         android:id="@+id/eventbusBtn"
@@ -29,17 +29,15 @@
         />
     <Button
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_gravity="center_horizontal"
-        android:text="testFun"
-        android:textSize="20sp"
-        android:id="@+id/testFun1"
-        />
-    <Button
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="下载更新"
         android:id="@+id/update"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="recycleView"
+        android:id="@+id/recycleView"
         />
     <Button
         android:layout_width="match_parent"

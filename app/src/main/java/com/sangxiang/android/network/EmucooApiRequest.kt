@@ -195,7 +195,7 @@ class EmucooApiRequest private constructor() {
 
     //获取单例
     companion object {
-        var defaultIp: String = ServerIp.CFB.toString()
+        var defaultIp: String = ServerIp.PRE.toString()
 
         var BASE_URL = defaultIp
             set(value) {

@@ -1,4 +1,4 @@
-package com.sangxiang.android.widgets;
+package com.sangxiang.android.utils.recycleView;
 
 import android.graphics.Rect;
 import android.support.v7.widget.GridLayoutManager;
@@ -11,36 +11,36 @@ import android.view.View;
  * Created by sangxiang on 26/4/17.
  */
 
-public class MItemDecoration extends RecyclerView.ItemDecoration {
+public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
 
     private int mSpanCount;
     private int mHorizonSpan;
     private int mVerticalSpan;
     private int mOrientation;
     private int mHeaderCount=0;
-    public MItemDecoration(int count) {
+    public GridDividerItemDecoration(int count) {
         mSpanCount = count;
         mOrientation = GridLayoutManager.VERTICAL;
         this.mHeaderCount=0;
 
     }
-    public MItemDecoration(int count, int mHeaderCount) {
+    public GridDividerItemDecoration(int count, int mHeaderCount) {
         mSpanCount = count;
         mOrientation = GridLayoutManager.VERTICAL;
         this.mHeaderCount=mHeaderCount;
 
     }
 
-    public MItemDecoration(int count, int orientation, int mHeaderCount) {
+    public GridDividerItemDecoration(int count, int orientation, int mHeaderCount) {
         mSpanCount = count;
         setOrientation(orientation);
     }
 
-    public MItemDecoration(int count, int mHeaderCount, int horizonSpan, int verticalSpan) {
+    public GridDividerItemDecoration(int count, int mHeaderCount, int horizonSpan, int verticalSpan) {
         this(count,mHeaderCount);
         setDivideParams(horizonSpan, verticalSpan);
     }
-    public MItemDecoration(int count, int mHeaderCount, int orientation, int horizonSpan, int verticalSpan) {
+    public GridDividerItemDecoration(int count, int mHeaderCount, int orientation, int horizonSpan, int verticalSpan) {
         this(count,mHeaderCount);
         setDivideParams(horizonSpan, verticalSpan);
         setOrientation(orientation);

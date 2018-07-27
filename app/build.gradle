@@ -167,12 +167,19 @@ dependencies {
 
     //自动更新
     compile 'com.qianwen:update-app:3.5.2'
+
+    //使用通用BaseRecyclerViewAdapterHelper
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
 }
 apply plugin: 'io.objectbox'
 //在正常的dependencies中添加如下依赖
 dependencies {
 //主要是针对kotlin
     compile "io.objectbox:objectbox-kotlin:$objectboxVersion"
+}
+
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
 }
 
 dependencies {

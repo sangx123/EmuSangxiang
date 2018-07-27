@@ -8,6 +8,7 @@ import android.os.Environment
 import android.text.TextUtils
 import android.widget.Toast
 import com.sangxiang.android.demo.EventBusActivity
+import com.sangxiang.android.demo.RecycleViewActivity
 import com.sangxiang.android.utils.BitmapUtils
 import com.sangxiang.android.utils.ResourcesUtils
 import com.sangxiang.android.utils.appUpdate.CProgressDialogUtils
@@ -49,6 +50,9 @@ class MainActivity : BaseActivity(), AnkoLogger {
         update.onClick {
             val url = "https://yf.emucoo.net/cfb/download/emucoo_test.apk"
             diyUpdate(url,true,this@MainActivity)
+        }
+        recycleView.onClick {
+            startActivity<RecycleViewActivity>()
         }
     }
 

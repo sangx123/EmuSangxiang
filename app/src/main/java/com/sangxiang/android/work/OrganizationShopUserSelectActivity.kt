@@ -1,6 +1,5 @@
 package com.sangxiang.android.work
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -10,14 +9,13 @@ import com.sangxiang.android.R
 import com.sangxiang.android.network.EmucooApiRequest
 import com.sangxiang.android.network.model.ContactsResult
 import com.sangxiang.android.network.param.ContactsParam
-import com.sangxiang.android.widgets.MItemDecoration
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_organization_shop_user_select.*
 import org.jetbrains.anko.dip
-import org.jetbrains.anko.startActivity
+
 class OrganizationShopUserSelectActivity : BaseActivity() {
 
     var brandId:Long=0
@@ -129,7 +127,6 @@ class OrganizationShopUserSelectActivity : BaseActivity() {
             finish()
         })
         mAdapter=OrganizationShopUserSelectAdapter(multipleSelect,list)
-        mRecyclerView.addItemDecoration(MItemDecoration(1, 0,dip(1),dip(1)))
         mRecyclerView.adapter=mAdapter
     }
 }

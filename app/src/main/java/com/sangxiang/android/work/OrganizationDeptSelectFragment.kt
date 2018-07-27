@@ -12,14 +12,11 @@ import com.sangxiang.android.R
 import com.sangxiang.android.network.EmucooApiRequest
 import com.sangxiang.android.network.model.ContactsResult
 import com.sangxiang.android.network.param.ContactsParam
-import com.sangxiang.android.widgets.MItemDecoration
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_organization_dept_select.*
-import org.jetbrains.anko.error
-import org.jetbrains.anko.support.v4.dip
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

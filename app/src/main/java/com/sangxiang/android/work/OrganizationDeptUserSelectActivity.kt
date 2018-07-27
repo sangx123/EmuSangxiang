@@ -1,6 +1,5 @@
 package com.sangxiang.android.work
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -10,14 +9,11 @@ import com.sangxiang.android.R
 import com.sangxiang.android.network.EmucooApiRequest
 import com.sangxiang.android.network.model.ContactsResult
 import com.sangxiang.android.network.param.ContactsParam
-import com.sangxiang.android.widgets.MItemDecoration
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_organization_dept_user_select.*
-import org.jetbrains.anko.dip
-import org.jetbrains.anko.startActivity
 
 class OrganizationDeptUserSelectActivity : BaseActivity() {
 

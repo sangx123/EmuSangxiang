@@ -49,6 +49,8 @@ class LoginActivity : BaseActivity(){
         setContentView(R.layout.activity_login)
         setStatusBarDefaultColor()
         if(Constants.getUser()==null) {
+            //edit1.setText("emu")
+            //edit2.setText("123456")
             btn.setOnClickListener { Login(edit1.text.toString(),edit2.text.toString()) }
         }
         else{
