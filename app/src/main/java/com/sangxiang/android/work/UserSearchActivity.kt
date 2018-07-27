@@ -1,27 +1,19 @@
 package com.sangxiang.android.work
 
-import android.app.Activity
-import android.app.Notification
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import com.sangxiang.android.BaseActivity
 import com.sangxiang.android.R
 import com.sangxiang.android.network.EmucooApiRequest
 import com.sangxiang.android.network.model.ContactsResult
 import com.sangxiang.android.network.param.ContactsParam
-import com.sangxiang.android.utils.LruCacheManager
 import com.sangxiang.android.work.UserSearchAdapter.CallListenter
 import com.jakewharton.rxbinding2.widget.RxTextView
-import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Consumer
-import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_user_search.*
 import org.jetbrains.anko.sdk25.coroutines.onClick

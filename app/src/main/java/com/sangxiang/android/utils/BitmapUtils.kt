@@ -5,18 +5,15 @@ import com.sangxiang.android.App
 import org.jetbrains.anko.*
 import android.text.TextPaint
 import java.util.*
-import android.graphics.Paint.Align
 import android.os.Environment
 import android.text.Layout
 import android.text.StaticLayout
 import android.widget.ImageView
-import com.sangxiang.android.R
-import org.jetbrains.anko.appcompat.v7.Appcompat
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
-import android.graphics.drawable.Drawable
+import com.sangxiang.android.utils.cache.LruCacheManager
 import java.lang.ref.SoftReference
 import kotlin.collections.HashMap
 
@@ -30,7 +27,7 @@ class BitmapUtils {
             var filePath= Environment.getExternalStorageDirectory().absolutePath+"/ASangxiang/cacheImage/"
             var cacheFile=findCacheFile(fileName)
             //此处是用来获取的
-            var bm=LruCacheManager.getLruCacheManager().getBitmap(fileName)
+            var bm= LruCacheManager.getLruCacheManager().getBitmap(fileName)
             if(bm!=null){
                 error { "从lrucache中获取图片" }
                 return bm
