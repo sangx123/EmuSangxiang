@@ -45,5 +45,11 @@
         android:text="Next"
         android:id="@+id/nextBtn"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="TabLayoutViewPagerActivity"
+        android:id="@+id/mTabLayoutViewPagerActivity"
+        />
 
 </LinearLayout>

@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.sangxiang.android.demo.EventBusActivity
 import com.sangxiang.android.demo.PermissionActivity
 import com.sangxiang.android.demo.RecycleViewActivity
+import com.sangxiang.android.demo.TabLayoutViewPagerActivity
 import com.sangxiang.android.utils.BitmapUtils
 import com.sangxiang.android.utils.ResourcesUtils
 import com.sangxiang.android.utils.appUpdate.CProgressDialogUtils
@@ -54,6 +55,9 @@ class MainActivity : BaseActivity(), AnkoLogger {
 
         nextBtn.onClick {
             startActivity<PermissionActivity>()
+        }
+        mTabLayoutViewPagerActivity.onClick {
+            startActivity<TabLayoutViewPagerActivity>()
         }
     }
 

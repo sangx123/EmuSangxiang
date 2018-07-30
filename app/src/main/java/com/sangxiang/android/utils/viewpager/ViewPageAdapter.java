@@ -1,4 +1,4 @@
-package com.sangxiang.android.widgets;
+package com.sangxiang.android.utils.viewpager;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;

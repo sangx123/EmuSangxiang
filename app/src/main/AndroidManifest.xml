@@ -59,7 +59,8 @@
             android:name=".demo.RecycleViewActivity"
             android:label="@string/title_activity_recycle_view"
             android:theme="@style/AppTheme" />
-        <activity android:name=".demo.PermissionActivity"></activity>
+        <activity android:name=".demo.PermissionActivity" />
+        <activity android:name=".demo.TabLayoutViewPagerActivity"></activity>
     </application>
 
 </manifest>

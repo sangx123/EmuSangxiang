@@ -72,15 +72,15 @@ class LoginActivity : BaseActivity(){
 
                         override fun onNext(permission: Permission) {
                             error("Permission result $permission")
-                            if (permission.granted) {
-                                Login(edit1.text.toString(),edit2.text.toString())
-                            } else if (permission.shouldShowRequestPermissionRationale) {
-                                // Denied permission without ask never again
-                                toast("Denied permission without ask never again")
-                            } else {
-                                // Denied permission with ask never again
-                                // Need to go to the settings
-                                toast("Permission denied, can't enable the camera")
+                            when {
+                                permission.granted -> Login(edit1.text.toString(),edit2.text.toString())
+                                permission.shouldShowRequestPermissionRationale ->
+                                    // Denied permission without ask never again
+                                    toast("Denied permission without ask never again")
+                                else ->
+                                    // Denied permission with ask never again
+                                    // Need to go to the settings
+                                    toast("Permission denied, can't enable the camera")
                             }
                         }
 

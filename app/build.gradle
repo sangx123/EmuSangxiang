@@ -180,3 +180,15 @@ dependencies {
 //主要是针对kotlin
     compile "io.objectbox:objectbox-kotlin:$objectboxVersion"
 }
+
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
+
+dependencies {
+    implementation 'com.android.support:support-v4:27.+'
+}
+
+dependencies {
+    implementation 'com.android.support:support-v4:27.+'
+}
