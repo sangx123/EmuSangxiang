@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.sangxiang.android.utils.status_bar_utils.Eyes
 import io.reactivex.disposables.CompositeDisposable
 import org.jetbrains.anko.AnkoLogger
 import java.util.*
@@ -88,7 +87,4 @@ abstract class BaseActivity : AppCompatActivity(),AnkoLogger {
         private val TAG_FAKE_STATUS_BAR_VIEW = 12345
     }
 
-    fun Activity.setStatusBarDefaultColor() {
-        Eyes.setStatusBarLightMode(this, getResources().getColor(R.color.white))
-    }
 }

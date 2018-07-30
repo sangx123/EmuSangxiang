@@ -21,7 +21,6 @@ import android.widget.ImageView;
 import com.sangxiang.android.App;
 import com.sangxiang.android.R;
 import com.sangxiang.android.network.Constants;
-import com.sangxiang.android.utils.status_bar_utils.Eyes;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -287,11 +286,6 @@ public class Utils {
         int month = date.getMonth() + 1;
         return date.getYear() + "-" + (month < 10 ? "0" + month : month) + "-" + (date.getDay() < 10 ? "0" + date.getDay() : date.getDay());
     }
-
-    public static void setStatusBarDefaultColor(Context context) {
-        Eyes.setStatusBarLightMode((Activity) context, context.getResources().getColor(R.color.white));
-    }
-
 
     public static String getLastName(String s) {
         if (TextUtils.isEmpty(s)) {

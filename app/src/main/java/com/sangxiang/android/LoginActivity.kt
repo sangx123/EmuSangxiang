@@ -51,8 +51,6 @@ class LoginActivity : BaseActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
-        setStatusBarDefaultColor()
         if(Constants.getUser()==null) {
             //edit1.setText("emu")
             //edit2.setText("123456")

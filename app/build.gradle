@@ -173,12 +173,15 @@ dependencies {
 
     //rxpermissions
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
+
+    //switchbutton
+    implementation 'com.kyleduo.switchbutton:library:2.0.0'
 }
 apply plugin: 'io.objectbox'
 //在正常的dependencies中添加如下依赖
 dependencies {
 //主要是针对kotlin
-    compile "io.objectbox:objectbox-kotlin:$objectboxVersion"
+    implementation "io.objectbox:objectbox-kotlin:$objectboxVersion"
 }
 
 dependencies {

@@ -51,5 +51,11 @@
         android:text="TabLayoutViewPagerActivity"
         android:id="@+id/mTabLayoutViewPagerActivity"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="SwitchButtonActivity"
+        android:id="@+id/mSwitchButtonActivity"
+        />
 
 </LinearLayout>

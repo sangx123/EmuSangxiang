@@ -19,7 +19,6 @@ class EventBusActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_bus)
-        setStatusBarDefaultColor()
         EventBus.getDefault().register(this)
         mDisposables.add(RxView.clicks(btn).subscribe{
             EventBus.getDefault().post( PhotoMessageEvent())

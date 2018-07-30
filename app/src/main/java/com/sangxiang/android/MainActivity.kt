@@ -7,10 +7,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.text.TextUtils
 import android.widget.Toast
-import com.sangxiang.android.demo.EventBusActivity
-import com.sangxiang.android.demo.PermissionActivity
-import com.sangxiang.android.demo.RecycleViewActivity
-import com.sangxiang.android.demo.TabLayoutViewPagerActivity
+import com.sangxiang.android.demo.*
 import com.sangxiang.android.utils.BitmapUtils
 import com.sangxiang.android.utils.ResourcesUtils
 import com.sangxiang.android.utils.appUpdate.CProgressDialogUtils
@@ -35,7 +32,6 @@ class MainActivity : BaseActivity(), AnkoLogger {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setStatusBarDefaultColor()
         eventbusBtn.onClick {
             startActivity<EventBusActivity>()
         }
@@ -58,6 +54,9 @@ class MainActivity : BaseActivity(), AnkoLogger {
         }
         mTabLayoutViewPagerActivity.onClick {
             startActivity<TabLayoutViewPagerActivity>()
+        }
+        mSwitchButtonActivity.onClick {
+            startActivity<SwitchButtonActivity>()
         }
     }
 
