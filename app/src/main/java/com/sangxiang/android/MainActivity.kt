@@ -8,6 +8,7 @@ import android.os.Environment
 import android.text.TextUtils
 import android.widget.Toast
 import com.sangxiang.android.demo.*
+import com.sangxiang.android.network.param.ParamCommentSelectIn
 import com.sangxiang.android.utils.BitmapUtils
 import com.sangxiang.android.utils.ResourcesUtils
 import com.sangxiang.android.utils.appUpdate.CProgressDialogUtils
@@ -61,6 +62,8 @@ class MainActivity : BaseActivity(), AnkoLogger {
         mDialogActivity.onClick {
             startActivity<DialogActivity>()
         }
+
+        mComment.setCommentNum(ParamCommentSelectIn(workType = 4,reportID = 169))
 
     }
 

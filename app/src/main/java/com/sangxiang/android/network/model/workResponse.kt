@@ -1,5 +1,6 @@
 package com.sangxiang.android.network.model
 
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 class ContactsResult:Serializable {
@@ -45,3 +46,8 @@ class ContactsResult:Serializable {
          var selected:Boolean=false
     }
 }
+
+//@ApiModel(value="评论数量")
+class CommentNum (
+        @SerializedName("num") val num: Int = 0
+)

@@ -4,6 +4,8 @@ import com.sangxiang.android.network.model.UserModel
 import com.sangxiang.android.network.param.ContactsParam
 import com.sangxiang.android.network.param.LoginSubmit
 import com.google.gson.annotations.SerializedName
+import com.sangxiang.android.network.model.CommentNum
+import com.sangxiang.android.network.param.ParamCommentSelectIn
 import com.sangxiang.android.utils.appUpdate.VersionModel
 import io.reactivex.Observable
 import okhttp3.ResponseBody
@@ -34,5 +36,10 @@ interface ApiService {
     @InterfaceUseCase("版本管理")
     @POST("/api/version/checkUpdate")
     fun checkUpdate(@Body request: Map<String, String>): Observable<String>
+
+
+    @InterfaceUseCase("查询评论数量")
+    @POST("/api/comment/getCommentNum")
+    fun getCommentNum(@Body model: ParamCommentSelectIn): Observable<CommentNum>
 }
 

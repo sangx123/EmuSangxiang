@@ -63,5 +63,15 @@
         android:text="DialogActivity"
         android:id="@+id/mDialogActivity"
         />
+    <com.sangxiang.android.widgets.WidgetCommentView
+        android:id="@+id/mComment"
+        android:clickable="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="150dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </com.sangxiang.android.widgets.WidgetCommentView>
 
 </LinearLayout>
