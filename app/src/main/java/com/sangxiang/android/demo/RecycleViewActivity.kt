@@ -14,6 +14,7 @@ import com.sangxiang.android.network.model.ContactsResult
 import com.sangxiang.android.network.param.ContactsParam
 import com.sangxiang.android.utils.recycleView.CustomLoadMoreView
 import com.sangxiang.android.utils.recycleView.HorizontalDividerItemDecoration
+import com.sangxiang.android.utils.recycleView.TitleItemDecoration
 import com.squareup.picasso.Picasso
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -25,7 +26,8 @@ import kotlinx.android.synthetic.main.item_organization_shop_user_select.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.toast
-import java.util.ArrayList
+import java.util.*
+import kotlin.collections.ArrayList
 
 class RecycleViewActivity :BaseActivity() {
     private val PAGE_SIZE = 6
@@ -56,6 +58,17 @@ class RecycleViewActivity :BaseActivity() {
         mSwipeRefreshLayout.onRefresh {
             refresh()
         }
+
+        mRecyclerView.addItemDecoration(object: TitleItemDecoration(this){
+            override fun getTag(position: Int): String {
+                if(position<mAdapter.data.size) {
+                    mAdapter.data?.let {
+                        return it[position].name!!.length.toString()
+                    }
+                }
+                return ""
+            }
+        })
     }
 
     private fun loadMore() {
@@ -65,6 +78,7 @@ class RecycleViewActivity :BaseActivity() {
 
     private var mNextRequestPage = 1
     private fun setData(isRefresh: Boolean, data: MutableList<ContactsResult.UserItem>) {
+        data.sortWith(Comparator { p0, p1 -> p0!!.name!!.length-p1!!.name!!.length })
         val size = data?.size
         if (isRefresh) {
             mNextRequestPage++
@@ -82,6 +96,7 @@ class RecycleViewActivity :BaseActivity() {
         } else {
             mAdapter.loadMoreComplete()
         }
+        mRecyclerView.invalidateItemDecorations()
     }
 
     private fun initData() {

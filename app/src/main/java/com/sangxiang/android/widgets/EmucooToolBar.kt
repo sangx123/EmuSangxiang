@@ -35,7 +35,7 @@ class EmucooToolBar constructor(context: Context, attrs: AttributeSet? = null, d
     private var mLeftTextColor: Int = 0
 
     fun setRedDotVisible(visible: Boolean) {
-        mRedDot.setVisibility(if (visible) View.VISIBLE else View.GONE)
+        mRedDot.visibility = if (visible) View.VISIBLE else View.GONE
     }
 
     init {
