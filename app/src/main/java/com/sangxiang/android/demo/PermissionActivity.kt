@@ -64,11 +64,11 @@ class PermissionActivity : BaseActivity() ,AnkoLogger{
                 })
 
     }
-    private lateinit var disposable: Disposable
-    override fun onDestroy() {
-        if (disposable != null && !disposable.isDisposed()) {
-            disposable.dispose()
-        }
-        super.onDestroy()
-    }
+//     var disposable: Disposable?=null
+//    override fun onDestroy() {
+//        if (disposable != null && !disposable.isDisposed()) {
+//            disposable.dispose()
+//        }
+//        super.onDestroy()
+//    }
 }

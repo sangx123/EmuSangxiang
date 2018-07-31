@@ -59,4 +59,21 @@
 
     </style>
 
+
+    <style name="Dialog_Fullscreen">
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowIsTranslucent">true</item><!--半透明-->
+        <item name="android:background">@android:color/transparent</item><!--背景透明-->
+        <item name="android:windowBackground">@android:color/transparent</item><!--背景透明-->
+        <item name="android:backgroundDimEnabled">true</item> <!--蒙版- 模糊 -->
+    </style>
+
+    <style name="PickerAnimStyle">
+        <item name="android:windowEnterAnimation">@anim/picker_in</item>
+        <item name="android:windowExitAnimation">@anim/picker_out</item>
+
+    </style>
+
 </resources>

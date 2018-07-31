@@ -7,7 +7,7 @@ import android.support.multidex.MultiDexApplication
 import android.widget.ImageView
 import cn.jpush.android.api.JPushInterface
 import com.sangxiang.android.network.model.MyObjectBox
-import com.sangxiang.android.utils.PicassoImageLoader
+import com.sangxiang.android.utils.picasso.PicassoImageLoader
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.lzy.imagepicker.ImagePicker
 import com.lzy.imagepicker.view.CropImageView

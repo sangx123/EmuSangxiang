@@ -61,7 +61,8 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".demo.PermissionActivity" />
         <activity android:name=".demo.TabLayoutViewPagerActivity" />
-        <activity android:name=".demo.SwitchButtonActivity"></activity>
+        <activity android:name=".demo.SwitchButtonActivity" />
+        <activity android:name=".demo.DialogActivity"></activity>
     </application>
 
 </manifest>

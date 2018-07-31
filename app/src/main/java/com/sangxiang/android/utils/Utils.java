@@ -24,6 +24,7 @@ import com.sangxiang.android.network.Constants;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.sangxiang.android.utils.picasso.CircleTransform;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;

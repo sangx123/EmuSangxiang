@@ -1,4 +1,4 @@
-package com.sangxiang.android.utils.recycleView;
+package com.sangxiang.android.utils.picasso;
 
 import android.content.Context;
 import android.widget.AbsListView;

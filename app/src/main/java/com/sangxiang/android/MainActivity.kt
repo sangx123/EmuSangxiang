@@ -58,6 +58,10 @@ class MainActivity : BaseActivity(), AnkoLogger {
         mSwitchButtonActivity.onClick {
             startActivity<SwitchButtonActivity>()
         }
+        mDialogActivity.onClick {
+            startActivity<DialogActivity>()
+        }
+
     }
 
     private fun diyUpdate(mUpdateUrl: String,isShowDownloadProgress:Boolean,context:Activity) {

@@ -1,4 +1,4 @@
-package com.sangxiang.android.utils;
+package com.sangxiang.android.utils.picasso;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
