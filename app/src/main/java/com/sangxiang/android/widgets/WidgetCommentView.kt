@@ -42,7 +42,6 @@ class  WidgetCommentView : RelativeLayout, LifecycleObserver {
         // 加载布局
         var view= LayoutInflater.from(context).inflate(R.layout.widget_comment_layout, this,true);
         mCommentTxt=view.findViewById(R.id.mCommentTxt)
-        mCommentTxt.setSolidTheme()
         mContent=context
         //getData(1)
     }
@@ -85,7 +84,5 @@ class  WidgetCommentView : RelativeLayout, LifecycleObserver {
         mCommentTxt.onClick {
             mContent.toast("mCommentTxt")
         }
-
-
     }
 }

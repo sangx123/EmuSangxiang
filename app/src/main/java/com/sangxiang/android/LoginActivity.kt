@@ -24,6 +24,15 @@ import android.widget.TextView
 
 import java.util.ArrayList
 import android.Manifest.permission.READ_CONTACTS
+import android.animation.ObjectAnimator
+import android.text.Editable
+import android.text.InputType
+import android.text.TextWatcher
+import android.util.Log
+import android.view.MotionEvent
+import android.view.ViewGroup
+import android.view.animation.LinearInterpolator
+import android.widget.Toast
 import com.jakewharton.rxbinding2.view.RxView
 import com.sangxiang.android.network.Constants
 import com.sangxiang.android.network.EmucooApiRequest
@@ -40,6 +49,7 @@ import io.reactivex.schedulers.Schedulers
 
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.*
+import org.jetbrains.anko.sdk25.coroutines.onClick
 
 /**
  * A login screen that offers login via email/password.
@@ -51,12 +61,13 @@ class LoginActivity : BaseActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        initView()
         if(Constants.getUser()==null) {
             //edit1.setText("emu")
             //edit2.setText("123456")
             val rxPermissions = RxPermissions(this)
             rxPermissions.setLogging(true)
-            RxView.clicks(btn)
+            RxView.clicks(btn_login)
                     // Ask for permissions when button is clicked
                     .compose(rxPermissions.ensureEach(Manifest.permission.WRITE_EXTERNAL_STORAGE))
                     .subscribe(object:Observer<Permission>{
@@ -71,7 +82,7 @@ class LoginActivity : BaseActivity(){
                         override fun onNext(permission: Permission) {
                             error("Permission result $permission")
                             when {
-                                permission.granted -> Login(edit1.text.toString(),edit2.text.toString())
+                                permission.granted -> Login(et_mobile.text.toString(),et_password.text.toString())
                                 permission.shouldShowRequestPermissionRationale ->
                                     // Denied permission without ask never again
                                     toast("Denied permission without ask never again")
@@ -92,6 +103,74 @@ class LoginActivity : BaseActivity(){
         else{
             startActivity<MainActivity>()
             finish()
+        }
+
+    }
+
+    private fun initView() {
+        et_mobile.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable) {
+                if (!TextUtils.isEmpty(s) && iv_clean_phone.getVisibility() == View.GONE) {
+                    iv_clean_phone.setVisibility(View.VISIBLE)
+                } else if (TextUtils.isEmpty(s)) {
+                    iv_clean_phone.setVisibility(View.GONE)
+                }
+            }
+        })
+        et_password.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable) {
+                if (!TextUtils.isEmpty(s) && clean_password.getVisibility() == View.GONE) {
+                    clean_password.setVisibility(View.VISIBLE)
+                } else if (TextUtils.isEmpty(s)) {
+                    clean_password.setVisibility(View.GONE)
+                }
+                if (s.toString().isEmpty()) {
+                    return
+                }
+                if (!s.toString().matches("[A-Za-z0-9]+".toRegex())) {
+                    val temp = s.toString()
+                    Toast.makeText(this@LoginActivity, "请输入数字或字母", Toast.LENGTH_SHORT).show()
+                    s.delete(temp.length - 1, temp.length)
+                    et_password.setSelection(s.length)
+                }
+            }
+        })
+
+        iv_show_pwd.onClick {
+            if (et_password.getInputType() != InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+                et_password.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD)
+                iv_show_pwd.setImageResource(R.drawable.pass_visuable)
+            } else {
+                et_password.setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD)
+                iv_show_pwd.setImageResource(R.drawable.pass_gone)
+            }
+            val pwd = et_password.getText().toString()
+            if (!TextUtils.isEmpty(pwd))
+                et_password.setSelection(pwd.length)
+        }
+
+        clean_password.onClick {
+            et_password.setText("")
+        }
+
+        iv_clean_phone.onClick {
+            et_mobile.setText("")
         }
 
     }

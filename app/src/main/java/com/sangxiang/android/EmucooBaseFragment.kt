@@ -6,11 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.emucoo.business_manager.ui.contact_select.OrganizationShopSelectFragment
-import com.sangxiang.android.network.model.ContactsResult
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.android.synthetic.main.bmb_text_outside_circle_button.*
-import org.jetbrains.anko.AnkoLogger
 
 /**
  * 02/02/2018  11:28 AM
