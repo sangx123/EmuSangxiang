@@ -108,3 +108,18 @@
     public static int d(...);
     public static int e(...);
 }
+
+
+##--- OkHttp3混淆 ---
+-dontwarn com.squareup.okhttp3.**
+-keep class com.squareup.okhttp3.** { *;}
+-dontwarn okhttp3.internal.platform.*
+-dontwarn okhttp3.internal.http2.*
+-dontwarn okio.**
+
+
+#--- Retrofit ---
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+-keepattributes Signature
+-keepattributes Exceptions

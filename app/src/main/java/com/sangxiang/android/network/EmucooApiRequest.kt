@@ -196,7 +196,9 @@ class EmucooApiRequest private constructor() {
     //获取单例
     companion object {
         var defaultIp: String = ServerIp.PRE.toString()
-
+        get() {
+            return BuildConfig.HOST_URL
+        }
         var BASE_URL = defaultIp
             set(value) {
                 if (value.isBlank()) {

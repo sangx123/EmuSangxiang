@@ -63,8 +63,8 @@ class LoginActivity : BaseActivity(){
         setContentView(R.layout.activity_login)
         initView()
         if(Constants.getUser()==null) {
-            //edit1.setText("emu")
-            //edit2.setText("123456")
+            et_mobile.setText("13914724233")
+            et_password.setText("123456")
             val rxPermissions = RxPermissions(this)
             rxPermissions.setLogging(true)
             RxView.clicks(btn_login)
