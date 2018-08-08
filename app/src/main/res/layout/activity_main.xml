@@ -8,6 +8,10 @@
     android:orientation="vertical"
     android:background="@color/white"
     tools:context=".MainActivity">
+    <TextView
+        android:id="@+id/testFloat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,5 +73,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     </com.sangxiang.android.widgets.WidgetCommentView>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mBtn"
+        android:textSize="14sp"
+        android:text="123123123sasdasdsadasd"
+        android:textColor="@color/color_202235_70"
+        />
 
 </LinearLayout>

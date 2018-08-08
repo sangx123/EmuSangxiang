@@ -2,7 +2,6 @@ package com.sangxiang.android
 
 import android.app.Activity
 import android.app.AlertDialog
-import android.content.Context
 import android.os.Bundle
 import android.os.Environment
 import android.text.TextUtils
@@ -10,7 +9,7 @@ import android.widget.Toast
 import com.sangxiang.android.demo.*
 import com.sangxiang.android.network.param.ParamCommentSelectIn
 import com.sangxiang.android.utils.BitmapUtils
-import com.sangxiang.android.utils.ResourcesUtils
+import com.sangxiang.android.utils.StringUtils
 import com.sangxiang.android.utils.appUpdate.CProgressDialogUtils
 import com.sangxiang.android.utils.appUpdate.HProgressDialogUtils
 import com.sangxiang.android.utils.appUpdate.UpdateAppHttpUtil
@@ -33,6 +32,10 @@ class MainActivity : BaseActivity(), AnkoLogger {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        var f=7000.123f
+        testFloat.text= StringUtils.floatToString(f)
+
+        error {f.toString()}
         eventbusBtn.onClick {
             startActivity<EventBusActivity>()
         }

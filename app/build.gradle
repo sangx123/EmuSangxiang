@@ -6,6 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'packer'
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -35,13 +36,14 @@ android {
             keyPassword 'emucoo'
             storeFile file('../certificates/emucoo_key_v1.jks')
             storePassword 'emucoo'
+            v2SigningEnabled true
         }
         debug {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
             storeFile file('../certificates/debug.keystore')
             storePassword 'android'
-
+            v2SigningEnabled true
         }
     }
     buildTypes {
@@ -85,7 +87,7 @@ android {
             buildConfigField("String", "HOST_URL","\"http://192.168.16.179:9093/\"")
             manifestPlaceholders = [
                     JPUSH_PKGNAME: "com.sangxiang.android",
-                    JPUSH_APPKEY : "c2d3f4af06f5047b61c5be82", //JPush上注册的包名对应的appkey.
+                    JPUSH_APPKEY : "405c44ca84474b072b8c4da5", //JPush上注册的包名对应的appkey.
                     JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
             ]
 
@@ -95,7 +97,7 @@ android {
         PRE{
             buildConfigField("String", "HOST_URL","\"http://yf.emucoo.net/\"")
             manifestPlaceholders = [
-                    JPUSH_PKGNAME: "com.sangxiang.android",
+                    JPUSH_PKGNAME: "com.sangxiang.android.pre",
                     JPUSH_APPKEY : "c2d3f4af06f5047b61c5be82", //JPush上注册的包名对应的appkey.
                     JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
             ]
@@ -248,6 +250,9 @@ dependencies {
 
     //switchbutton
     implementation 'com.kyleduo.switchbutton:library:2.0.0'
+
+    //packer
+    implementation 'com.mcxiaoke.packer-ng:helper:2.0.1'
 }
 apply plugin: 'io.objectbox'
 //在正常的dependencies中添加如下依赖
