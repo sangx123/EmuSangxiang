@@ -28,13 +28,18 @@
 -verbose    # 混淆时是否记录日志
 -ignorewarnings  # 忽略警告，避免打包时某些警告出现
 -optimizations !code/simplification/arithmetic,!code/simplification/cast,!field/*,!class/merging/*  # 混淆时所采用的算法
-
+# 保留Annotation不混淆
 -keepattributes *Annotation*
 -keep public class com.google.vending.licensing.ILicensingService
 -keep public class com.android.vending.licensing.ILicensingService
 -keepclasseswithmembernames class * { # 保持 native 方法不被混淆
     native <methods>;
 }
+
+-keep public class * extends android.support.annotation.**
+ -keepclasseswithmembernames class * {
+     native <methods>;
+ }
 
 -keepclassmembers public class * extends android.view.View {
    void set*(***);
@@ -86,6 +91,7 @@
 -keep public class * extends android.support.v4.**
 -keep public class * extends android.support.v4.widget
 -keep class * extends android.support.v4.app.** {*;}
+-keep public class * extends android.support.annotation.**
 -keep class * extends android.support.v4.view.** {*;}
 
 ##--- For:Serializable ---
@@ -94,7 +100,6 @@
 -keepclassmembers class * implements java.io.Serializable {*;}
 
 ##--- For:Gson ---
--keepattributes *Annotation*
 -keep class sun.misc.Unsafe { *; }
 -keep class com.idea.fifaalarmclock.entity.***
 -keep class com.google.gson.stream.** { *; }
@@ -121,5 +126,11 @@
 #--- Retrofit ---
 -dontwarn retrofit2.**
 -keep class retrofit2.** { *; }
+# 避免混淆泛型
 -keepattributes Signature
 -keepattributes Exceptions
+
+# 抛出异常时保留代码行号
+-keepattributes SourceFile,LineNumberTable
+
+-keep class org.junit.** { *;}
