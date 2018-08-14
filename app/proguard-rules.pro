@@ -134,3 +134,12 @@
 -keepattributes SourceFile,LineNumberTable
 
 -keep class org.junit.** { *;}
+
+#热更新
+-keepclassmembers class com.sangxiang.android.App {
+    public <init>();
+}
+-keep class com.my.pkg.SophixStubApplication$RealApplicationStub
+-keep class com.taobao.sophix.**{*;}
+-keep class com.ta.utdid2.device.**{*;}
+-dontoptimize

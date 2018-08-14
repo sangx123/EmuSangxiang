@@ -1,5 +1,6 @@
 package com.sangxiang.android
 
+import android.app.Application
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Environment
@@ -21,7 +22,7 @@ import org.greenrobot.eventbus.EventBus
 import java.io.File
 import java.io.IOException
 
-class App : MultiDexApplication() {
+class App :Application() {
 
     private lateinit var rootFileDir: File
     private lateinit var cacheImage: File

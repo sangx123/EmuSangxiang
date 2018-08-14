@@ -38,13 +38,13 @@ android {
             storePassword 'emucoo'
             v2SigningEnabled true
         }
-        debug {
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
-            storeFile file('../certificates/debug.keystore')
-            storePassword 'android'
-            v2SigningEnabled true
-        }
+//        debug {
+//            keyAlias 'androiddebugkey'
+//            keyPassword 'android'
+//            storeFile file('../certificates/debug.keystore')
+//            storePassword 'android'
+//            v2SigningEnabled true
+//        }
     }
     buildTypes {
         release {
@@ -84,7 +84,7 @@ android {
 
         /*开发*/
         DEV{
-            buildConfigField("String", "HOST_URL","\"http://192.168.16.179:9093/\"")
+            buildConfigField("String", "HOST_URL","\"http://yf.emucoo.net/\"")
             manifestPlaceholders = [
                     JPUSH_PKGNAME: "com.sangxiang.android",
                     JPUSH_APPKEY : "405c44ca84474b072b8c4da5", //JPush上注册的包名对应的appkey.
@@ -155,10 +155,15 @@ androidExtensions {
 
 
 kapt {
-    generateStubs = true
     arguments {
         arg('eventBusIndex', 'com.sangxiang.android.EmucooEventBusIndex')
         arg("objectbox.debug", true)
+    }
+}
+
+repositories {
+    maven {
+        url "http://maven.aliyun.com/nexus/content/repositories/releases"
     }
 }
 
@@ -258,6 +263,9 @@ dependencies {
 
     //packer
     implementation 'com.mcxiaoke.packer-ng:helper:2.0.1'
+
+    //
+    implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.4'
 }
 apply plugin: 'io.objectbox'
 //在正常的dependencies中添加如下依赖
