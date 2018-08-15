@@ -73,8 +73,8 @@ android {
     }
     productFlavors {
         /*测试环境*/
-        TESTS{
-            buildConfigField("String", "HOST_URL","\"http://192.168.16.185:9093/\"")
+        TESTS {
+            buildConfigField("String", "HOST_URL", "\"http://192.168.16.185:9093/\"")
             manifestPlaceholders = [
                     JPUSH_PKGNAME: "com.sangxiang.android",
                     JPUSH_APPKEY : "c2d3f4af06f5047b61c5be82", //JPush上注册的包名对应的appkey.
@@ -83,8 +83,8 @@ android {
         }
 
         /*开发*/
-        DEV{
-            buildConfigField("String", "HOST_URL","\"http://yf.emucoo.net/\"")
+        DEV {
+            buildConfigField("String", "HOST_URL", "\"http://yf.emucoo.net/\"")
             manifestPlaceholders = [
                     JPUSH_PKGNAME: "com.sangxiang.android",
                     JPUSH_APPKEY : "405c44ca84474b072b8c4da5", //JPush上注册的包名对应的appkey.
@@ -94,8 +94,8 @@ android {
         }
 
         /*预生产*/
-        PRE{
-            buildConfigField("String", "HOST_URL","\"http://yf.emucoo.net/\"")
+        PRE {
+            buildConfigField("String", "HOST_URL", "\"http://yf.emucoo.net/\"")
             manifestPlaceholders = [
                     JPUSH_PKGNAME: "com.sangxiang.android.pre",
                     JPUSH_APPKEY : "c2d3f4af06f5047b61c5be82", //JPush上注册的包名对应的appkey.
@@ -103,8 +103,8 @@ android {
             ]
         }
         /*CFB生产*/
-        CFB{
-            buildConfigField("String", "HOST_URL","\"http://cfb.emucoo.net/\"")
+        CFB {
+            buildConfigField("String", "HOST_URL", "\"http://cfb.emucoo.net/\"")
             manifestPlaceholders = [
                     JPUSH_PKGNAME: "com.sangxiang.android",
                     JPUSH_APPKEY : "c2d3f4af06f5047b61c5be82", //JPush上注册的包名对应的appkey.
@@ -113,8 +113,8 @@ android {
         }
 
         /*外部链接dev环境*/
-        OUTSIDE_DEV{
-            buildConfigField("String", "HOST_URL","\"http://220.248.53.122:9993/\"")
+        OUTSIDE_DEV {
+            buildConfigField("String", "HOST_URL", "\"http://220.248.53.122:9993/\"")
             manifestPlaceholders = [
                     JPUSH_PKGNAME: "com.sangxiang.android",
                     JPUSH_APPKEY : "c2d3f4af06f5047b61c5be82", //JPush上注册的包名对应的appkey.
@@ -122,8 +122,8 @@ android {
             ]
         }
         /*大屏预生产*/
-        BIG_SCREEN{
-            buildConfigField("String", "HOST_URL","\"http://117.50.34.144:9093\"")
+        BIG_SCREEN {
+            buildConfigField("String", "HOST_URL", "\"http://117.50.34.144:9093\"")
             manifestPlaceholders = [
                     JPUSH_PKGNAME: "com.sangxiang.android",
                     JPUSH_APPKEY : "c2d3f4af06f5047b61c5be82", //JPush上注册的包名对应的appkey.
@@ -131,8 +131,8 @@ android {
             ]
         }
         /*售前版*/
-        BEFORE_SALE{
-            buildConfigField("String", "HOST_URL","\"http://cro.emucoo.net:9696\"")
+        BEFORE_SALE {
+            buildConfigField("String", "HOST_URL", "\"http://cro.emucoo.net:9696\"")
             manifestPlaceholders = [
                     JPUSH_PKGNAME: "com.sangxiang.android",
                     JPUSH_APPKEY : "c2d3f4af06f5047b61c5be82", //JPush上注册的包名对应的appkey.
@@ -284,6 +284,10 @@ dependencies {
 
 dependencies {
     implementation 'com.android.support:support-v4:27.+'
+}
+
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
 }
 
 dependencies {
