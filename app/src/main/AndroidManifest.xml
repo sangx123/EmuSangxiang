@@ -71,7 +71,9 @@
 
         <activity android:name=".designpattern.FactoryActivity" />
         <activity android:name=".designpattern.DesignPatternActivity" />
-        <activity android:name=".designpattern.SingletonActivity"></activity>
+        <activity android:name=".designpattern.SingletonActivity" />
+        <activity android:name=".designpattern.BuilderActivity" />
+        <activity android:name=".designpattern.PrototypeActivity"></activity>
     </application>
 
 </manifest>

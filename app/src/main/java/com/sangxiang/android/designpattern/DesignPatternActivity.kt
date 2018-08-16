@@ -16,5 +16,9 @@ class DesignPatternActivity : BaseActivity() {
         btn1.onClick {
             startActivity<FactoryActivity>()
         }
+        btn2.onClick {
+            startActivity<SingletonActivity>()
+        }
+        btn3.onClick { startActivity<BuilderActivity>() }
     }
 }
