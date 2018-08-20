@@ -20,5 +20,7 @@ class DesignPatternActivity : BaseActivity() {
             startActivity<SingletonActivity>()
         }
         btn3.onClick { startActivity<BuilderActivity>() }
+        btn4.onClick { startActivity<PrototypeActivity>() }
+        btn5.onClick { startActivity<ObservableActivity>() }
     }
 }

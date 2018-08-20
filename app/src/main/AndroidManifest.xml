@@ -73,7 +73,8 @@
         <activity android:name=".designpattern.DesignPatternActivity" />
         <activity android:name=".designpattern.SingletonActivity" />
         <activity android:name=".designpattern.BuilderActivity" />
-        <activity android:name=".designpattern.PrototypeActivity"></activity>
+        <activity android:name=".designpattern.PrototypeActivity" />
+        <activity android:name=".designpattern.ObservableActivity"></activity>
     </application>
 
 </manifest>

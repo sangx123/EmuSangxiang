@@ -21,19 +21,19 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="btn3"
+        android:text="构造者模式"
         android:id="@+id/btn3"
         />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="btn4"
+        android:text="原型模式"
         android:id="@+id/btn4"
         />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="btn5"
+        android:text="观察者模式"
         android:id="@+id/btn5"
         />
     <Button
