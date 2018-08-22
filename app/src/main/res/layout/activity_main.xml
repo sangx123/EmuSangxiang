@@ -81,6 +81,13 @@
         android:text="设计模式"
         android:textColor="@color/color_202235_70"
         />
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mBtn1"
+        android:textSize="14sp"
+        android:text="Picasso保存图片"
+        android:textColor="@color/color_202235_70"
+        />
 
 </LinearLayout>

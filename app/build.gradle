@@ -37,6 +37,7 @@ android {
             storeFile file('../certificates/emucoo_key_v1.jks')
             storePassword 'emucoo'
             v2SigningEnabled true
+            v1SigningEnabled true
         }
 //        debug {
 //            keyAlias 'androiddebugkey'
@@ -284,6 +285,10 @@ dependencies {
 
 dependencies {
     implementation 'com.android.support:support-v4:27.+'
+}
+
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
 }
 
 dependencies {

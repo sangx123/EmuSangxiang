@@ -69,6 +69,10 @@ class MainActivity : BaseActivity(), AnkoLogger {
         mBtn.onClick {
             startActivity<DesignPatternActivity>()
         }
+        mBtn1.onClick {
+            startActivity<PicassoSaveBitmapActivity>()
+        }
+
         //
         //mComment.setCommentNum(ParamCommentSelectIn(workType = 4,reportID = 169))
 

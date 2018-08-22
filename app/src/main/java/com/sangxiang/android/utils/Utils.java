@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -31,6 +32,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -310,6 +313,51 @@ public class Utils {
             if (newValue > 0x00FFFFFF) newValue = 1; // Roll over to 1, not 0.
             if (sNextGeneratedId.compareAndSet(result, newValue)) {
                 return result;
+            }
+        }
+    }
+
+    /**
+     * 保存图片
+     *
+     * @param path
+     * @param name
+     * @param bitmap
+     */
+    public static void saveBitmap(String path, String name, Bitmap bitmap) {
+        File file = new File(path);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+
+        File _file = new File(path + name);
+        if (_file.exists()) {
+            _file.delete();
+        }
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(_file);
+            if (name != null && !"".equals(name)) {
+                int index = name.lastIndexOf(".");
+                if (index != -1 && (index + 1) < name.length()) {
+                    String extension = name.substring(index + 1).toLowerCase();
+                    if ("png".equals(extension)) {
+                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+                    } else if ("jpg".equals(extension)
+                            || "jpeg".equals(extension)) {
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                    }
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
