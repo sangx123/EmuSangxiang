@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:sharedUserId="android.uid.system"
     package="com.sangxiang.android"
+    android:sharedUserId="android.uid.system"
     tools:ignore="MissingLeanbackLauncher">
 
     <uses-feature
@@ -96,7 +96,8 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".demo.PicassoSaveBitmapActivity"></activity>
+        <activity android:name=".demo.PicassoSaveBitmapActivity" />
+        <activity android:name=".designpattern.ProxyActivity"></activity>
     </application>
 
 </manifest>

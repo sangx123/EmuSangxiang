@@ -39,7 +39,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="btn6"
+        android:text="动态代理"
         android:id="@+id/btn6"
         />
 

@@ -22,5 +22,6 @@ class DesignPatternActivity : BaseActivity() {
         btn3.onClick { startActivity<BuilderActivity>() }
         btn4.onClick { startActivity<PrototypeActivity>() }
         btn5.onClick { startActivity<ObservableActivity>() }
+        btn6.onClick { startActivity<ProxyActivity>() }
     }
 }

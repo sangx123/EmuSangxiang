@@ -4,9 +4,11 @@ import android.app.Activity
 import android.os.Bundle
 import com.sangxiang.android.BaseActivity
 import com.sangxiang.android.R
+/**
 //单例设计模式
 //[Java中单例模式和静态类的区别](https://blog.csdn.net/johnny901114/article/details/11969015)
 //[单例模式使用](https://itimetraveler.github.io/2016/09/08/%E3%80%90Java%E3%80%91%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/)
+*/
 class SingletonActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
