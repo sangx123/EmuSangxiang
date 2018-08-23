@@ -98,7 +98,8 @@
 
         <activity android:name=".demo.PicassoSaveBitmapActivity" />
         <activity android:name=".designpattern.ProxyActivity" />
-        <activity android:name=".designpattern.AdapterActivity"></activity>
+        <activity android:name=".designpattern.AdapterActivity" />
+        <activity android:name=".designpattern.DecoratorActivity"></activity>
     </application>
 
 </manifest>
