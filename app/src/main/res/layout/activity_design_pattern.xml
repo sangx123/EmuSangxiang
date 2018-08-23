@@ -42,5 +42,16 @@
         android:text="动态代理"
         android:id="@+id/btn6"
         />
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="适配器模式"
+        android:id="@+id/btn7"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="装饰着模式"
+        android:id="@+id/btn8"
+        />
 </LinearLayout>

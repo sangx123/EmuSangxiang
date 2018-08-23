@@ -97,7 +97,8 @@
         </provider>
 
         <activity android:name=".demo.PicassoSaveBitmapActivity" />
-        <activity android:name=".designpattern.ProxyActivity"></activity>
+        <activity android:name=".designpattern.ProxyActivity" />
+        <activity android:name=".designpattern.AdapterActivity"></activity>
     </application>
 
 </manifest>
