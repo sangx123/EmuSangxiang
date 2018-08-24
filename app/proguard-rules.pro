@@ -126,6 +126,8 @@
 #--- Retrofit ---
 -dontwarn retrofit2.**
 -keep class retrofit2.** { *; }
+
+-keep class com.sangxiang.android.network.** { *;}
 # 避免混淆泛型
 -keepattributes Signature
 -keepattributes Exceptions

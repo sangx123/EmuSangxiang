@@ -14,6 +14,7 @@ import com.sangxiang.android.network.model.ContactsResult
 import com.sangxiang.android.network.param.ContactsParam
 import com.sangxiang.android.utils.recycleView.CustomLoadMoreView
 import com.sangxiang.android.utils.recycleView.HorizontalDividerItemDecoration
+import com.sangxiang.android.utils.recycleView.RecycleViewHelper
 import com.sangxiang.android.utils.recycleView.TitleItemDecoration
 import com.squareup.picasso.Picasso
 import io.reactivex.Observer
@@ -30,9 +31,9 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class RecycleViewActivity :BaseActivity() {
-    private val PAGE_SIZE = 6
     lateinit var mAdapter:BaseQuickAdapter<ContactsResult.UserItem,BaseViewHolder>
     var mList:ArrayList<ContactsResult.UserItem>? = null
+    private lateinit var mRecycleViewHelper:RecycleViewHelper<ContactsResult.UserItem>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycle_view)
@@ -45,59 +46,14 @@ class RecycleViewActivity :BaseActivity() {
             }
 
         }
-
-        var notDataView = layoutInflater.inflate(R.layout.empty_view, mRecyclerView.parent as ViewGroup, false)
-        mAdapter.emptyView = notDataView
-        notDataView.onClick {
+        mRecyclerView.adapter=mAdapter
+        mRecycleViewHelper=RecycleViewHelper(this,mRecyclerView,mSwipeRefreshLayout,true)
+        mRecycleViewHelper.setRecycleViewListener {
             initData()
         }
-        mAdapter.setLoadMoreView(CustomLoadMoreView())
-        mAdapter.setOnLoadMoreListener { loadMore() }
-        mRecyclerView.adapter=mAdapter
-        mRecyclerView.addItemDecoration(HorizontalDividerItemDecoration.Builder(this).showLastDivider().build())
-        mSwipeRefreshLayout.onRefresh {
-            refresh()
-        }
 
-        mRecyclerView.addItemDecoration(object: TitleItemDecoration(this){
-            override fun getTag(position: Int): String {
-                if(position<mAdapter.data.size) {
-                    mAdapter.data?.let {
-                        return it[position].name!!.length.toString()
-                    }
-                }
-                return ""
-            }
-        })
     }
 
-    private fun loadMore() {
-        isRefresh=false
-        initData()
-    }
-
-    private var mNextRequestPage = 1
-    private fun setData(isRefresh: Boolean, data: MutableList<ContactsResult.UserItem>) {
-        data.sortWith(Comparator { p0, p1 -> p0!!.name!!.length-p1!!.name!!.length })
-        val size = data?.size
-        if (isRefresh) {
-            mNextRequestPage++
-            mAdapter.setNewData(data)
-        } else {
-            if (size > 0) {
-                mAdapter.addData(data)
-                mNextRequestPage++
-            }
-        }
-        if (size < PAGE_SIZE) {
-            //第一页如果不够一页就不显示没有更多数据布局
-            mAdapter.loadMoreEnd(isRefresh)
-            toast("no more data")
-        } else {
-            mAdapter.loadMoreComplete()
-        }
-        mRecyclerView.invalidateItemDecorations()
-    }
 
     private fun initData() {
         EmucooApiRequest.getApiService().searchBydept(ContactsParam(deptId = 14))
@@ -117,36 +73,18 @@ class RecycleViewActivity :BaseActivity() {
                         t?.let {
                             t.users?.let {
                                 it as ArrayList<ContactsResult.UserItem>?
-                                if(isRefresh){
-                                    mAdapter.setEnableLoadMore(true)
-                                    mSwipeRefreshLayout.isRefreshing = false
-                                }
-                                setData(isRefresh, it)
+                                mRecycleViewHelper.onApiSuccess(it)
                             }
                         }
-
                     }
 
                     override fun onError(e: Throwable) {
                         e.printStackTrace()
-                        if(isRefresh){
-                            mAdapter.setEnableLoadMore(true)
-                            mSwipeRefreshLayout.isRefreshing = false
-                        }else{
-                            mAdapter.loadMoreFail()
-                        }
+                        mRecycleViewHelper.onApiError()
 
                     }
 
                 })
-    }
-
-    var isRefresh=true
-    private fun refresh() {
-        isRefresh=true
-        mNextRequestPage = 1
-        mAdapter.setEnableLoadMore(false)//这里的作用是防止下拉刷新的时候还可以上拉加载
-        initData()
     }
 
 }
