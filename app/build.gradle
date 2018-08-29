@@ -265,8 +265,11 @@ dependencies {
     //packer
     implementation 'com.mcxiaoke.packer-ng:helper:2.0.1'
 
-    //
+    //阿里热更新
     implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.4'
+
+    //shareperference
+    implementation "com.orhanobut:hawk:2.0.1"
 }
 apply plugin: 'io.objectbox'
 //在正常的dependencies中添加如下依赖

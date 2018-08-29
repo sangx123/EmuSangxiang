@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Environment
 import android.support.multidex.MultiDexApplication
+import android.util.Log
 import android.widget.ImageView
 import cn.jpush.android.api.JPushInterface
 import com.sangxiang.android.network.model.MyObjectBox
@@ -14,6 +15,8 @@ import com.lzy.imagepicker.ImagePicker
 import com.lzy.imagepicker.view.CropImageView
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader
 import com.mikepenz.materialdrawer.util.DrawerImageLoader
+import com.orhanobut.hawk.Hawk
+import com.orhanobut.hawk.LogInterceptor
 import com.squareup.picasso.Picasso
 import com.tencent.bugly.crashreport.CrashReport
 import io.objectbox.BoxStore
@@ -43,6 +46,8 @@ class App :Application() {
         AndroidThreeTen.init(this)
         EventBus.builder().addIndex(EmucooEventBusIndex()).installDefaultEventBus()
         CrashReport.initCrashReport(this, "0ce6d37649", true)
+        //初始化shareperferrence
+        Hawk.init(this).setLogInterceptor { message -> Log.d("HAWK", message) }.build()
 
         JPushInterface.setDebugMode(true)
         JPushInterface.init(this)

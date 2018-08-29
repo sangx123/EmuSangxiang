@@ -1,0 +1,6 @@
+package com.sangxiang.android.utils;
+
+public class SharePerferenceConfig {
+    public static String user_phone="user_phone";
+    public static String user_password="user_password";
+}

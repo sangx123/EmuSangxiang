@@ -48,7 +48,7 @@ class RecycleViewActivity :BaseActivity() {
         }
         mRecyclerView.adapter=mAdapter
         mRecycleViewHelper=RecycleViewHelper(this,mRecyclerView,mSwipeRefreshLayout,true)
-        mRecycleViewHelper.setRecycleViewListener {
+        mRecycleViewHelper.setRecycleViewEmptyDataClickListener {
             initData()
         }
 
@@ -68,7 +68,6 @@ class RecycleViewActivity :BaseActivity() {
                         mDisposables.add(d)
 
                     }
-
                     override fun onNext(t: ContactsResult) {
                         t?.let {
                             t.users?.let {

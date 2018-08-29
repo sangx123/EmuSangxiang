@@ -34,10 +34,12 @@ import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import android.widget.Toast
 import com.jakewharton.rxbinding2.view.RxView
+import com.orhanobut.hawk.Hawk
 import com.sangxiang.android.network.Constants
 import com.sangxiang.android.network.EmucooApiRequest
 import com.sangxiang.android.network.model.UserModel
 import com.sangxiang.android.network.param.LoginSubmit
+import com.sangxiang.android.utils.SharePerferenceConfig
 import com.sangxiang.android.utils.Utils
 import com.tbruyelle.rxpermissions2.Permission
 import com.tbruyelle.rxpermissions2.RxPermissions
@@ -82,6 +84,7 @@ class LoginActivity : BaseActivity(){
                         override fun onNext(permission: Permission) {
                             error("Permission result $permission")
                             when {
+
                                 permission.granted -> Login(et_mobile.text.toString(),et_password.text.toString())
                                 permission.shouldShowRequestPermissionRationale ->
                                     // Denied permission without ask never again
@@ -192,7 +195,8 @@ class LoginActivity : BaseActivity(){
                     }
 
                     override fun onNext(t: UserModel) {
-
+                        Hawk.put<String>(SharePerferenceConfig.user_phone,emailStr)
+                        Hawk.put<String>(SharePerferenceConfig.user_password,Utils.getMd5Hash(passwordStr))
                         Constants.setLoginUser(t)
                         startActivity<MainActivity>()
                         finish()

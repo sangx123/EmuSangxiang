@@ -68,7 +68,7 @@ public class RecycleViewHelper<T> {
         });
     }
 
-    public void setRecycleViewListener(RecycleViewListener mRecycleViewListener) {
+    public void setRecycleViewEmptyDataClickListener(RecycleViewListener mRecycleViewListener) {
         this.mRecycleViewListener = mRecycleViewListener;
         //初始化空布局
         initRecycleViewEmptyLayout();
@@ -76,6 +76,7 @@ public class RecycleViewHelper<T> {
         if(needLoadMore){
             initRecycleViewLoadMoreLayout();
         }
+        mRecyclerView.addItemDecoration(getHorizontalDividerItemDecoration());
         //如果存在SwipeRefreshLayout赋予刷新的功能
         if(mSwipeRefreshLayout!=null){
             mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
