@@ -3,6 +3,8 @@ package com.sangxiang.android.utils
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Environment
+import android.view.View
+import android.view.ViewTreeObserver
 import java.io.File
 
 class AndroidUtils(){
@@ -35,6 +37,16 @@ class AndroidUtils(){
             return File(cachePath + File.separator + uniqueName)
         }
 
+        fun <T : View> T.height(function: (Int) -> Unit) {
+            if (height == 0)
+                viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+                    override fun onGlobalLayout() {
+                        viewTreeObserver.removeOnGlobalLayoutListener(this)
+                        function(height)
+                    }
+                })
+            else function(height)
+        }
 
     }
 }

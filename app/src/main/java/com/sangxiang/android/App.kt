@@ -47,7 +47,7 @@ class App :Application() {
         EventBus.builder().addIndex(EmucooEventBusIndex()).installDefaultEventBus()
         CrashReport.initCrashReport(this, "0ce6d37649", true)
         //初始化shareperferrence
-        Hawk.init(this).setLogInterceptor { message -> Log.d("HAWK", message) }.build()
+        Hawk.init(this).setLogInterceptor { message -> Log.e("HAWK", message) }.build()
 
         JPushInterface.setDebugMode(true)
         JPushInterface.init(this)

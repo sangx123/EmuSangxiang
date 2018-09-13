@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:text="eventbus"
         android:id="@+id/eventbusBtn"
+        android:foreground="?android:attr/selectableItemBackground"
         />
     <ImageView
         android:layout_gravity="center_horizontal"
