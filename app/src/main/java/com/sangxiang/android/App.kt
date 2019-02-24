@@ -15,6 +15,7 @@ import com.lzy.imagepicker.ImagePicker
 import com.lzy.imagepicker.view.CropImageView
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader
 import com.mikepenz.materialdrawer.util.DrawerImageLoader
+import com.mob.MobSDK
 import com.orhanobut.hawk.Hawk
 import com.orhanobut.hawk.LogInterceptor
 import com.squareup.picasso.Picasso
@@ -48,7 +49,7 @@ class App :Application() {
         CrashReport.initCrashReport(this, "0ce6d37649", true)
         //初始化shareperferrence
         Hawk.init(this).setLogInterceptor { message -> Log.e("HAWK", message) }.build()
-
+        MobSDK.init(this);
         JPushInterface.setDebugMode(true)
         JPushInterface.init(this)
 

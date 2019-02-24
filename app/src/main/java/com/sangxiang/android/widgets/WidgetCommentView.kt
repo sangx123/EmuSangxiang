@@ -23,6 +23,7 @@ import android.util.Log
 import com.sangxiang.android.BaseActivity
 import com.sangxiang.android.R
 import com.sangxiang.android.network.EmucooApiRequest
+import com.sangxiang.android.network.model.BaseResult
 import com.sangxiang.android.network.model.CommentNum
 import com.sangxiang.android.network.param.ParamCommentSelectIn
 import com.sangxiang.android.utils.button_textview.setSolidTheme
@@ -52,7 +53,7 @@ class  WidgetCommentView : RelativeLayout, LifecycleObserver {
            EmucooApiRequest.getApiService().getCommentNum(model!!)
                    .subscribeOn(Schedulers.io())
                    .observeOn(AndroidSchedulers.mainThread())
-                   .subscribe(object : Observer<CommentNum> {
+                   .subscribe(object : Observer<BaseResult<CommentNum>> {
                        override fun onComplete() {
 
                        }
@@ -60,11 +61,11 @@ class  WidgetCommentView : RelativeLayout, LifecycleObserver {
                            (context as BaseActivity).mDisposables.add(d)
                        }
 
-                       override fun onNext(t: CommentNum) {
-                           if(t.num==0){
+                       override fun onNext(t: BaseResult<CommentNum>) {
+                           if(t.data!!.num==0){
                                mCommentTxt.text="暂无评论"
                            }else{
-                               mCommentTxt.text=t.num.toString()+"条评论"
+                               mCommentTxt.text=t.data!!.num.toString()+"条评论"
                            }
 
                        }

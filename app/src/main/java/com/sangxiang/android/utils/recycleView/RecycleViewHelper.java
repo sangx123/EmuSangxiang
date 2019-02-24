@@ -10,13 +10,11 @@ import android.view.ViewGroup;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.sangxiang.android.R;
+import com.sangxiang.android.network.model.BaseResult;
 
 import java.util.List;
 
 public class RecycleViewHelper<T> {
-
-     int pageSize = 6;
-     int pageIndex=1;
      boolean isRefresh=true;
      private Activity mActivity;
      private RecyclerView mRecyclerView;
@@ -24,59 +22,39 @@ public class RecycleViewHelper<T> {
      private RecycleViewListener mRecycleViewListener=null;
      private SwipeRefreshLayout mSwipeRefreshLayout;
      private boolean needLoadMore=false;
-     public RecycleViewHelper(Activity context, RecyclerView mRecyclerView,SwipeRefreshLayout mSwipeRefreshLayout){
-         this(context,mRecyclerView,mSwipeRefreshLayout,false);
+     //默认10个为一页
+     private int pageSize=10;
+     private int pageIndex=1;
+
+    public RecycleViewHelper(Activity context, RecyclerView mRecyclerView,SwipeRefreshLayout mSwipeRefreshLayout){
+         this(context,mRecyclerView,mSwipeRefreshLayout,false,null);
      }
 
-    public RecycleViewHelper(Activity context, RecyclerView mRecyclerView,SwipeRefreshLayout mSwipeRefreshLayout,boolean needLoadMore){
+    /**
+     * @param context
+     * @param mRecyclerView
+     * @param mSwipeRefreshLayout  外层是否有刷新组件
+     * @param needLoadMore         是否有加载更多
+     * @param mRecycleViewListener RecycleView的事件
+     */
+    public RecycleViewHelper(Activity context, RecyclerView mRecyclerView,SwipeRefreshLayout mSwipeRefreshLayout,boolean needLoadMore,RecycleViewListener mRecycleViewListener){
         this.mActivity=context;
         this.mRecyclerView=mRecyclerView;
         this.mAdapter=(BaseQuickAdapter<T,BaseViewHolder>)mRecyclerView.getAdapter();
         this.mSwipeRefreshLayout=mSwipeRefreshLayout;
         this.needLoadMore=needLoadMore;
-    }
-    public int getPageIndex() {
-        return pageIndex;
-    }
-    public RecycleViewHelper(Activity context, RecyclerView mRecyclerView){
-         this(context,mRecyclerView,null);
-    }
-    public  HorizontalDividerItemDecoration getHorizontalDividerItemDecoration(boolean showLastDivider){
-        if(showLastDivider)
-           return new HorizontalDividerItemDecoration.Builder(mActivity).showLastDivider().build();
-        else {
-           return new HorizontalDividerItemDecoration.Builder(mActivity).build();
-        }
-    }
-    public  HorizontalDividerItemDecoration getHorizontalDividerItemDecoration(){
-       return getHorizontalDividerItemDecoration(true);
+        this.mRecycleViewListener=mRecycleViewListener;
+        initRecycleView();
     }
 
-    public  void initRecycleViewEmptyLayout(){
-        //添加空数据布局
-        View emptyView=mActivity.getLayoutInflater().inflate(R.layout.empty_view, (ViewGroup)mRecyclerView.getParent()  , false);
-        mAdapter.setEmptyView(emptyView);
-        emptyView.findViewById(R.id.mEmptyContainer).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(mRecycleViewListener!=null){
-                    pageIndex=1;
-                    isRefresh=true;
-                    mRecycleViewListener.getApiData();
-                }
-            }
-        });
-    }
-
-    public void setRecycleViewEmptyDataClickListener(RecycleViewListener mRecycleViewListener) {
-        this.mRecycleViewListener = mRecycleViewListener;
-        //初始化空布局
-        initRecycleViewEmptyLayout();
+    private void initRecycleView() {
+        //设置空布局的点击事件
+        addRecycleViewEmptyLayout();
         //初始化加载更多
         if(needLoadMore){
             initRecycleViewLoadMoreLayout();
         }
-        mRecyclerView.addItemDecoration(getHorizontalDividerItemDecoration());
+        mRecyclerView.addItemDecoration(setHorizontalDividerItemDecoration());
         //如果存在SwipeRefreshLayout赋予刷新的功能
         if(mSwipeRefreshLayout!=null){
             mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -86,11 +64,42 @@ public class RecycleViewHelper<T> {
                 }
             });
         }
+        //初始化的时候默认加载数据
+        onRefreshs();
+    }
+
+    public RecycleViewHelper(Activity context, RecyclerView mRecyclerView){
+         this(context,mRecyclerView,null);
+    }
+    public  HorizontalDividerItemDecoration setHorizontalDividerItemDecoration(boolean showLastDivider){
+        if(showLastDivider)
+           return new HorizontalDividerItemDecoration.Builder(mActivity).showLastDivider().build();
+        else {
+           return new HorizontalDividerItemDecoration.Builder(mActivity).build();
+        }
+    }
+    public  HorizontalDividerItemDecoration setHorizontalDividerItemDecoration(){
+       return setHorizontalDividerItemDecoration(true);
+    }
+
+    public  void addRecycleViewEmptyLayout(){
+        //添加空数据布局
+        View emptyView=mActivity.getLayoutInflater().inflate(R.layout.empty_view, (ViewGroup)mRecyclerView.getParent()  , false);
+        mAdapter.setEmptyView(emptyView);
+        emptyView.findViewById(R.id.mEmptyContainer).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mRecycleViewListener!=null){
+                    isRefresh=true;
+                    mRecycleViewListener.getApiData(1,pageSize);
+                }
+            }
+        });
     }
 
 
     public interface RecycleViewListener{
-        void getApiData();
+        void getApiData(int pageIndex,int pageSize);
     }
 
 
@@ -116,33 +125,45 @@ public class RecycleViewHelper<T> {
     private void loadMore() {
         isRefresh=false;
         if(mRecycleViewListener!=null);
-        mRecycleViewListener.getApiData();
+        mRecycleViewListener.getApiData(pageIndex+1,pageSize);
     }
 
 
     public void onRefreshs() {
          isRefresh=true;
-         pageIndex=1;
          mAdapter.setEnableLoadMore(false);//这里的作用是防止下拉刷新的时候还可以上拉加载
          if(mRecycleViewListener!=null);
-         mRecycleViewListener.getApiData();
+         mRecycleViewListener.getApiData(1,pageSize);
     }
 
-    public void onApiSuccess(List<T> list){
+    public void onApiSuccess(BaseResult<List<T>> result){
+         pageIndex=result.getPageNumber();
+         pageSize=result.getPageSize();
          if(mSwipeRefreshLayout!=null&&needLoadMore==false){
              //如果只有刷新的话,没有加载更多的话
              mSwipeRefreshLayout.setRefreshing(false);
-             mAdapter.setNewData(list);
+             mAdapter.setNewData(result.getData());
          }else if(mSwipeRefreshLayout!=null&&needLoadMore==true){
              //如果有刷新有加载更多的话，如果是下拉刷新或者初始加载数据的话
              if(isRefresh){
-                 mAdapter.setEnableLoadMore(true);
+                 //如果第一页是最后一页的话，不再加载更多
                  mSwipeRefreshLayout.setRefreshing(false);
+                 mAdapter.setNewData(result.getData());
+                 if(result.isLastPage()){
+                    mAdapter.setEnableLoadMore(false);
+                 }else {
+                    mAdapter.setEnableLoadMore(true);
+                    //默认第一次加载会进入回调，如果不需要可以配置：(如果有数量10条的限制的话此处用不到了)
+                    //mAdapter.disableLoadMoreIfNotFullPage(mRecyclerView);
+                 }
+
+             }else {
+                 setMoreData(result);
              }
-             setMoreData(list);
+
          }else if(mSwipeRefreshLayout==null&&needLoadMore==false){
              //没有下拉刷新而且没有加载更多的话
-             mAdapter.setNewData(list);
+             mAdapter.setNewData(result.getData());
          }
     }
 
@@ -162,20 +183,19 @@ public class RecycleViewHelper<T> {
         }
     }
 
-    private void setMoreData(List<T> data) {
+    private void setMoreData(BaseResult<List<T>> result) {
+        List<T> data=result.getData();
         int size = data.size();
         if (isRefresh) {
-            pageIndex++;
             mAdapter.setNewData(data);
         } else {
             if (size > 0) {
                 mAdapter.addData(data);
-                pageIndex++;
             }
         }
-        if (size < pageSize) {
-            //第一页如果不够一页就不显示没有更多数据布局
-            mAdapter.loadMoreEnd(isRefresh);
+        if (result.isLastPage()) {
+            //如果是最后一页的话显示，数据全部加载完毕
+            mAdapter.loadMoreEnd();
         } else {
             mAdapter.loadMoreComplete();
         }

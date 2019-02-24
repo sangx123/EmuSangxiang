@@ -1,4 +1,4 @@
-package com.sangxiang.android
+package com.sangxiang.android.ui.home
 
 import android.app.Activity
 import android.app.AlertDialog
@@ -7,13 +7,13 @@ import android.os.Environment
 import android.text.TextUtils
 import android.widget.Toast
 import com.orhanobut.hawk.Hawk
+import com.sangxiang.android.BaseActivity
+import com.sangxiang.android.R
 import com.sangxiang.android.demo.*
 import com.sangxiang.android.designpattern.DesignPatternActivity
-import com.sangxiang.android.network.param.ParamCommentSelectIn
 import com.sangxiang.android.utils.BitmapUtils
 import com.sangxiang.android.utils.SharePerferenceConfig
 import com.sangxiang.android.utils.StringUtils
-import com.sangxiang.android.utils.Utils
 import com.sangxiang.android.utils.appUpdate.CProgressDialogUtils
 import com.sangxiang.android.utils.appUpdate.HProgressDialogUtils
 import com.sangxiang.android.utils.appUpdate.UpdateAppHttpUtil
@@ -23,7 +23,7 @@ import com.vector.update_app.UpdateAppManager
 import com.vector.update_app.UpdateCallback
 import com.vector.update_app.service.DownloadService
 import com.vector.update_app.utils.AppUpdateUtils
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main1.*
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.json.JSONException
@@ -31,11 +31,11 @@ import org.json.JSONObject
 import java.io.File
 import java.util.HashMap
 
-class MainActivity : BaseActivity(), AnkoLogger {
+class MainActivity1 : BaseActivity(), AnkoLogger {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main1)
         var f=7000.123f
         testFloat.text= StringUtils.floatToString(f)
         var phone=Hawk.get<String>(SharePerferenceConfig.user_phone)
@@ -52,7 +52,7 @@ class MainActivity : BaseActivity(), AnkoLogger {
         testFun.setSolidTheme()
         update.onClick {
             val url = "https://yf.emucoo.net/cfb/download/emucoo_test.apk"
-            diyUpdate(url,true,this@MainActivity)
+            diyUpdate(url,true,this@MainActivity1)
         }
         recycleView.onClick {
             startActivity<RecycleViewActivity>()

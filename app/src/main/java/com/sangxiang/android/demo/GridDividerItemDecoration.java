@@ -1,4 +1,4 @@
-package com.sangxiang.android.utils.recycleView;
+package com.sangxiang.android.demo;
 
 import android.graphics.Rect;
 import android.support.v7.widget.GridLayoutManager;

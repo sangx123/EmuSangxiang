@@ -12,6 +12,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.sangxiang.android.EmucooBaseFragment
 import com.sangxiang.android.R
 import com.sangxiang.android.network.EmucooApiRequest
+import com.sangxiang.android.network.model.BaseResult
 import com.sangxiang.android.network.model.ContactsResult
 import com.sangxiang.android.network.param.ContactsParam
 import com.sangxiang.android.widgets.KeyValueLayout
@@ -83,7 +84,7 @@ class OrganizationShopSelectFragment : EmucooBaseFragment(R.layout.fragment_orga
         EmucooApiRequest.getApiService().searchByshop(ContactsParam(contactType = contactType))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : Observer<ContactsResult> {
+                .subscribe(object : Observer<BaseResult<ContactsResult>> {
                     override fun onComplete() {
 
                     }
@@ -92,9 +93,9 @@ class OrganizationShopSelectFragment : EmucooBaseFragment(R.layout.fragment_orga
                         mDisposables.add(d)
                     }
 
-                    override fun onNext(t: ContactsResult) {
-                        t?.let {
-                            t.areas?.let {
+                    override fun onNext(t: BaseResult<ContactsResult>) {
+                        t.data?.let {
+                            it.areas?.let {
                                 mAdapter.setNewData(it)
                             }
                         }

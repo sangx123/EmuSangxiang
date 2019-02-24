@@ -69,10 +69,19 @@ class KeyValueLayout(context: Context, attrs: AttributeSet?, defStyleAttr: Int) 
                 val has = obtainStyledAttributes.getBoolean(R.styleable.KeyValueLayout_kvl_has_right_arrow, true)
                 setRightArrow(has)
             }
-            if (obtainStyledAttributes.hasValue(R.styleable.KeyValueLayout_kvl_has_task_icon)) {
-                val has = obtainStyledAttributes.getBoolean(R.styleable.KeyValueLayout_kvl_has_task_icon, false)
+            if (obtainStyledAttributes.hasValue(R.styleable.KeyValueLayout_kvl_has_left_icon)) {
+                val has = obtainStyledAttributes.getBoolean(R.styleable.KeyValueLayout_kvl_has_left_icon, false)
                 setTaskIcon(has)
             }
+            if (obtainStyledAttributes.hasValue(R.styleable.KeyValueLayout_kvl_edit)) {
+                val has = obtainStyledAttributes.getBoolean(R.styleable.KeyValueLayout_kvl_edit, false)
+                setShowEdit(has)
+            }
+            if (obtainStyledAttributes.hasValue(R.styleable.KeyValueLayout_kvl_edit_hint)) {
+                val str = obtainStyledAttributes.getString(R.styleable.KeyValueLayout_kvl_edit_hint)
+                edit_content.hint=str
+            }
+
             if (obtainStyledAttributes.hasValue(R.styleable.KeyValueLayout_kvl_has_full_line)) {
                 val has = obtainStyledAttributes.getBoolean(R.styleable.KeyValueLayout_kvl_has_full_line, false)
                 setFullLine(has)
@@ -90,6 +99,17 @@ class KeyValueLayout(context: Context, attrs: AttributeSet?, defStyleAttr: Int) 
             }
             obtainStyledAttributes.recycle()
         }
+    }
+
+    private fun setShowEdit(has: Boolean) {
+        if(has){
+            edit_content.visibility=View.VISIBLE
+            tv_content.visibility=View.GONE
+        }else{
+            edit_content.visibility=View.GONE
+            tv_content.visibility=View.VISIBLE
+        }
+
     }
 
     fun setRightIcon(drawable: Drawable?) {
@@ -119,8 +139,8 @@ class KeyValueLayout(context: Context, attrs: AttributeSet?, defStyleAttr: Int) 
 
     private fun setTaskIcon(hasTaskIcon: Boolean) {
         when (hasTaskIcon) {
-            true -> taskIcon.visibility = View.VISIBLE
-            false -> taskIcon.visibility = View.INVISIBLE
+            true -> leftIcon.visibility = View.VISIBLE
+            false -> leftIcon.visibility = View.INVISIBLE
         }
     }
 
@@ -150,6 +170,13 @@ class KeyValueLayout(context: Context, attrs: AttributeSet?, defStyleAttr: Int) 
         mResult = result
         tv_content.textColor = 0xff626471.toInt()
         tv_content.text = result
+    }
+
+    public fun setLeftIcon(show:Boolean){
+        when(show){
+            true -> leftIcon.visibility = View.VISIBLE
+            false -> leftIcon.visibility = View.INVISIBLE
+        }
     }
 
     /**

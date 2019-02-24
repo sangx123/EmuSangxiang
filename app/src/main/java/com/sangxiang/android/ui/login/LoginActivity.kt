@@ -1,49 +1,28 @@
-package com.sangxiang.android
+package com.sangxiang.android.ui.login
 
 import android.Manifest
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.annotation.TargetApi
-import android.content.pm.PackageManager
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
-import android.app.LoaderManager.LoaderCallbacks
-import android.content.CursorLoader
-import android.content.Loader
-import android.database.Cursor
-import android.net.Uri
-import android.os.AsyncTask
-import android.os.Build
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.text.TextUtils
 import android.view.View
-import android.view.inputmethod.EditorInfo
-import android.widget.ArrayAdapter
-import android.widget.TextView
 
-import java.util.ArrayList
-import android.Manifest.permission.READ_CONTACTS
-import android.animation.ObjectAnimator
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
-import android.util.Log
-import android.view.MotionEvent
-import android.view.ViewGroup
-import android.view.animation.LinearInterpolator
 import android.widget.Toast
 import com.jakewharton.rxbinding2.view.RxView
 import com.orhanobut.hawk.Hawk
+import com.sangxiang.android.BaseActivity
+import com.sangxiang.android.ui.home.MainActivity
+import com.sangxiang.android.R
 import com.sangxiang.android.network.Constants
 import com.sangxiang.android.network.EmucooApiRequest
+import com.sangxiang.android.network.model.BaseResult
 import com.sangxiang.android.network.model.UserModel
 import com.sangxiang.android.network.param.LoginSubmit
 import com.sangxiang.android.utils.SharePerferenceConfig
 import com.sangxiang.android.utils.Utils
 import com.tbruyelle.rxpermissions2.Permission
 import com.tbruyelle.rxpermissions2.RxPermissions
-import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -64,8 +43,8 @@ class LoginActivity : BaseActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         initView()
-        if(Constants.getUser()==null) {
-            et_mobile.setText("13914724233")
+        if(Hawk.get<String>(SharePerferenceConfig.user_phone).isNullOrBlank()) {
+            et_mobile.setText("15821758991")
             et_password.setText("123456")
             val rxPermissions = RxPermissions(this)
             rxPermissions.setLogging(true)
@@ -175,7 +154,12 @@ class LoginActivity : BaseActivity(){
         iv_clean_phone.onClick {
             et_mobile.setText("")
         }
-
+        regist.onClick {
+            startActivity<RegisterActivity>()
+        }
+        forget_password.onClick {
+            startActivity<FindPasswordActivity>()
+        }
     }
 
     private fun Login(emailStr:String,passwordStr:String) {
@@ -185,7 +169,7 @@ class LoginActivity : BaseActivity(){
         EmucooApiRequest.getApiService().login(model)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : Observer<UserModel> {
+                .subscribe(object : Observer<BaseResult<UserModel>> {
                     override fun onComplete() {
 
                     }
@@ -194,10 +178,11 @@ class LoginActivity : BaseActivity(){
                         mDisposables.add(d)
                     }
 
-                    override fun onNext(t: UserModel) {
+                    override fun onNext(t: BaseResult<UserModel>) {
                         Hawk.put<String>(SharePerferenceConfig.user_phone,emailStr)
                         Hawk.put<String>(SharePerferenceConfig.user_password,Utils.getMd5Hash(passwordStr))
-                        Constants.setLoginUser(t)
+                        Hawk.put<String>(SharePerferenceConfig.userToken,t.data!!.userToken)
+                        Constants.setLoginUser(t.data)
                         startActivity<MainActivity>()
                         finish()
                     }

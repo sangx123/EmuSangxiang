@@ -1,12 +1,14 @@
 package com.sangxiang.android.network
 
 import android.widget.Toast
+import com.google.gson.*
 import com.sangxiang.android.App
 import com.sangxiang.android.BuildConfig
-import com.sangxiang.android.network.model.EmucooEnvelopModel
 import com.sangxiang.android.network.param.SubmitableClass
 import com.sangxiang.android.network.param.asSubmitableClass
 import com.google.gson.reflect.TypeToken
+import com.orhanobut.hawk.Hawk
+import com.sangxiang.android.utils.SharePerferenceConfig
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import org.jetbrains.anko.AnkoLogger
@@ -22,6 +24,10 @@ import java.net.URL
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
+import com.google.gson.GsonBuilder
+import com.google.gson.Gson
+
+
 
 
 /**
@@ -29,99 +35,73 @@ import java.util.concurrent.TimeUnit
  * Created by Zhang.
  */
 
-enum class ServerIp(val ip: String) {
+//class EnvelopConverterFactory : Converter.Factory() {
+//    val TAG = "EnvelopConverterFactory"
+//    //    val gson = Gson()
+//    //从返回数据里面取出 需要的data的节点
+//    override fun responseBodyConverter(type: Type, annotations: Array<out Annotation>,
+//                                       retrofit: Retrofit): Converter<ResponseBody, *>? {
+//        val realType = TypeToken.getParameterized(EmucooEnvelopModel::class.java, type).type
+//        val delegate: Converter<ResponseBody, EmucooEnvelopModel<*>> =
+//                retrofit.nextResponseBodyConverter<EmucooEnvelopModel<*>>(this, realType, annotations)
+//        return ResponseConverter(delegate, type)
+//    }
+//
+//    inner class ResponseConverter(val delegate: Converter<ResponseBody, EmucooEnvelopModel<*>>, val type: Type) : Converter<ResponseBody, Any> {
+//        override fun convert(value: ResponseBody): Any? {
+//            val m: EmucooEnvelopModel<*> = delegate.convert(value)
+//
+//
+//            if (m.respCode == "401") {
+//                MainHandler.post({
+//                    Toast.makeText(App.mInstance, m.respMsg, Toast.LENGTH_SHORT).show();
+//                }, 0)
+//                //EventBus.getDefault().post(SyncStateContract.Constants.EVENT_BUS_LOG_OUT to "OK")
+//                //token失败
+//                return null
+//            }
+//
+//            if (m.respCode != "000") {
+//                MainHandler.post({
+//                    Toast.makeText(App.mInstance, m.respMsg, Toast.LENGTH_SHORT).show();
+//                }, 0)
+//                return null
+//            }
+//
+//
+//
+//            if (type == object : TypeToken<String>() {}.type && m.data == null) {
+//                return "RESPONSE_OK"
+//            }
+//
+//            val data = m.data
+//            return data
+//        }
+//    }
 
-    DEV("http://192.168.16.179:9093/")/*开发*/,
-    TEST("http://192.168.16.185:9093/")/*测试环境*/,
-    PRE("http://yf.emucoo.net/")/*预生产*/,
-    CFB("http://cfb.emucoo.net/"),/*CFB生产*/
-    OUTSIDE_DEV("http://220.248.53.122:9993/")/*外部链接dev环境*/,
-    BIG_SCREEN("http://117.50.34.144:9093"); /*大屏预生产*/
-
-    override fun toString(): String {
-        return ip
-    }
-
-    fun getNameArray(): Array<String?> {
-        val names = arrayOfNulls<String>(values().size)
-        values().forEachWithIndex { index, serverIp ->
-            names[index] = serverIp.name
-        }
-        return names
-    }
-    //val BASE_URL = "http://192.168.16.179:9093/" //最新测试服务器
-    //val BASE_URL = "http://220.248.53.122:9993/" //外网映射 测试服务器
-    //val BASE_URL = "http://192.168.19.211:9093/" //我的测试服务器,用于测试请求参数
-    //var BASE_URL = "http://192.168.16.185:9093/" //185是测试的服务器
-}
-
-class EnvelopConverterFactory : Converter.Factory() {
-    val TAG = "EnvelopConverterFactory"
-    //    val gson = Gson()
-    //从返回数据里面取出 需要的data的节点
-    override fun responseBodyConverter(type: Type, annotations: Array<out Annotation>,
-                                       retrofit: Retrofit): Converter<ResponseBody, *>? {
-        val realType = TypeToken.getParameterized(EmucooEnvelopModel::class.java, type).type
-        val delegate: Converter<ResponseBody, EmucooEnvelopModel<*>> =
-                retrofit.nextResponseBodyConverter<EmucooEnvelopModel<*>>(this, realType, annotations)
-        return ResponseConverter(delegate, type)
-    }
-
-    inner class ResponseConverter(val delegate: Converter<ResponseBody, EmucooEnvelopModel<*>>, val type: Type) : Converter<ResponseBody, Any> {
-        override fun convert(value: ResponseBody): Any? {
-            val m: EmucooEnvelopModel<*> = delegate.convert(value)
-
-
-            if (m.respCode == "401") {
-                MainHandler.post({
-                    Toast.makeText(App.mInstance, m.respMsg, Toast.LENGTH_SHORT).show();
-                }, 0)
-                //EventBus.getDefault().post(SyncStateContract.Constants.EVENT_BUS_LOG_OUT to "OK")
-                //token失败
-                return null
-            }
-
-            if (m.respCode != "000") {
-                MainHandler.post({
-                    Toast.makeText(App.mInstance, m.respMsg, Toast.LENGTH_SHORT).show();
-                }, 0)
-                return null
-            }
-
-
-
-            if (type == object : TypeToken<String>() {}.type && m.data == null) {
-                return "RESPONSE_OK"
-            }
-
-            val data = m.data
-            return data
-        }
-    }
-
-    override fun requestBodyConverter(type: Type?, parameterAnnotations: Array<out Annotation>?, methodAnnotations: Array<out Annotation>?, retrofit: Retrofit): Converter<*, RequestBody>? {
-
-        val realType = TypeToken.getParameterized(SubmitableClass::class.java, type).type
-//        val submitType = object :TypeToken<SubmitableClass<Any>>(){}.type
-        val converter: Converter<Any, RequestBody> = retrofit.nextRequestBodyConverter<Any>(this, realType, parameterAnnotations, methodAnnotations)
-        return RequestConverter(converter)
-    }
-
-    inner class RequestConverter(val delegate: Converter<Any, RequestBody>) : Converter<Any, RequestBody>,AnkoLogger {
-        override fun convert(value: Any): RequestBody {
-            error("convert:${value.toString()}")
-            val requestBody: RequestBody = delegate.convert(value.asSubmitableClass<Any>())
-            return requestBody
-        }
-    }
-}
+//    override fun requestBodyConverter(type: Type?, parameterAnnotations: Array<out Annotation>?, methodAnnotations: Array<out Annotation>?, retrofit: Retrofit): Converter<*, RequestBody>? {
+//
+//        val realType = TypeToken.getParameterized(SubmitableClass::class.java, type).type
+////        val submitType = object :TypeToken<SubmitableClass<Any>>(){}.type
+//        val converter: Converter<Any, RequestBody> = retrofit.nextRequestBodyConverter<Any>(this, realType, parameterAnnotations, methodAnnotations)
+//        return RequestConverter(converter)
+//    }
+//
+//    inner class RequestConverter(val delegate: Converter<Any, RequestBody>) : Converter<Any, RequestBody>,AnkoLogger {
+//        override fun convert(value: Any): RequestBody {
+//            error("convert:${value.toString()}")
+//            val requestBody: RequestBody = delegate.convert(value.asSubmitableClass<Any>())
+//            return requestBody
+//        }
+//    }
+//}
 
 //加请求头
 class AddHeaderInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val builder = chain.request().newBuilder()
-        if (Constants.getUser() != null) {
-            builder.addHeader("userToken", Constants.getUser().userToken)
+        if (!Hawk.get<String>(SharePerferenceConfig.userToken).isNullOrBlank()) {
+            builder.addHeader("userToken", Hawk.get<String>(SharePerferenceConfig.userToken))
         }
         //@Headers("Version:1", "ApiType:Android")
         builder.addHeader("Version", "1")
@@ -175,11 +155,14 @@ class EmucooApiRequest private constructor() {
     }
 
     fun createApiService() {
+//        此方法可以设置成Date类型
+        val gson = GsonBuilder()
+                .setDateFormat("yyyy-MM-dd HH:mm:ss")
+                .create()
         retrofit = Retrofit.Builder()
 //                .addConverterFactory(ShowContentConverter())
 //                .addConverterFactory(ScalarsConverterFactory.create())
-                .addConverterFactory(EnvelopConverterFactory())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(BASE_URL)
                 .client(httpClientBuilder.build())
@@ -195,7 +178,7 @@ class EmucooApiRequest private constructor() {
 
     //获取单例
     companion object {
-        var defaultIp: String = ServerIp.PRE.toString()
+        var defaultIp: String = ""
         get() {
             return BuildConfig.HOST_URL
         }

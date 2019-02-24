@@ -82,7 +82,7 @@ data class ShopNameArr(
 
     lateinit var userModel: ToOne<UserModelDB>
 }
-data class EmucooEnvelopModel<T>(
+data class BaseResult<T>(
         @SerializedName("version") val version: Int = 0,
         @SerializedName("cmd") val cmd: String = "",
         @SerializedName("pageType") val pageType: String = "",
@@ -92,6 +92,8 @@ data class EmucooEnvelopModel<T>(
         @SerializedName("data") var data: T? = null,
         @SerializedName("pageSize") val pageSize: Int = 0,
         @SerializedName("pageNumber") val pageNumber: Int = 0,
-        @SerializedName("sign") val sign: String = ""
+        @SerializedName("sign") val sign: String = "",
+        val isLastPage:Boolean=true
 )
+
 

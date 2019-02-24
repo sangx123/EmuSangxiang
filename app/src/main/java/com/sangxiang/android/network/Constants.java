@@ -59,11 +59,11 @@ public class Constants {
 
 
     public static void setLoginUser(UserModel u) {
-        if(u == null){
-            return;
-        }
         Constants.mCurUser = u;
-        Constants.mCurUser.setId(u.asDBModel().saveToDb());
+        if(u != null){
+            Constants.mCurUser.setId(u.asDBModel().saveToDb());
+        }
+
     }
 
     public static UserModel getUser() {

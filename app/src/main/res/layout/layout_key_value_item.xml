@@ -13,11 +13,11 @@
             android:layout_height="50dp">
                 <ImageView
                     android:visibility="gone"
-                    android:id="@+id/taskIcon"
-                    android:layout_width="15dp"
-                    android:layout_height="18dp"
+                    android:id="@+id/leftIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/icon_personal_task"
+                    android:src="@drawable/item_selected"
                     android:layout_marginRight="8dp"
                     />
                 <TextView
@@ -35,6 +35,7 @@
 
 
         <TextView
+
                 android:id="@+id/tv_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -47,7 +48,21 @@
                 android:textColor="#626471"
                 android:textSize="14sp"
                 />
-
+        <EditText
+            android:visibility="gone"
+            android:id="@+id/edit_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:layout_toRightOf="@id/tv_title_layout"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:textColor="#626471"
+            android:singleLine="true"
+            android:textSize="18sp"
+            />
         <!--子view 的大小应该是 35dp x 35dp-->
         <LinearLayout
             android:id="@+id/layout_executor_count"

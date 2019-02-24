@@ -1,26 +1,17 @@
 package com.sangxiang.android.demo
 
 import android.Manifest
-import android.app.Activity
 import android.os.Bundle
 import com.sangxiang.android.BaseActivity
 import com.sangxiang.android.R
-import android.widget.Toast
-import com.sangxiang.android.MainActivity
-import android.support.v4.app.ActivityCompat.shouldShowRequestPermissionRationale
 import com.jakewharton.rxbinding2.view.RxView
 import com.tbruyelle.rxpermissions2.Permission
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.Observer
-import io.reactivex.internal.util.NotificationLite.disposable
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.error
 import org.jetbrains.anko.toast
-import io.reactivex.internal.util.NotificationLite.disposable
-import io.reactivex.internal.disposables.DisposableHelper.isDisposed
 import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Action
-import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.activity_permission.*
 
 

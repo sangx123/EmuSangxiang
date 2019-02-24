@@ -18,4 +18,12 @@
     <color name="color_ff4646">#ff4646</color>
     <color name="color_E5F4FC">#E5F4FC</color>
     <color name="colorBackground">#FF4081</color>
+    <color name="color_8A8A8A">#8A8A8A</color>
+    <color name="transparent_pressed">#0D000000</color>
+    <color name="color_e66f7d">#e66f7d</color>
+    <color name="default_theme_pink_ripple">#EA144C</color>
+    <color name="dark_grey">#989898</color>
+    <color name="default_theme_pink">#EF426F</color>
+    <color name="default_theme_pink_pressed">#ED2A5D</color>
+
 </resources>

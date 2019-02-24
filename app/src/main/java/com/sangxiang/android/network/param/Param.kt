@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class LoginSubmit(
         @SerializedName("mobile") var mobile: String ?=null,
-        @SerializedName("password") var password: String?=null,
-        @SerializedName("pushToken") var pushToken: String?=null
+        @SerializedName("password") var password: String?=null
 )
 
 class SubmitableClass<T> {
@@ -28,3 +27,4 @@ open class EmucooPageInfo {
     var pageNum: Int = 1
     var pageSize: Int = 10
 }
+

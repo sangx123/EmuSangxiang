@@ -20,7 +20,6 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:scaleType="center"
-            android:src="@drawable/home_navi_left"
             />
         <ImageView
                 android:id="@+id/mRedDot"

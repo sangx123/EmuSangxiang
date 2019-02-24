@@ -5,6 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#327FC2</item>
         <item name="colorAccent">#FF5449</item>
+        <item name="themedCircleBg">@drawable/circle_bg_pink</item>
     </style>
 
 
@@ -14,8 +15,10 @@
     <declare-styleable name="KeyValueLayout">
 
         <attr name="kvl_text_hint" format="string" />
+        <attr name="kvl_edit_hint" format="string" />
+        <attr name="kvl_edit" format="boolean" />
         <attr name="kvl_has_right_arrow" format="boolean" />
-        <attr name="kvl_has_task_icon" format="boolean" />
+        <attr name="kvl_has_left_icon" format="boolean" />
         <attr name="kvl_text_warning" format="string" />
         <attr name="kvl_has_full_line" format="boolean" />
         <attr name="kvl_right_icon" format="reference" />

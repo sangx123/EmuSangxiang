@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.my.ChongZhiActivity">
+    <com.sangxiang.android.widgets.EmucooToolBar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:id="@+id/mToolbar"
+        app:title="充值"
+        app:left_icon="@drawable/icon_back_black"/>
+    <TextView
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="充值流程：1，扫码转账，2交易号验证"
+        />
+    <TextView
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1.扫码转账"
+        />
+
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/zhifubao"
+        />
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.验证交易号"
+            />
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/txt_help"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="如何查看交易号"
+            android:textColor="@color/color_22a2e4"
+            />
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="13dp">
+
+
+        <EditText
+            android:id="@+id/et_yanzhengma"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="请输入转账详情里的32位订单号"
+            android:inputType="textPassword"
+            android:maxLength="30"
+            android:singleLine="true"
+            android:text=""
+            android:textSize="14dp"/>
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:id="@+id/btn_get_yanzhengma"
+            android:text="校验"
+            android:textColor="@color/white"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_btn_login_selected"
+            />
+
+    </LinearLayout>
+
+    <include layout="@layout/line"/>
+
+
+</LinearLayout>
