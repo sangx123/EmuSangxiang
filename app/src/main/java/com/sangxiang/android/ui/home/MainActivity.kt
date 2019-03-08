@@ -39,7 +39,7 @@ import java.util.HashMap
 
 class MainActivity : BaseActivity(), AnkoLogger {
     private var  currentFragment:Fragment?=null
-    private var  taobaoFragment:Fragment=TaoBaoFragment()
+    private var  homeFragment:Fragment=HomeFragment()
     private var  jingdongFragment:Fragment=JingDongFragment()
     private var  myFragment:Fragment=MyFragment()
     private var  pingDuoDuoFragment:Fragment=PingDuoDuoFragment()
@@ -54,7 +54,7 @@ class MainActivity : BaseActivity(), AnkoLogger {
     fun  switchFragment(position:Int) : FragmentTransaction {
         var targetFragment: Fragment?=null
          when(position){
-             1->targetFragment=taobaoFragment
+             1->targetFragment=homeFragment
              2->targetFragment=pingDuoDuoFragment
              3->targetFragment=jingdongFragment
              4->targetFragment=myFragment
@@ -74,5 +74,7 @@ class MainActivity : BaseActivity(), AnkoLogger {
           currentFragment = targetFragment
           return transaction
     }
+
+
 
 }

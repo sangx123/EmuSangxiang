@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">测试</string>
+    <string name="app_name">掌淘平台</string>
     <string name="title_activity_login">登陆</string>
 
     <!-- Strings related to login -->

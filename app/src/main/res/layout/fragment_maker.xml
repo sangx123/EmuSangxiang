@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.maker_task.MakerFragment">
+
+    <com.sangxiang.android.widgets.EmucooToolBar
+        android:layout_width="wrap_content"
+        app:title="商家任务中心"
+        app:right_text="发布新任务"
+        app:right_text_color="@color/color_22a2e4"
+        android:layout_height="wrap_content">
+
+    </com.sangxiang.android.widgets.EmucooToolBar>
+
+
+</LinearLayout>

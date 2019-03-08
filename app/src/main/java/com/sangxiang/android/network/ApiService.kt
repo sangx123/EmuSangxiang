@@ -24,7 +24,12 @@ interface ApiService {
 
     @InterfaceUseCase("注册")
     @POST("/api/index/register")
-    fun register(@Body model: RegisterParam): Observable<BaseResult<String>>
+    fun register(@Body model: RegisterParam): Observable<BaseResult<UserModel>>
+
+    @InterfaceUseCase("重置密码")
+    @POST("/api/index/resetPassword")
+    fun resetPassword(@Body model: RegisterParam): Observable<BaseResult<String>>
+
 
     @InterfaceUseCase("按照部门查询")
     @POST("/api/contacts/search/bydept")

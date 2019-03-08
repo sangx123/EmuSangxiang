@@ -86,7 +86,8 @@ android {
 
         /*开发*/
         DEV {
-            buildConfigField("String", "HOST_URL", "\"http://10.0.2.2:8081/\"")
+            //buildConfigField("String", "HOST_URL", "\"http://10.0.2.2:8081/\"")
+            buildConfigField("String", "HOST_URL", "\"http://10.0.3.2:8081/\"")
             manifestPlaceholders = [
                     JPUSH_PKGNAME: "com.sangxiang.android",
                     JPUSH_APPKEY : "405c44ca84474b072b8c4da5", //JPush上注册的包名对应的appkey.
@@ -233,6 +234,9 @@ dependencies {
 
     //shareperference
     implementation "com.orhanobut:hawk:2.0.1"
+
+    //新增广告轮播组件
+    implementation 'cn.bingoogolapple:bga-banner:2.2.5@aar'
 }
 apply plugin: 'io.objectbox'
 //在正常的dependencies中添加如下依赖
@@ -347,4 +351,20 @@ dependencies {
 
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:+'
+}
+
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
+
+dependencies {
+    implementation 'com.android.support:support-v4:27.+'
+}
+
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
+
+dependencies {
+    implementation 'com.android.support:support-v4:27.+'
 }

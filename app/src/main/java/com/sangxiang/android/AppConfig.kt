@@ -14,5 +14,7 @@ import java.io.File
 
         @JvmField val APK_DOWNLOAD_PATH:String = (ROOT_PATH+
                 "downloadApk" + File.separator)
+
+        @JvmField val SUCCESS:String ="000"
     }
 }

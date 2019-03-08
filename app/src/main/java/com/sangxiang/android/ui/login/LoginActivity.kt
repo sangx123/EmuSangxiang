@@ -1,6 +1,7 @@
 package com.sangxiang.android.ui.login
 
 import android.Manifest
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
@@ -11,6 +12,7 @@ import android.text.TextWatcher
 import android.widget.Toast
 import com.jakewharton.rxbinding2.view.RxView
 import com.orhanobut.hawk.Hawk
+import com.sangxiang.android.AppConfig
 import com.sangxiang.android.BaseActivity
 import com.sangxiang.android.ui.home.MainActivity
 import com.sangxiang.android.R
@@ -163,6 +165,14 @@ class LoginActivity : BaseActivity(){
     }
 
     private fun Login(emailStr:String,passwordStr:String) {
+        if(emailStr.isNullOrBlank()){
+            toast("请输入用户名和密码！")
+            return
+        }
+        if(passwordStr.isNullOrBlank()){
+            toast("请输入用户名和密码！")
+            return
+        }
         var model= LoginSubmit()
         model.mobile=emailStr
         model.password=Utils.getMd5Hash(passwordStr)
@@ -179,12 +189,16 @@ class LoginActivity : BaseActivity(){
                     }
 
                     override fun onNext(t: BaseResult<UserModel>) {
-                        Hawk.put<String>(SharePerferenceConfig.user_phone,emailStr)
-                        Hawk.put<String>(SharePerferenceConfig.user_password,Utils.getMd5Hash(passwordStr))
-                        Hawk.put<String>(SharePerferenceConfig.userToken,t.data!!.userToken)
-                        Constants.setLoginUser(t.data)
-                        startActivity<MainActivity>()
-                        finish()
+                        if(t.respCode==AppConfig.SUCCESS) {
+                            Hawk.put<String>(SharePerferenceConfig.user_phone, emailStr)
+                            Hawk.put<String>(SharePerferenceConfig.user_password, Utils.getMd5Hash(passwordStr))
+                            Hawk.put<String>(SharePerferenceConfig.userToken, t.data!!.userToken)
+                            Constants.setLoginUser(t.data)
+                            startActivity<MainActivity>()
+                            finish()
+                        }else{
+                            toast(t.respMsg)
+                        }
                     }
 
                     override fun onError(e: Throwable) {

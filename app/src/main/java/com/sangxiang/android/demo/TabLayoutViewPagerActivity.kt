@@ -3,8 +3,6 @@ package com.sangxiang.android.demo
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
-import com.emucoo.business_manager.ui.contact_select.OrganizationDeptSelectFragment
-import com.emucoo.business_manager.ui.contact_select.OrganizationShopSelectFragment
 import com.sangxiang.android.BaseActivity
 import com.sangxiang.android.R
 import com.sangxiang.android.utils.viewpager.MFragmentStatePagerAdapter
@@ -18,8 +16,9 @@ class TabLayoutViewPagerActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tab_layout_view_pager)
 
-        var mAdapter= MFragmentStatePagerAdapter(supportFragmentManager, arrayOf(OrganizationDeptSelectFragment.newInstance(ArrayList(), multipleSelect, contactType), OrganizationShopSelectFragment.newInstance(ArrayList(), multipleSelect, contactType),Test1Fragment(),Test2Fragment()).toMutableList() as List<Fragment>?, tabTitles)
-        mViewPager.adapter=mAdapter
+        //var mAdapter= MFragmentStatePagerAdapter(supportFragmentManager, arrayOf(OrganizationDeptSelectFragment.newInstance(ArrayList(), multipleSelect, contactType), OrganizationShopSelectFragment.newInstance(ArrayList(), multipleSelect, contactType),Test1Fragment(),Test2Fragment()).toMutableList() as List<Fragment>?, tabTitles)
+
+        //mViewPager.adapter=mAdapter
         mViewPager.setPageTransformer(false, ViewPager.PageTransformer { page, position ->
             when {
                 position > 1 -> page.alpha = 1f

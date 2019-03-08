@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="@color/white"
-    android:layout_height="@dimen/dp_40">
+    android:layout_height="50dp">
 
     <LinearLayout
         android:id="@+id/load_more_loading_view"
@@ -11,23 +11,38 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="horizontal">
-
         <ProgressBar
             android:id="@+id/loading_progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="?android:attr/progressBarStyleSmall"
-            android:layout_marginRight="@dimen/dp_4"
-            android:indeterminateDrawable="@drawable/brvah_sample_footer_loading_progress"/>
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginRight="10dip"
+            android:indeterminateDrawable="@drawable/bga_refresh_loding"
+            />
 
         <TextView
             android:id="@+id/loading_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_4"
-            android:text="@string/brvah_loading"
-            android:textColor="#0dddb8"
-            android:textSize="@dimen/sp_14"/>
+            android:text="正在加载..."
+            android:textColor="#777"
+            android:textSize="14sp" />
+
+        <!--<ProgressBar-->
+            <!--android:id="@+id/loading_progress"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--style="?android:attr/progressBarStyleSmall"-->
+            <!--android:layout_marginRight="@dimen/dp_4"-->
+            <!--android:indeterminateDrawable="@drawable/brvah_sample_footer_loading_progress"/>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/loading_text"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="@dimen/dp_4"-->
+            <!--android:text="@string/brvah_loading"-->
+            <!--android:textColor="#0dddb8"-->
+            <!--android:textSize="@dimen/sp_14"/>-->
     </LinearLayout>
 
     <FrameLayout
@@ -43,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="#0dddb8"
-            android:text="@string/brvah_load_failed"/>
+            android:text="加载失败，请点我重试！"/>
 
     </FrameLayout>
 
@@ -57,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/brvah_load_end"
+            android:text="已经全部加载完毕"
             android:textColor="@android:color/darker_gray"/>
     </FrameLayout>
 </FrameLayout>

@@ -35,13 +35,23 @@ private const val ARG_PARAM2 = "param2"
  * A simple [Fragment] subclass.
  *
  */
-class TaoBaoFragment : EmucooBaseFragment(R.layout.fragment_tao_bao,false) {
+class TaoBaoFragment : EmucooBaseFragment() {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return super.onCreateView(inflater, container, savedInstanceState)
+       return inflater.inflate(R.layout.fragment_tao_bao, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        initData()
+    }
 
     lateinit var mAdapter:BaseQuickAdapter<TaobaoTask,BaseViewHolder>
     var mList:ArrayList<TaobaoTask>? = null
     private lateinit var mRecycleViewHelper:RecycleViewHelper<TaobaoTask>
 
-    override fun initData() {
+    fun initData() {
         mPublishTaskLayout.onClick {
             startActivity<PublishTaoBaoTaskActivity>()
         }
@@ -79,7 +89,7 @@ class TaoBaoFragment : EmucooBaseFragment(R.layout.fragment_tao_bao,false) {
                         }
 
                         override fun onNext(t: BaseResult<List<TaobaoTask>>) {
-                            mRecycleViewHelper.onApiSuccess(t)
+                            mRecycleViewHelper.onApiSuccess(t,t.data)
                         }
 
                         override fun onError(e: Throwable) {

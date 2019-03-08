@@ -93,7 +93,7 @@ data class BaseResult<T>(
         @SerializedName("pageSize") val pageSize: Int = 0,
         @SerializedName("pageNumber") val pageNumber: Int = 0,
         @SerializedName("sign") val sign: String = "",
-        val isLastPage:Boolean=true
+        @SerializedName("lastPage") val isLastPage:Boolean = true
 )
 
 

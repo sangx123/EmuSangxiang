@@ -23,7 +23,13 @@
     <color name="color_e66f7d">#e66f7d</color>
     <color name="default_theme_pink_ripple">#EA144C</color>
     <color name="dark_grey">#989898</color>
+    <color name="default_theme_orange">#F1B434</color>
     <color name="default_theme_pink">#EF426F</color>
+    <color name="default_theme_blue">#7BA6DE</color>
+    <color name="default_theme_green">#A0CB3B</color>
+    <color name="default_theme_purple">#A76389</color>
     <color name="default_theme_pink_pressed">#ED2A5D</color>
+    <color name="btn_red">#FC421E</color>
+
 
 </resources>

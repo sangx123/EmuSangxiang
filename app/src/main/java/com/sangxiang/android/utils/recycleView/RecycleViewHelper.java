@@ -57,6 +57,7 @@ public class RecycleViewHelper<T> {
         mRecyclerView.addItemDecoration(setHorizontalDividerItemDecoration());
         //如果存在SwipeRefreshLayout赋予刷新的功能
         if(mSwipeRefreshLayout!=null){
+            mSwipeRefreshLayout.setColorSchemeResources(R.color.default_theme_orange, R.color.default_theme_green, R.color.default_theme_pink, R.color.default_theme_blue, R.color.default_theme_purple);
             mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
@@ -136,19 +137,19 @@ public class RecycleViewHelper<T> {
          mRecycleViewListener.getApiData(1,pageSize);
     }
 
-    public void onApiSuccess(BaseResult<List<T>> result){
+    public void onApiSuccess(BaseResult result,List<T> list){
          pageIndex=result.getPageNumber();
          pageSize=result.getPageSize();
          if(mSwipeRefreshLayout!=null&&needLoadMore==false){
              //如果只有刷新的话,没有加载更多的话
              mSwipeRefreshLayout.setRefreshing(false);
-             mAdapter.setNewData(result.getData());
+             mAdapter.setNewData(list);
          }else if(mSwipeRefreshLayout!=null&&needLoadMore==true){
              //如果有刷新有加载更多的话，如果是下拉刷新或者初始加载数据的话
              if(isRefresh){
                  //如果第一页是最后一页的话，不再加载更多
                  mSwipeRefreshLayout.setRefreshing(false);
-                 mAdapter.setNewData(result.getData());
+                 mAdapter.setNewData(list);
                  if(result.isLastPage()){
                     mAdapter.setEnableLoadMore(false);
                  }else {
@@ -158,12 +159,12 @@ public class RecycleViewHelper<T> {
                  }
 
              }else {
-                 setMoreData(result);
+                 setMoreData(result,list);
              }
 
          }else if(mSwipeRefreshLayout==null&&needLoadMore==false){
              //没有下拉刷新而且没有加载更多的话
-             mAdapter.setNewData(result.getData());
+             mAdapter.setNewData(list);
          }
     }
 
@@ -183,8 +184,7 @@ public class RecycleViewHelper<T> {
         }
     }
 
-    private void setMoreData(BaseResult<List<T>> result) {
-        List<T> data=result.getData();
+    private void setMoreData(BaseResult result,List<T> data) {
         int size = data.size();
         if (isRefresh) {
             mAdapter.setNewData(data);
