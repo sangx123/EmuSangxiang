@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="match_parent" android:layout_width="wrap_content">
+    <cn.bingoogolapple.bgabanner.BGABanner
+        android:id="@+id/dashboard_banner_raw"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:banner_pageChangeDuration="4000"
+        app:banner_pointContainerBackground="@android:color/transparent"
+        app:banner_pointDrawable="@drawable/bga_banner_selector_point"
+        app:banner_pointTopBottomMargin="5dp"
+        app:banner_transitionEffect="alpha" />
+    <!--<cn.bingoogolapple.bgabanner.BGABanner-->
+        <!--android:id="@+id/dashboard_banner_raw"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="100dp"-->
+        <!--app:banner_pageChangeDuration="4000"-->
+        <!--app:banner_pointContainerBackground="@android:color/transparent"-->
+        <!--app:banner_pointDrawable="@drawable/bga_banner_selector_point"-->
+        <!--app:banner_pointTopBottomMargin="5dp"-->
+        <!--app:banner_transitionEffect="alpha" />-->
+</FrameLayout>

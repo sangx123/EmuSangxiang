@@ -18,11 +18,11 @@ MobSDK {
     SMSSDK {}
 }
 android {
-    compileSdkVersion 27
+    compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.sangxiang.android"
-        minSdkVersion 18
-        targetSdkVersion 23
+        applicationId "com.xiang.one"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -49,19 +49,21 @@ android {
             v2SigningEnabled true
             v1SigningEnabled true
         }
-//        debug {
-//            keyAlias 'androiddebugkey'
-//            keyPassword 'android'
-//            storeFile file('../certificates/debug.keystore')
-//            storePassword 'android'
-//            v2SigningEnabled true
-//        }
+        debug {
+            keyAlias 'emucoo'
+            keyPassword 'emucoo'
+            storeFile file('../certificates/emucoo_key_v1.jks')
+            storePassword 'emucoo'
+            v2SigningEnabled true
+            v1SigningEnabled true
+        }
     }
     buildTypes {
         release {
             minifyEnabled true
             shrinkResources true
             zipAlignEnabled true
+            useProguard true
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             resValue "string", "jinkens_app", System.getenv("jinkens_app") ?: ""
@@ -69,14 +71,13 @@ android {
         }
         debug {
             minifyEnabled true
-            shrinkResources true
+            shrinkResources false
             zipAlignEnabled true
+            useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
             resValue "string", "jinkens_app", System.getenv("jinkens_app") ?: ""
-
         }
-
     }
 
     lintOptions {
@@ -86,9 +87,10 @@ android {
 
         /*开发*/
         DEV {
-            buildConfigField("String", "HOST_URL", "\"http://10.0.2.2:8081/\"")
+            //buildConfigField("String", "HOST_URL", "\"http://10.0.2.2:8081/\"")
+            buildConfigField("String", "HOST_URL", "\"http://10.0.3.2:8081/\"")
             manifestPlaceholders = [
-                    JPUSH_PKGNAME: "com.sangxiang.android",
+                    JPUSH_PKGNAME: "com.xiang.one",
                     JPUSH_APPKEY : "405c44ca84474b072b8c4da5", //JPush上注册的包名对应的appkey.
                     JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
             ]
@@ -98,7 +100,7 @@ android {
         PRO {
             buildConfigField("String", "HOST_URL", "\"http://47.112.9.150/\"")
             manifestPlaceholders = [
-                    JPUSH_PKGNAME: "com.sangxiang.android",
+                    JPUSH_PKGNAME: "com.xiang.one",
                     JPUSH_APPKEY : "c2d3f4af06f5047b61c5be82", //JPush上注册的包名对应的appkey.
                     JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
             ]
@@ -120,7 +122,7 @@ androidExtensions {
 
 kapt {
     arguments {
-        arg('eventBusIndex', 'com.sangxiang.android.EmucooEventBusIndex')
+        arg('eventBusIndex', 'com.xiang.one.EmucooEventBusIndex')
         arg("objectbox.debug", true)
     }
 }
@@ -133,36 +135,42 @@ repositories {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    testImplementation 'junit:junit:4.12'
 
-    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
-    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    //testImplementation 'junit:junit:4.12'
+    implementation rootProject.ext.kotlin_reflect
 
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
+
+    //testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+
+    //androidTestImplementation 'com.android.support.test:runner:1.0.2'
+
+    //androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     //引入anko
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "org.jetbrains.anko:anko-commons:$anko_version"
+    implementation rootProject.ext.kotlin_stdlib_jdk7
+    implementation rootProject.ext.anko_commons
 
     // Anko Layouts
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.android.support:support-v4:27.0.2'
-    implementation 'com.android.support:recyclerview-v7:27.0.2'
-    implementation "org.jetbrains.anko:anko-sdk25:$anko_version"
+    implementation rootProject.ext.constraint
+    implementation rootProject.ext.supportV4
+    implementation rootProject.ext.recyclerviewV7
+    implementation rootProject.ext.anko_sdk25
 
     // sdk15, sdk19, sdk21, sdk23 are also available
-    implementation "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
+    implementation rootProject.ext.anko_appcompat_v7
 
     // Coroutine listeners for Anko Layouts
-    implementation "org.jetbrains.anko:anko-sdk25-coroutines:$anko_version"
-    implementation "org.jetbrains.anko:anko-appcompat-v7-coroutines:$anko_version"
+    implementation rootProject.ext.anko_sdk25_coroutines
+    implementation rootProject.ext.anko_appcompat_v7_coroutines
 
     // Anko SQLite
-    implementation "org.jetbrains.anko:anko-sqlite:$anko_version"
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    //implementation "org.jetbrains.anko:anko-sqlite:$anko_version"
+
+    //androidTestImplementation 'com.android.support.test:runner:1.0.1'
+
+    //androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     //implementation "org.jetbrains.anko:anko-commons:$anko_version"
     implementation rootProject.ext.supportAppCompat
@@ -171,11 +179,11 @@ dependencies {
     implementation rootProject.ext.supportCardView
     implementation rootProject.ext.recyclerviewV7
     implementation rootProject.ext.supportConstraintLayout
-    implementation "com.jakewharton.rxbinding2:rxbinding-kotlin:$rxbindingVersion"
-    implementation "com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:$rxbindingVersion"
-    implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rxbindingVersion"
-    implementation "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:$rxbindingVersion"
-    implementation "com.jakewharton.rxbinding2:rxbinding-leanback-v17-kotlin:$rxbindingVersion"
+    implementation rootProject.ext.rxbinding_kotlin
+    implementation rootProject.ext.rxbinding_support_v4_kotlin
+    implementation rootProject.ext.rxbinding_appcompat_v7_kotlin
+    implementation rootProject.ext.rxbinding_recyclerview_v7_kotlin
+    implementation rootProject.ext.rxbinding_leanback_v17_kotlin
 
     // add library
     implementation project(':ImagePicker')
@@ -184,167 +192,78 @@ dependencies {
 
     //implementation project(':IMKit')
     implementation project(':MPChartLib')
-    implementation project(':Picasso')
-    implementation project(':Graffiti')
-    implementation project(':MaterialCalendar')
+
+    //implementation project(':Picasso')
+
+    //implementation project(':Graffiti')
+
+    //implementation project(':MaterialCalendar')
     implementation project(':WheelView')
-    implementation project(':boommenu')
-    implementation project(':MaterialDrawer')
-    implementation "com.android.support:multidex:$multidexVersion"
+
+    //implementation project(':boommenu')
+
+    //implementation project(':MaterialDrawer')
+    implementation rootProject.ext.multidex
 
     //eventbus
-    implementation "org.greenrobot:eventbus:$eventBusVersion"
-    kapt "org.greenrobot:eventbus-annotation-processor:$eventBusVersion"
+    implementation rootProject.ext.eventbus
+    kapt rootProject.ext.eventbus_annotation_processor
+
     // Retrofit库
-    implementation "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    implementation "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
-    implementation "com.google.code.gson:gson:$gsonVersion"
-    implementation 'com.jakewharton.threetenabp:threetenabp:1.1.0'
-    debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
-    releaseImplementation "io.objectbox:objectbox-android:$objectboxVersion"
-    kapt "io.objectbox:objectbox-processor:$objectboxVersion"
-    implementation 'com.tencent.bugly:crashreport:latest.release'
+    implementation rootProject.ext.rxjava
+    implementation rootProject.ext.retrofit
+    implementation rootProject.ext.okhttp3_logging_interceptor
+    implementation rootProject.ext.adapter_rxjava2
+    implementation rootProject.ext.converter_gson
+    implementation rootProject.ext.rxandroid
+    implementation rootProject.ext.gson
+    implementation rootProject.ext.threetenabp
+    debugImplementation rootProject.ext.objectbox_android_objectbrowser
+    releaseImplementation rootProject.ext.objectbox_android
+    kapt rootProject.ext.objectbox_processor
+    implementation rootProject.ext.bugly
 
     //jpush
-    implementation 'cn.jiguang.sdk:jpush:3.1.1'
-    implementation 'cn.jiguang.sdk:jcore:1.1.9'
+    implementation rootProject.ext.jpush
+    implementation rootProject.ext.jcore
 
     //自动更新
-    implementation 'com.qianwen:update-app:3.5.2'
+    implementation rootProject.ext.update_app
 
     //BaseRecyclerViewAdapterHelper
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+    implementation rootProject.ext.BaseRecyclerViewAdapterHelper
 
     //rxpermissions
-    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
+    implementation rootProject.ext.rxpermissions
 
     //switchbutton
-    implementation 'com.kyleduo.switchbutton:library:2.0.0'
+    implementation rootProject.ext.switchbutton
 
     //packer
-    implementation 'com.mcxiaoke.packer-ng:helper:2.0.1'
+    implementation rootProject.ext.packer
 
     //阿里热更新
-    implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.4'
+    implementation rootProject.ext.hotfix
 
     //shareperference
-    implementation "com.orhanobut:hawk:2.0.1"
+    implementation rootProject.ext.hawk
+
+    //新增广告轮播组件
+    implementation rootProject.ext.bga_banner
+
+    //glide
+    implementation rootProject.ext.glide
+    annotationProcessor rootProject.ext.glide_compiler
+
+    //jsbridge
+    implementation rootProject.ext.jsbridge
+
+    //全面屏适配
+    implementation rootProject.ext.immersionbar
 }
 apply plugin: 'io.objectbox'
 //在正常的dependencies中添加如下依赖
 dependencies {
 //主要是针对kotlin
-    implementation "io.objectbox:objectbox-kotlin:$objectboxVersion"
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support:support-v4:27.+'
-}
-
-dependencies {
-    implementation 'com.android.support:support-v4:27.+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support:support-v4:27.+'
-}
-
-dependencies {
-    implementation 'com.android.support:support-v4:27.+'
-}
-
-dependencies {
-    implementation 'com.android.support:support-v4:27.+'
-}
-
-dependencies {
-    implementation 'com.android.support:support-v4:27.+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
-}
-
-dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:+'
+    implementation rootProject.ext.objectbox_kotlin
 }

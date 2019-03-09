@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".ui.taobao.PublishTaoBaoTaskActivity">
-    <com.sangxiang.android.widgets.EmucooToolBar
+    <com.xiang.one.widgets.ToolBar
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_bar_height"
         android:id="@+id/mToolbar"
@@ -20,7 +20,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <com.sangxiang.android.widgets.KeyValueLayout
+            <com.xiang.one.widgets.KeyValueLayout
                 android:layout_width="match_parent"
                 app:kvl_text_hint="搜索商品关键字 ："
                 android:id="@+id/kv_sousuoguanjianzi"
@@ -28,8 +28,8 @@
                 app:kvl_edit="true"
                 app:kvl_edit_hint="请输入搜索商品关键字"
                 android:layout_height="wrap_content">
-            </com.sangxiang.android.widgets.KeyValueLayout>
-            <com.sangxiang.android.widgets.KeyValueLayout
+            </com.xiang.one.widgets.KeyValueLayout>
+            <com.xiang.one.widgets.KeyValueLayout
                 android:layout_width="match_parent"
                 app:kvl_text_hint="淘宝掌柜名 ："
                 app:kvl_has_right_arrow="false"
@@ -37,9 +37,9 @@
                 android:id="@+id/kv_zhangguiming"
                 app:kvl_edit_hint="请输入淘宝掌柜名"
                 android:layout_height="wrap_content">
-            </com.sangxiang.android.widgets.KeyValueLayout>
+            </com.xiang.one.widgets.KeyValueLayout>
 
-            <com.sangxiang.android.widgets.KeyValueLayout
+            <com.xiang.one.widgets.KeyValueLayout
                 android:layout_width="match_parent"
                 app:kvl_text_hint="商品链接 ："
                 app:kvl_has_right_arrow="false"
@@ -47,9 +47,9 @@
                 app:kvl_edit_hint="请输入商品链接"
                 android:id="@+id/kv_shangpinlianjie"
                 android:layout_height="wrap_content">
-            </com.sangxiang.android.widgets.KeyValueLayout>
+            </com.xiang.one.widgets.KeyValueLayout>
 
-            <com.sangxiang.android.widgets.KeyValueLayout
+            <com.xiang.one.widgets.KeyValueLayout
                 android:layout_width="match_parent"
                 app:kvl_text_hint="商品价格 ："
                 app:kvl_has_right_arrow="false"
@@ -57,9 +57,9 @@
                 android:id="@+id/kv_shangpinjiage"
                 app:kvl_edit_hint="请输入商品价格"
                 android:layout_height="wrap_content">
-            </com.sangxiang.android.widgets.KeyValueLayout>
+            </com.xiang.one.widgets.KeyValueLayout>
 
-            <com.sangxiang.android.widgets.KeyValueLayout
+            <com.xiang.one.widgets.KeyValueLayout
                 android:layout_width="match_parent"
                 app:kvl_text_hint="刷单数量 ："
                 app:kvl_has_right_arrow="false"
@@ -67,9 +67,9 @@
                 android:id="@+id/kv_shuadanshuliang"
                 app:kvl_edit_hint="请输入刷单数量"
                 android:layout_height="wrap_content">
-            </com.sangxiang.android.widgets.KeyValueLayout>
+            </com.xiang.one.widgets.KeyValueLayout>
 
-            <com.sangxiang.android.widgets.KeyValueLayout
+            <com.xiang.one.widgets.KeyValueLayout
                 android:layout_width="match_parent"
                 app:kvl_text_hint="刷单佣金 ："
                 android:id="@+id/kv_shuadanyongjin"
@@ -77,8 +77,8 @@
                 app:kvl_edit="true"
                 app:kvl_edit_hint="请输入刷单佣金"
                 android:layout_height="wrap_content">
-            </com.sangxiang.android.widgets.KeyValueLayout>
-            <com.sangxiang.android.widgets.KeyValueLayout
+            </com.xiang.one.widgets.KeyValueLayout>
+            <com.xiang.one.widgets.KeyValueLayout
                 android:layout_width="match_parent"
                 app:kvl_text_hint="人群标签 ："
                 app:kvl_has_right_arrow="false"
@@ -86,7 +86,7 @@
                 android:id="@+id/kv_renqunbiaoqian"
                 app:kvl_text_warning="无限制"
                 android:layout_height="wrap_content">
-            </com.sangxiang.android.widgets.KeyValueLayout>
+            </com.xiang.one.widgets.KeyValueLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -96,54 +96,54 @@
                 android:gravity="center"
                 android:textSize="18sp"
                 />
-            <com.sangxiang.android.widgets.KeyValueLayout
+            <com.xiang.one.widgets.KeyValueLayout
                 android:id="@+id/kv_jialiao"
                 android:layout_width="match_parent"
                 app:kvl_text_hint="旺旺假聊(0.5元) ："
                 app:kvl_has_left_icon="true"
                 app:kvl_has_right_arrow="false"
                 android:layout_height="wrap_content">
-            </com.sangxiang.android.widgets.KeyValueLayout>
-            <com.sangxiang.android.widgets.KeyValueLayout
+            </com.xiang.one.widgets.KeyValueLayout>
+            <com.xiang.one.widgets.KeyValueLayout
                 android:id="@+id/kv_liulanqitashangpin"
                 android:layout_width="match_parent"
                 app:kvl_has_left_icon="true"
                 app:kvl_text_hint="浏览本店其他商品(0.5元) ："
                 app:kvl_has_right_arrow="false"
                 android:layout_height="wrap_content">
-            </com.sangxiang.android.widgets.KeyValueLayout>
-            <com.sangxiang.android.widgets.KeyValueLayout
+            </com.xiang.one.widgets.KeyValueLayout>
+            <com.xiang.one.widgets.KeyValueLayout
                 android:id="@+id/kv_tingliushijian"
                 android:layout_width="match_parent"
                 app:kvl_text_hint="商品浏览停留时长3分钟(0.5元) ："
                 app:kvl_has_right_arrow="false"
                 app:kvl_has_left_icon="true"
                 android:layout_height="wrap_content">
-            </com.sangxiang.android.widgets.KeyValueLayout>
-            <com.sangxiang.android.widgets.KeyValueLayout
+            </com.xiang.one.widgets.KeyValueLayout>
+            <com.xiang.one.widgets.KeyValueLayout
                 android:id="@+id/kv_huobisanjia"
                 android:layout_width="match_parent"
                 app:kvl_text_hint="货比三家(1元) ："
                 app:kvl_has_left_icon="true"
                 app:kvl_has_right_arrow="false"
                 android:layout_height="wrap_content">
-            </com.sangxiang.android.widgets.KeyValueLayout>
-            <com.sangxiang.android.widgets.KeyValueLayout
+            </com.xiang.one.widgets.KeyValueLayout>
+            <com.xiang.one.widgets.KeyValueLayout
                 android:id="@+id/kv_zhenshiqianshou"
                 android:layout_width="match_parent"
                 app:kvl_text_hint="真实签收(1元) ："
                 app:kvl_has_left_icon="true"
                 app:kvl_has_right_arrow="false"
                 android:layout_height="wrap_content">
-            </com.sangxiang.android.widgets.KeyValueLayout>
-            <com.sangxiang.android.widgets.KeyValueLayout
+            </com.xiang.one.widgets.KeyValueLayout>
+            <com.xiang.one.widgets.KeyValueLayout
                 android:id="@+id/kv_daituhaoping"
                 android:layout_width="match_parent"
                 app:kvl_text_hint="带图好评(1元) ："
                 app:kvl_has_left_icon="true"
                 app:kvl_has_right_arrow="false"
                 android:layout_height="wrap_content">
-            </com.sangxiang.android.widgets.KeyValueLayout>
+            </com.xiang.one.widgets.KeyValueLayout>
 
             <Button
                 android:id="@+id/btn_submit"

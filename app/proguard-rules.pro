@@ -26,7 +26,7 @@
 -dontskipnonpubliclibraryclasses  # 是否混淆第三方jar
 -dontpreverify  # 混淆时是否做预校验
 -verbose    # 混淆时是否记录日志
--ignorewarnings  # 忽略警告，避免打包时某些警告出现
+#-ignorewarnings  # 忽略警告，避免打包时某些警告出现
 -optimizations !code/simplification/arithmetic,!code/simplification/cast,!field/*,!class/merging/*  # 混淆时所采用的算法
 # 保留Annotation不混淆
 -keepattributes *Annotation*
@@ -127,7 +127,7 @@
 -dontwarn retrofit2.**
 -keep class retrofit2.** { *; }
 
--keep class com.sangxiang.android.network.** { *;}
+-keep class com.xiang.one.network.** { *;}
 # 避免混淆泛型
 -keepattributes Signature
 -keepattributes Exceptions
@@ -138,10 +138,24 @@
 -keep class org.junit.** { *;}
 
 #热更新
--keepclassmembers class com.sangxiang.android.App {
+-keepclassmembers class com.xiang.one.App {
     public <init>();
 }
 -keep class com.my.pkg.SophixStubApplication$RealApplicationStub
 -keep class com.taobao.sophix.**{*;}
 -keep class com.ta.utdid2.device.**{*;}
 -dontoptimize
+
+#Glide代码混淆
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+# for DexGuard only
+#-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+
+#immersionbar代码混淆
+ -keep class com.gyf.barlibrary.* {*;}
+ -dontwarn com.gyf.barlibrary.**

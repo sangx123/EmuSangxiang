@@ -1,0 +1,29 @@
+package com.xiang.one.designpattern
+
+import android.app.Activity
+import android.os.Bundle
+import com.xiang.one.BaseActivity
+import com.xiang.one.R
+import kotlinx.android.synthetic.main.activity_design_pattern.*
+import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.startActivity
+
+class DesignPatternActivity : BaseActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_design_pattern)
+        btn1.onClick {
+            startActivity<FactoryActivity>()
+        }
+        btn2.onClick {
+            startActivity<SingletonActivity>()
+        }
+        btn3.onClick { startActivity<BuilderActivity>() }
+        btn4.onClick { startActivity<PrototypeActivity>() }
+        btn5.onClick { startActivity<ObservableActivity>() }
+        btn6.onClick { startActivity<ProxyActivity>() }
+        btn7.onClick { startActivity<AdapterActivity>() }
+        btn8.onClick { startActivity<DecoratorActivity>() }
+    }
+}

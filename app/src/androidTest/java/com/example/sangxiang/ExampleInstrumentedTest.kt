@@ -1,4 +1,4 @@
-package com.sangxiang.android
+package com.xiang.one
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("com.sangxiang.android", appContext.packageName)
+        assertEquals("com.xiang.one", appContext.packageName)
     }
 }

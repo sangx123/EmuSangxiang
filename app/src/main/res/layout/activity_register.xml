@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root"
     android:layout_width="match_parent"
@@ -8,33 +8,63 @@
     android:clipToPadding="true"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
-
+    <com.xiang.one.widgets.ToolBar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:id="@+id/mToolbar"
+        app:title="注册新用户"
+        app:left_icon="@drawable/icon_back_black"/>
 
     <android.support.v4.widget.NestedScrollView
+        android:layout_below="@+id/mToolBar"
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:fillViewport="true"
         android:scrollbarThumbVertical="@android:color/transparent"
         android:scrollbars="vertical">
 
         <LinearLayout
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <com.sangxiang.android.widgets.EmucooToolBar
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/title_bar_height"
-                android:id="@+id/mToolbar"
-                app:title="用户注册"
-                app:left_icon="@drawable/icon_back_black"/>
-
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:background="@null"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="13dp">
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="请输入用户名"
+                android:inputType="textVisiblePassword"
+                android:maxLength="11"
+                android:singleLine="true"
+                android:text=""
+                android:textSize="18dp"/>
+        </LinearLayout>
+            <include layout="@layout/line"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
@@ -42,11 +72,7 @@
                 android:orientation="horizontal"
                 android:paddingLeft="13dp">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:src="@drawable/ic_mobile_flag"/>
+
 
                 <EditText
                     android:id="@+id/et_mobile"
@@ -59,7 +85,7 @@
                     android:maxLength="11"
                     android:singleLine="true"
                     android:text=""
-                    android:textSize="14dp"/>
+                    android:textSize="18dp"/>
 
                 <ImageView
                     android:id="@+id/iv_clean_phone"
@@ -74,16 +100,10 @@
             <include layout="@layout/line"/>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="60dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="13dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:src="@drawable/ic_password_flag"/>
 
                 <EditText
                     android:id="@+id/et_yanzhengma"
@@ -92,23 +112,22 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:hint="请输入验证码"
-                    android:inputType="textPassword"
                     android:maxLength="30"
                     android:singleLine="true"
                     android:text=""
-                    android:textSize="14dp"/>
-                <Button
+                    android:textSize="18dp"/>
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/btn_get_yanzhengma"
                     android:text="获取验证码"
-                    android:textColor="@color/white"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/bg_btn_login_selected"
+                    android:textColor="@color/btn_red"
+                    android:layout_marginRight="13dp"
+                    android:padding="10dp"
+                    android:background="@drawable/btn_white_bg_red_border"
                     />
 
             </LinearLayout>
-
             <include layout="@layout/line"/>
 
             <LinearLayout
@@ -118,24 +137,18 @@
                 android:orientation="horizontal"
                 android:paddingLeft="13dp">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:src="@drawable/ic_password_flag"/>
-
                 <EditText
                     android:id="@+id/et_password"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:hint="请设置密码"
+                    android:hint="请输入6-20位密码"
                     android:inputType="textPassword"
                     android:maxLength="30"
                     android:singleLine="true"
                     android:text=""
-                    android:textSize="14dp"/>
+                    android:textSize="18dp"/>
 
                 <ImageView
                     android:id="@+id/clean_password"
@@ -146,6 +159,7 @@
                     android:visibility="gone"/>
 
                 <ImageView
+                    android:visibility="gone"
                     android:id="@+id/iv_show_pwd"
                     android:layout_width="40dp"
                     android:layout_height="fill_parent"
@@ -157,6 +171,7 @@
             <include layout="@layout/line"/>
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:gravity="center_vertical"
@@ -199,15 +214,14 @@
 
             </LinearLayout>
 
-            <include layout="@layout/line"/>
             <Button
                 android:id="@+id/btn_register"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="50dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="21dp"
-                android:background="@drawable/bg_btn_login_selected"
-                android:text="注册"
+                android:background="@drawable/btn_red"
+                android:text="确认提交"
                 android:textColor="@color/white"
                 android:textSize="18dp"/>
 
@@ -249,4 +263,4 @@
             android:textSize="14dp"/>
 
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

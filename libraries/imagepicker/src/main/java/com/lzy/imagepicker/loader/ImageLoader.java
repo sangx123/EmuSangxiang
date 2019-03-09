@@ -18,6 +18,5 @@ public interface ImageLoader extends Serializable {
 
     void displayImage(Activity activity, String path, ImageView imageView, int width, int height);
     void displayImage(Activity activity, int resource, ImageView imageView, int width, int height);
-
     void clearMemoryCache();
 }

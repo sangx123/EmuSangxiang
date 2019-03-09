@@ -6,9 +6,9 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.taobao.TaoBaoFragment">
-    <com.sangxiang.android.widgets.EmucooToolBar
+    <com.xiang.one.widgets.ToolBar
         android:layout_width="match_parent"
-        android:layout_height="@dimen/title_bar_height"
+        android:layout_height="wrap_content"
         android:id="@+id/mToolbar"
         app:title="淘宝任务大厅" />
     <LinearLayout

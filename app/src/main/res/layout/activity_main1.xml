@@ -68,12 +68,12 @@
         android:text="DialogActivity"
         android:id="@+id/mDialogActivity"
         />
-    <com.sangxiang.android.widgets.WidgetCommentView
+    <com.xiang.one.widgets.WidgetCommentView
         android:id="@+id/mComment"
         android:clickable="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-    </com.sangxiang.android.widgets.WidgetCommentView>
+    </com.xiang.one.widgets.WidgetCommentView>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

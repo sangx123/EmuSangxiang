@@ -4,8 +4,8 @@ apply plugin: 'maven'
 //apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
     // resourcePrefix 'mpcht'
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
@@ -34,11 +34,6 @@ repositories {
 }
 
 dependencies {
-    //compile fileTree(dir: 'libs', include: ['*.jar'])
-    //compile 'com.android.support:support-v4:19.+'
-    //provided 'io.realm:realm-android:0.87.5' // "optional" dependency to realm-database API
-    //testCompile 'junit:junit:4.12'
-    //testCompile "org.mockito:mockito-core:1.9.5"
 }
 
 android.libraryVariants.all { variant ->

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.sangxiang.android"
+    package="com.xiang.one"
     tools:ignore="MissingLeanbackLauncher">
 
     <uses-feature
@@ -29,11 +29,11 @@
 
     <application
         android:name=".SophixStubApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        tools:replace="android:allowBackup"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.login.LoginActivity">
             <intent-filter>
@@ -55,7 +55,7 @@
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!-- Required  用户接收SDK通知栏信息的intent -->
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!-- Required  用户打开自定义通知栏的intent -->
                 <action android:name="cn.jpush.android.intent.CONNECTION" /> <!-- 接收网络变化 连接/断开 since 1.6.3 -->
-                <category android:name="com.sangxiang.android" />
+                <category android:name="com.xiang.one" />
             </intent-filter>
         </receiver>
 
@@ -70,13 +70,13 @@
 
         <meta-data
             android:name="com.taobao.android.hotfix.IDSECRET"
-            android:value="25022616-1" />
+            android:value="25842021-1" />
         <meta-data
             android:name="com.taobao.android.hotfix.APPSECRET"
-            android:value="cd57979dbce530d95ead986d69a4b908" />
+            android:value="1a88abeb60ce61327fcdcd6a1776fa43" />
         <meta-data
             android:name="com.taobao.android.hotfix.RSASECRET"
-            android:value="MIIEwAIBADANBgkqhkiG9w0BAQEFAASCBKowggSmAgEAAoIBAQDqPBp+Qk0VxI9QmjBqIb4TbXqnnu/UHdFKCjRouzCXlALiQIdKmdKSjzFDTOLWEsDMvAT1CUJ7V5qAlF+/UvseI8Egk+opTERz53AdJDGfzGjlnZLnn4TilUFp/c4q1h2wTHL9Cslb56LRm+SJh0DU53/qeEWXNinld29j2NqpR5oleCFjoHY3qPY7Dm5BXwQDphBPseKI5f6CwokxXa90TAAbmvjmr8ePPejW8gK0ahx545s3MXaQEAhOD2cEbtkPoQmuzBY6Eam7RaBNt9k6eVdSb7zU7WSPJnMarxe03o8jRvF5QuzmD2PYTjQVm898AqmEOQB0sdRhfV0Gk6LDAgMBAAECggEBAIsIKeGPkRm+liKNovccGCqH7SnZWRlaqYN9EyanFWyjWiLZknRhYW/EtsTvuiS+9NmRMJARcvirQvXXHA4APzXgmx2vLmpc7rStRwrFFP944TqJkU0Sjlm/phg3okwi03R1rDsuT97RWv93vOs08PJuhqqxwPzEFZIylld5vDCFQO7xkNTwQ0uVOFrECP/BfNXLfNyj6FRpMFUFNbV/7q6WNscotuQen4vA0irO1PgJIV/aVEJ5KZnosDp0wI7nGGhOV+guClXUh6/Qtj1e4P2gtse6KOA4B9CAqcpW7+OQhyiTMNEFEj65DXtX6cRB+FA5rRSIArs1WIgkpL9EWGECgYEA90ljOYkzQCrW5YliQKw23qrRdD35em/vOQtaC7QPlWD8bxdeVZPGWSpU9P2CvhLjF6jNqzkrn4XFSX3p6w2fAhqdJxVdrNt2ev+hvPGgauHok6I6tYUgnjuDLItMuj61TiEF92/PduBwEDG3HzLC8YgnzBwmImzwl6NNSZg+2/UCgYEA8nz7txW6J4UyR42bM2ASSwwsVGop4fLju/mszyDe/MljKzaE1Lp1yuF458TlOhvd+9V1GP/opXO7ALUa9g6Bc51WpWft9fCon8P7dEkUC8kxu3+o4Ei2emexhzEdEN5tajmLfZN7LcOiCWoq6MreJ4NwUsvwfj4jt3tDwqS8SNcCgYEAngnM3EyO8IdwZ6nxnRtyxcOtsPiapGE9JdvXZHtjKjidm/H3XAHhVcL0IM6T7B3t/ITpTHBxLLY1a86I3KwL3zBbF0tUXtCzW9Bb8YEK4MQX+6JGmxPF0Np/7svn8W96N8BrK8PNd0/gzri3K70pUWuO46dpx76P1JmNH2epZLECgYEA8kytAT72qjLQEOuQn39qCA975EXI3/viT5ymbrn710Aslat+g0pmFXnDZGQ8YRojcFbVEUv1Xg4MWCKfdCr+c1ZOlC0LfGsjM7GTe5jiLPy3cxGW37YIkLs4i0wqLQb08eXaWnqZ5RrMuPebNM4xue3+uN0LzDmvWtIS3VXaxjUCgYEAxP2rUQtpFPKylefsC6qD1ydoRiiNSc0XUG90JiCy4FqLzVxxrTgpo59Qj5UPmfk8uZMv36SNFEFx1CQ0Vjihe17778mgApMLjVBrs5YU4ibRynHn0AvkOdBCK692hVh5atow7VYJj5pKOR+g7eWs6BvDRhFIuwTdh3U1dX1kHnY=" />
+            android:value="MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCJ62JYg/hPIvkWI5KvIElESJE+hPd28efbD21PBwliRM04YwBuqS32bL4E9UAcplIOcNuCOG44m5i4my1AU85WXAPHRsWf6/3RzSY1gJlg4QBmSDj+fWKfgx5Y7sdCDxWHNM2F7Daa6829dtjg5s77FG+Oe4UWBafe5rr4Y+HBBLQDQG2QG8ganBLBsWCRlRnyAKvZNBGxEbUSPv/h5DB6i5Xk/+1QklNfyhJ7iPjhpZqSDrhXfBPC5U5tupppcmzcXgnbgxKxtQJi0DOldMQF8F74pIM4SVzgts12ytQmHB67PpI1awbyp6ITeWHclG7xMnJEmgKidVzYNgps2divAgMBAAECggEAWI0W4bopzbWos/w3C9Xw9LSa/Mcmk+oRcWbgSeM8tSlzkgaOmn5pElUTU9+bQEnRWZBAf8V3j0Tns29+iFTGoFAH5QSdkmZU20WaiLN+xuLv/LvWTB95GO14qKT2roU8z0ipxJi7HpDT0hfie9P1hOPEFHleI5uSAt2loiGPKvvCfCfjbpwpE5XWE17dQRm1JG4/iVCC9AmemF3EUJz1VqolHP7lpJ++XMtIaPenNqQGukTrtU6RsQPK5yxT16Kkj7yNUYFkOgQmxKV6HYyAOQPvzdZjRu6vJyJLukjNkQiseDTqMh2qTQpjXM2XnpkJZwD5/XqI/KPuQAoaMeXz4QKBgQDi1U3GD6MD0rDgau4+szjaso/VUNggs9e9XoX6C+WXGoE3hI8H0bBRCaUZkGOGg922gbADPcVDcIr5xeEXZzs8ZxS91Czo6fQPmtKPhmzn6ZQNOdZTUEjHbwPZ9zCTpCwwbiin0yOkauvesUqlyOKVbiFsHjlppnX7P4H/5z8X2QKBgQCbp0u849MwKbNJjEI41GB3xEsbClxHyp3i6D/QfVgCTRLsjSuJIda8VNg44jC5qxaGB14sE5qp0za9ed82WeswAXD7cME3w8jghkhiPPKg1PJFcepZV47As7msvRuiSiVjKxFmGcJWuRtENbQBwt8mkicBXXuClpv22Q6a7iZnxwKBgH+IbAzSl9W7bMUQedj4zRtwz5ugs5NXahHHhk46yB/3v/Tl68D6rUYyxQelfb+QfmRxb/OylClBqnGaRt7wpIZmcmv0Uje16gmoA4C8lJijZCE3hoAbIIA4s5Kl/0LTSCEGnocVF/IGR41SYuTpGDPp0pLGP4NeGvFjGIU3j+qpAoGAD6k7g5vgqd3oPiQwnYsw0ZwcenIGaurGDAiWMyIJcuHSX56snLWc54IZ509K28ONFpszLHgkfaXUwie6/7r4YPIkLghgSH4Yfg7Exa2gM/J5FeeqTqbypAzxR6IXX7LaJCo3K/C3jwY86hYFMJAs57KY3hhLzw3cT2/zej8v+g0CgYEAnJK2hrRE62wNDd8a8umFCfkKJ6SxqGQ0iXsGPgepeRdhZJmzGo+UkZJ8FA0Ug8y1O8FO5H3v8tr3wVLM8pf7JrIgIifXhk0jQVTSPV2/mu6b2kL75t6VavqHKzgbH0UZl2bW4pMf59cx0kuQTPyoctIaXwDQq21a8x3Yo/Zsnco=" />
 
         <activity android:name=".designpattern.FactoryActivity" />
         <activity android:name=".designpattern.DesignPatternActivity" />
@@ -106,8 +106,9 @@
         <activity android:name=".ui.my.TixianActivity" />
         <activity android:name=".ui.taobao.PublishTaoBaoTaskActivity" />
         <activity android:name=".ui.taobao.PublishTaoBaoTaskHistoryActivity" />
-        <activity android:name=".ui.taobao.MyTaoBaoTaskActivity"></activity>
-        <activity android:name=".ui.home.MainActivity2"></activity>
+        <activity android:name=".ui.taobao.MyTaoBaoTaskActivity" />
+        <activity android:name=".ui.home.MainActivity2" />
+        <activity android:name=".ui.home.SearchActivity"></activity>
     </application>
 
 </manifest>

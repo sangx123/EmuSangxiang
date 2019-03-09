@@ -1,4 +1,4 @@
-package com.sangxiang.android
+package com.xiang.one
 
 import org.junit.Test
 

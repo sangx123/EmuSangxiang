@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2017082318
+        versionCode 201708
         versionName "2.8.16 Stable"
     }
     buildTypes {
@@ -35,6 +35,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'src/main/libs')
-    compile 'com.android.support:support-v4:25.3.1'
+    implementation fileTree(include: ['*.jar'], dir: 'src/main/libs')
+    implementation 'com.android.support:support-v4:27.1.1'
 }

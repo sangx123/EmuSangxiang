@@ -1,8 +1,8 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
-
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
@@ -19,13 +19,14 @@ android {
         abortOnError false
     }
 
-    buildToolsVersion '27.0.3'
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:25.3.1'
-    implementation 'com.github.chrisbanes.photoview:library:1.2.4'
-    implementation 'com.android.support:recyclerview-v7:25.3.1'
+    implementation rootProject.ext.supportAppCompat
+    implementation('com.github.chrisbanes.photoview:library:1.2.4') {
+        exclude group: 'com.android.support'
+    }
+    implementation rootProject.ext.recyclerviewV7
 }
 

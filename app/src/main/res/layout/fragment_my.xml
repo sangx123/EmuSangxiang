@@ -9,9 +9,9 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="wrap_content">
-        <com.sangxiang.android.widgets.EmucooToolBar
+        <com.xiang.one.widgets.ToolBar
             android:layout_width="match_parent"
-            android:layout_height="@dimen/title_bar_height"
+            android:layout_height="wrap_content"
             android:id="@+id/mToolbar"
             app:title="我的"
             />
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal">
-            <com.sangxiang.android.widgets.KeyValueLayout
+            <com.xiang.one.widgets.KeyValueLayout
                 android:layout_width="wrap_content"
                 app:kvl_text_hint="我的余额:"
                 app:kvl_has_full_line="true"
@@ -48,45 +48,45 @@
                 android:background="@drawable/bg_btn_login_selected"
                 />
         </RelativeLayout>
-        <com.sangxiang.android.widgets.KeyValueLayout
+        <com.xiang.one.widgets.KeyValueLayout
             android:layout_width="wrap_content"
             app:kvl_text_hint="收支明细"
             app:kvl_has_full_line="true"
             app:kvl_has_right_arrow="true"
             android:layout_height="wrap_content"/>
 
-        <com.sangxiang.android.widgets.KeyValueLayout
+        <com.xiang.one.widgets.KeyValueLayout
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             app:kvl_text_hint="我的淘宝账号"
             app:kvl_has_full_line="true"
             app:kvl_has_right_arrow="true"
             android:layout_height="wrap_content"/>
-        <com.sangxiang.android.widgets.KeyValueLayout
+        <com.xiang.one.widgets.KeyValueLayout
             android:layout_width="wrap_content"
             app:kvl_text_hint="我的拼多多账号"
             app:kvl_has_full_line="true"
             app:kvl_has_right_arrow="true"
             android:layout_height="wrap_content"/>
-        <com.sangxiang.android.widgets.KeyValueLayout
+        <com.xiang.one.widgets.KeyValueLayout
             android:layout_width="wrap_content"
             app:kvl_text_hint="我的京东账号"
             app:kvl_has_full_line="true"
             app:kvl_has_right_arrow="true"
             android:layout_height="wrap_content"/>
-        <com.sangxiang.android.widgets.KeyValueLayout
+        <com.xiang.one.widgets.KeyValueLayout
             android:layout_width="wrap_content"
             app:kvl_text_hint="手机号"
             app:kvl_has_full_line="true"
             app:kvl_has_right_arrow="false"
             android:layout_height="wrap_content"/>
-        <com.sangxiang.android.widgets.KeyValueLayout
+        <com.xiang.one.widgets.KeyValueLayout
             android:layout_width="wrap_content"
             app:kvl_text_hint="QQ号"
             app:kvl_has_full_line="true"
             app:kvl_has_right_arrow="false"
             android:layout_height="wrap_content"/>
-        <com.sangxiang.android.widgets.KeyValueLayout
+        <com.xiang.one.widgets.KeyValueLayout
             android:layout_width="wrap_content"
             app:kvl_text_hint="身份认证"
             app:kvl_has_full_line="true"
