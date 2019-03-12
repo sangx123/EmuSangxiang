@@ -1,5 +1,5 @@
 ext {
-    kotlin_version = '1.2.51'
+    kotlin_version = '1.3.20'
     objectboxVersion = '2.3.3'
     anko_version='0.10.5'
     minSdkVersion=19
