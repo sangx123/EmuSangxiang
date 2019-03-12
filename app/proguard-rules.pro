@@ -141,7 +141,7 @@
 -keepclassmembers class com.xiang.one.App {
     public <init>();
 }
--keep class com.my.pkg.SophixStubApplication$RealApplicationStub
+-dontwarn com.alibaba.sdk.android.utils.**
 -keep class com.taobao.sophix.**{*;}
 -keep class com.ta.utdid2.device.**{*;}
 -dontoptimize
@@ -159,3 +159,11 @@
 #immersionbar代码混淆
  -keep class com.gyf.barlibrary.* {*;}
  -dontwarn com.gyf.barlibrary.**
+
+ #Mob-SMSSDK
+  -keep class com.mob.**{*;}
+  -keep class cn.smssdk.**{*;}
+  -dontwarn com.mob.**
+#bugly
+-dontwarn com.tencent.bugly.**
+-keep public class com.tencent.bugly.**{*;}

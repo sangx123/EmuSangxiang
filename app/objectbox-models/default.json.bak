@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:2491478405476082456",
-      "lastPropertyId": "2:4716664588133874928",
+      "lastPropertyId": "4:8252171661808213098",
       "name": "ShopNameArr",
       "properties": [
         {
@@ -15,6 +15,15 @@
         {
           "id": "2:4716664588133874928",
           "name": "shopID"
+        },
+        {
+          "id": "3:6135978567208100966",
+          "name": "id"
+        },
+        {
+          "id": "4:8252171661808213098",
+          "indexId": "1:4778906989361132888",
+          "name": "userModelId"
         }
       ],
       "relations": []
@@ -78,7 +87,7 @@
     }
   ],
   "lastEntityId": "2:8728601700630457033",
-  "lastIndexId": "0:0",
+  "lastIndexId": "1:4778906989361132888",
   "lastRelationId": "1:606720011825974856",
   "lastSequenceId": "0:0",
   "modelVersion": 4,

@@ -43,7 +43,7 @@ class App :Application() {
         mInstance = this
         AndroidThreeTen.init(this)
         EventBus.builder().addIndex(EmucooEventBusIndex()).installDefaultEventBus()
-        CrashReport.initCrashReport(this, "0ce6d37649", true)
+        CrashReport.initCrashReport(this, "6811826898", true)
         //初始化shareperferrence
         Hawk.init(this).setLogInterceptor { message -> Log.d("sangxiang", message) }.build()
         MobSDK.init(this);
