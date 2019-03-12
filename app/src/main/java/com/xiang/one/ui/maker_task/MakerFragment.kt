@@ -9,6 +9,10 @@ import android.view.ViewGroup
 import com.xiang.one.BaseFragment
 
 import com.xiang.one.R
+import com.xiang.one.ui.taobao.PublishTaoBaoTaskActivity
+import kotlinx.android.synthetic.main.fragment_maker.*
+import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.support.v4.startActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +31,16 @@ class MakerFragment : BaseFragment() {
         return inflater.inflate(R.layout.fragment_maker, container, false)
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        initView()
+    }
 
+    private fun initView() {
+        mMakeTask.onClick {
+            startActivity<PublishTaoBaoTaskActivity>()
+        }
+    }
 
 
 }

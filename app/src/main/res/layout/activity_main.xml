@@ -75,7 +75,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:text="拼多多"
+                    android:text="菜单2"
                     />
             </LinearLayout>
             <FrameLayout
@@ -117,7 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:text="京东"
+                    android:text="菜单3"
                     />
             </LinearLayout>
             <LinearLayout

@@ -11,7 +11,6 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/libraries/MPChartLib" />
             <option value="$PROJECT_DIR$/libraries/WheelView" />
-            <option value="$PROJECT_DIR$/libraries/imagepicker" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

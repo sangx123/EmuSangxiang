@@ -6,15 +6,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.maker_task.MakerFragment">
-
-    <com.xiang.one.widgets.ToolBar
+    <com.xiang.one.widgets.KeyValueLayout
+        android:id="@+id/mMakeTask"
         android:layout_width="wrap_content"
-        app:title="商家任务中心"
-        app:right_text="发布新任务"
-        app:right_text_color="@color/color_22a2e4"
+        app:kvl_text_hint="发布任务"
         android:layout_height="wrap_content">
 
-    </com.xiang.one.widgets.ToolBar>
+    </com.xiang.one.widgets.KeyValueLayout>
 
 
 </LinearLayout>

@@ -1,11 +1,9 @@
 include ':app'
-include ':ImagePicker'
 //include ':IMLib'
 //include ':IMKit'
 include ':MPChartLib'
 include ':WheelView'
 
-project(':ImagePicker').projectDir = new File(settingsDir, './libraries/imagepicker')
 //project(':IMLib').projectDir = new File(settingsDir, './libraries/IMLib')
 //project(':IMKit').projectDir = new File(settingsDir, './libraries/IMKit')
 project(':MPChartLib').projectDir = new File(settingsDir, './libraries/MPChartLib')

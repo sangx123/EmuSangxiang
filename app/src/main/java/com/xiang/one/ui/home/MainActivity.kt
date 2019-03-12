@@ -29,6 +29,7 @@ import com.vector.update_app.UpdateAppManager
 import com.vector.update_app.UpdateCallback
 import com.vector.update_app.service.DownloadService
 import com.vector.update_app.utils.AppUpdateUtils
+import com.xiang.one.ui.maker_task.MakerFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -39,10 +40,10 @@ import java.util.HashMap
 
 class MainActivity : BaseActivity(), AnkoLogger {
     private var  currentFragment:Fragment?=null
-    private var  homeFragment:Fragment=HomeFragment()
-    private var  jingdongFragment:Fragment=JingDongFragment()
-    private var  myFragment:Fragment=MyFragment()
-    private var  pingDuoDuoFragment:Fragment=PingDuoDuoFragment()
+    private var  nav1Fragment:Fragment=HomeFragment()
+    private var  nav3Fragment:Fragment=JingDongFragment()
+    private var  nav4Fragment:Fragment=MyFragment()
+    private var  nav2Fragment:Fragment=MakerFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,10 +55,10 @@ class MainActivity : BaseActivity(), AnkoLogger {
     fun  switchFragment(position:Int) : FragmentTransaction {
         var targetFragment: Fragment?=null
          when(position){
-             1->targetFragment=homeFragment
-             2->targetFragment=pingDuoDuoFragment
-             3->targetFragment=jingdongFragment
-             4->targetFragment=myFragment
+             1->targetFragment=nav1Fragment
+             2->targetFragment=nav2Fragment
+             3->targetFragment=nav3Fragment
+             4->targetFragment=nav4Fragment
          }
          var transaction = supportFragmentManager.beginTransaction()
          if (!targetFragment!!.isAdded) {

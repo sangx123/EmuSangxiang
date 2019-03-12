@@ -88,7 +88,7 @@ android {
         /*开发*/
         DEV {
             //buildConfigField("String", "HOST_URL", "\"http://10.0.2.2:8081/\"")
-            buildConfigField("String", "HOST_URL", "\"http://10.0.3.2:8081/\"")
+            buildConfigField("String", "HOST_URL", "\"http://192.168.66.225:8081/\"")
             manifestPlaceholders = [
                     JPUSH_PKGNAME: "com.xiang.one",
                     JPUSH_APPKEY : "405c44ca84474b072b8c4da5", //JPush上注册的包名对应的appkey.
@@ -186,7 +186,7 @@ dependencies {
     implementation rootProject.ext.rxbinding_leanback_v17_kotlin
 
     // add library
-    implementation project(':ImagePicker')
+    //implementation project(':ImagePicker')
 
     //implementation project(':IMLib')
 
