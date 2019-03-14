@@ -86,5 +86,4 @@ abstract class BaseActivity : AppCompatActivity(),AnkoLogger {
         val TAG_MARGIN_ADDED = "TAG_MARGIN_ADDED"
         private val TAG_FAKE_STATUS_BAR_VIEW = 12345
     }
-
 }

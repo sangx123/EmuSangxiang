@@ -17,10 +17,11 @@ import com.tencent.bugly.crashreport.CrashReport
 import io.objectbox.BoxStore
 import io.objectbox.android.AndroidObjectBrowser
 import org.greenrobot.eventbus.EventBus
+import org.jetbrains.anko.AnkoLogger
 import java.io.File
 import java.io.IOException
 
-class App :Application() {
+class App :Application(),AnkoLogger {
 
     private lateinit var rootFileDir: File
     private lateinit var cacheImage: File
@@ -40,70 +41,53 @@ class App :Application() {
         mInstance = this
         AndroidThreeTen.init(this)
         EventBus.builder().addIndex(EmucooEventBusIndex()).installDefaultEventBus()
-        CrashReport.initCrashReport(this, "6811826898", true)
+        CrashReport.initCrashReport(this, Config.BuglyAppID, true)
         //初始化shareperferrence
-        Hawk.init(this).setLogInterceptor { message -> Log.d("sangxiang", message) }.build()
+        Hawk.init(this).setLogInterceptor { message -> error{message} }.build()
         MobSDK.init(this);
         JPushInterface.setDebugMode(true)
         JPushInterface.init(this)
-
-//        val imagePicker = ImagePicker.getInstance()
-//        imagePicker.imageLoader = GlideImageLoader()   //设置图片加载器
-//        imagePicker.isShowCamera = false  //显示拍照按钮
-//        imagePicker.isCrop = false        //允许裁剪（单选才有效）
-//        imagePicker.isSaveRectangle = true //是否按矩形区域保存
-//        imagePicker.selectLimit = 1    //选中数量限制
-//        imagePicker.style = CropImageView.Style.RECTANGLE  //裁剪框的形状
-//        imagePicker.focusWidth = 800   //裁剪框的宽度。单位像素（圆形自动取宽高最小值）
-//        imagePicker.focusHeight = 800  //裁剪框的高度。单位像素（圆形自动取宽高最小值）
-//        imagePicker.outPutX = 1000//保存文件的宽度。单位像素
-//        imagePicker.outPutY = 1000//保存文件的高度。单位像素
-//        imagePicker.isMultiMode = false
-
-        //initMaterialDrawer()
-        rootFileDir = File(Environment.getExternalStorageDirectory(), "ASangxiang")
-        if (!rootFileDir.exists()) {
-            rootFileDir.mkdir()
-        }
-        lastIp = File(rootFileDir, "lastIP")
-        if (!lastIp.exists()) {
-            try {
-                lastIp.createNewFile()
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-
-        }
-
-        cacheImage = File(rootFileDir, "cacheImage")
-        if (!cacheImage.exists()) {
-            cacheImage.mkdirs()
-        }
-
-        requestLog = File(rootFileDir, "requestLog")
-        if (!requestLog.exists()) {
-            try {
-                requestLog.createNewFile()
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-
-        } else {
-            val delete = requestLog.delete()
-            if (delete) {
-                try {
-                    requestLog.createNewFile()
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-
-            } else {
-                println("------can not delete request log------")
-            }
-
-        }
-
-
+//        rootFileDir=File(Config.ROOT_PATH)
+//        if (!rootFileDir.exists()) {
+//            rootFileDir.mkdir()
+//        }
+//        lastIp = File(rootFileDir, "lastIP")
+//        if (!lastIp.exists()) {
+//            try {
+//                lastIp.createNewFile()
+//            } catch (e: IOException) {
+//                e.printStackTrace()
+//            }
+//
+//        }
+//
+//        cacheImage = File(rootFileDir, "cacheImage")
+//        if (!cacheImage.exists()) {
+//            cacheImage.mkdirs()
+//        }
+//
+//        requestLog = File(rootFileDir, "requestLog")
+//        if (!requestLog.exists()) {
+//            try {
+//                requestLog.createNewFile()
+//            } catch (e: IOException) {
+//                e.printStackTrace()
+//            }
+//
+//        } else {
+//            val delete = requestLog.delete()
+//            if (delete) {
+//                try {
+//                    requestLog.createNewFile()
+//                } catch (e: IOException) {
+//                    e.printStackTrace()
+//                }
+//
+//            } else {
+//                println("------can not delete request log------")
+//            }
+//
+//        }
         mBoxStore = MyObjectBox.builder().androidContext(this@App).build()
 
         if (BuildConfig.DEBUG) {
@@ -111,19 +95,4 @@ class App :Application() {
         }
 
     }
-
-//    fun initMaterialDrawer() {
-//        DrawerImageLoader.init(object : AbstractDrawerImageLoader() {
-//            override fun set(imageView: ImageView, uri: Uri, placeholder: Drawable) {
-//                Picasso.with().load(uri).placeholder(placeholder).into(imageView)
-//            }
-//
-//            override fun cancel(imageView: ImageView) {
-//                Picasso.with().cancelRequest(imageView)
-//            }
-//        })
-//
-//    }
-
-
 }

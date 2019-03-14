@@ -12,7 +12,7 @@ import android.text.TextWatcher
 import android.widget.Toast
 import com.jakewharton.rxbinding2.view.RxView
 import com.orhanobut.hawk.Hawk
-import com.xiang.one.AppConfig
+import com.xiang.one.Config
 import com.xiang.one.BaseActivity
 import com.xiang.one.ui.home.MainActivity
 import com.xiang.one.R
@@ -189,7 +189,7 @@ class LoginActivity : BaseActivity(){
                     }
 
                     override fun onNext(t: BaseResult<UserModel>) {
-                        if(t.respCode==AppConfig.SUCCESS) {
+                        if(t.respCode==Config.SUCCESS) {
                             Hawk.put<String>(SharePerferenceConfig.user_phone, emailStr)
                             Hawk.put<String>(SharePerferenceConfig.user_password, Utils.getMd5Hash(passwordStr))
                             Hawk.put<String>(SharePerferenceConfig.userToken, t.data!!.userToken)

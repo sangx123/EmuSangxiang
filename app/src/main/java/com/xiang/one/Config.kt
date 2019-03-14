@@ -3,18 +3,20 @@ package com.xiang.one
 import android.os.Environment
 import java.io.File
 
- class AppConfig{
+ class Config{
     companion object {
-        // 默认存放文件下载的路径
+        // app文件存放路径
         open val ROOT_PATH:String=(Environment
                 .getExternalStorageDirectory().toString()
         + File.separator
-        + "ASangxiang"
+        + "one"
         + File.separator)
-
         @JvmField val APK_DOWNLOAD_PATH:String = (ROOT_PATH+
                 "downloadApk" + File.separator)
-
-        @JvmField val SUCCESS:String ="000"
+        const val SUCCESS:String ="000"
+        //腾讯bugly
+        const val BuglyAppID="6811826898"
+        //日志tag
+        const val LogTag="sangxiang"
     }
 }

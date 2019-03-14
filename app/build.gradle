@@ -17,6 +17,7 @@ MobSDK {
     appSecret "82fc3afaca5c668782083aa155af9e6a"
     SMSSDK {}
 }
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
@@ -79,7 +80,9 @@ android {
             resValue "string", "jinkens_app", System.getenv("jinkens_app") ?: ""
         }
     }
-
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
     lintOptions {
         abortOnError false
     }
@@ -102,7 +105,7 @@ android {
             manifestPlaceholders = [
                     JPUSH_PKGNAME: "com.xiang.one",
                     JPUSH_APPKEY : "c2d3f4af06f5047b61c5be82", //JPush上注册的包名对应的appkey.
-                    JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+                    JPUSH_CHANNdEL: "developer-default", //暂时填写默认值即可.
             ]
         }
 
@@ -118,8 +121,6 @@ android {
 androidExtensions {
     experimental = true
 }
-
-
 kapt {
     arguments {
         arg('eventBusIndex', 'com.xiang.one.EmucooEventBusIndex')
@@ -260,6 +261,9 @@ dependencies {
 
     //全面屏适配
     implementation rootProject.ext.immersionbar
+
+    //图片请求框架
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
 }
 apply plugin: 'io.objectbox'
 //在正常的dependencies中添加如下依赖

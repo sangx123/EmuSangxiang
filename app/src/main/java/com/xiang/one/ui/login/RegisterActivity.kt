@@ -33,7 +33,7 @@ import cn.smssdk.EventHandler
 import cn.smssdk.SMSSDK
 import com.mob.MobCommunicator
 import com.mob.tools.utils.UIHandler.sendMessage
-import com.xiang.one.AppConfig
+import com.xiang.one.Config
 import com.xiang.one.utils.RegexMatcher
 import io.reactivex.Flowable
 import io.reactivex.functions.Consumer
@@ -133,7 +133,7 @@ class RegisterActivity : BaseActivity() {
                     }
 
                     override fun onNext(t: BaseResult<UserModel>) {
-                        if(t.respCode== AppConfig.SUCCESS) {
+                        if(t.respCode== Config.SUCCESS) {
                             Hawk.put<String>(SharePerferenceConfig.user_phone, model.mobile)
                             Hawk.put<String>(SharePerferenceConfig.user_password, model.password)
                             Hawk.put<String>(SharePerferenceConfig.userToken, t.data!!.userToken)

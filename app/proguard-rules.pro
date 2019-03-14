@@ -126,8 +126,8 @@
 #--- Retrofit ---
 -dontwarn retrofit2.**
 -keep class retrofit2.** { *; }
-
 -keep class com.xiang.one.network.** { *;}
+
 # 避免混淆泛型
 -keepattributes Signature
 -keepattributes Exceptions

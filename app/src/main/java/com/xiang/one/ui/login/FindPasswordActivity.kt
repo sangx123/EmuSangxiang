@@ -9,7 +9,7 @@ import android.util.Log
 import android.view.View
 import cn.smssdk.EventHandler
 import cn.smssdk.SMSSDK
-import com.xiang.one.AppConfig
+import com.xiang.one.Config
 import com.xiang.one.BaseActivity
 import com.xiang.one.R
 import com.xiang.one.network.Api
@@ -144,7 +144,7 @@ class FindPasswordActivity : BaseActivity() {
                     }
 
                     override fun onNext(t: BaseResult<String>) {
-                        if(t.respCode== AppConfig.SUCCESS) {
+                        if(t.respCode== Config.SUCCESS) {
                             toast("密码重置成功！")
                         }else{
                             toast(t.respMsg)

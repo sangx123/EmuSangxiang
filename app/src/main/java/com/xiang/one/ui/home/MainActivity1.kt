@@ -61,7 +61,7 @@ class MainActivity1 : BaseActivity(), AnkoLogger {
         nextBtn.onClick {
             startActivity<PermissionActivity>()
         }
-        mTabLayoutViewPagerActivity.onClick {
+        mTabLayoutViewPagerActivity.setOnClickListener{
             startActivity<TabLayoutViewPagerActivity>()
         }
         mSwitchButtonActivity.onClick {
