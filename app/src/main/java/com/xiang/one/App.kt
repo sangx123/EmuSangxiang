@@ -17,7 +17,7 @@ import com.tencent.bugly.crashreport.CrashReport
 import io.objectbox.BoxStore
 import io.objectbox.android.AndroidObjectBrowser
 import org.greenrobot.eventbus.EventBus
-import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.*
 import java.io.File
 import java.io.IOException
 
@@ -28,8 +28,8 @@ class App :Application(),AnkoLogger {
     companion object {
 
         lateinit var mInstance: App
-        lateinit var lastIp: File
-        lateinit var requestLog: File
+        //lateinit var lastIp: File
+        //lateinit var requestLog: File
         lateinit var mBoxStore: BoxStore
         fun getInstance(): App {
             return mInstance

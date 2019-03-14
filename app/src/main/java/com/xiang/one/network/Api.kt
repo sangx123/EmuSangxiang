@@ -122,33 +122,8 @@ class Api private constructor() {
     init {
         //手动创建一个OkHttpClient并设置超时时间
         httpClientBuilder = OkHttpClient.Builder()
-        mReqLogFp = App.requestLog
-
-        val logging = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
-
-            if (BuildConfig.DEBUG) {
-                mReqLogFp.appendText("------------------------------------------------\n")
-                mReqLogFp.appendText(it)
-                mReqLogFp.appendText("------------------------------------------------\n\n\n\n\n")
-                println(it.plus("\n\n"))
-
-                if (it.startsWith("Date") && it.endsWith("GMT")) {
-                    //Sun, 01 Jul 2018 04:02:40 GMT"
-                    try {
-                        val date: Date = SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss z", Locale.US).parse(it.subSequence(5, it.length).toString().trim())
-                        val formatedDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date)
-                        mCurDateTime = formatedDate
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-//                    println(formatedDate.plus("\n\n"))
-                }
-            }
-        })
-
-        logging.level = HttpLoggingInterceptor.Level.BODY
         httpClientBuilder.addInterceptor(AddHeaderInterceptor())
-        httpClientBuilder.addInterceptor(logging)
+        httpClientBuilder.addInterceptor(HttpLoggingInterceptor().setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE))
         httpClientBuilder.readTimeout(DEFAULT_TIMEOUT.toLong(), TimeUnit.SECONDS)
         httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT.toLong(), TimeUnit.SECONDS)
         createApiService()
@@ -179,19 +154,16 @@ class Api private constructor() {
     //获取单例
     companion object {
         var defaultIp: String = ""
-        get() {
-            return BuildConfig.HOST_URL
-        }
+            get() {
+                return BuildConfig.HOST_URL
+            }
         var BASE_URL = defaultIp
             set(value) {
                 if (value.isBlank()) {
                     return
                 }
-
-                val lastIpFile = App.lastIp
                 if (value.toLowerCase().startsWith("http")) {
                     field = value
-                    lastIpFile.writeText(field)
                     getInstance().createApiService()
                 } else {
                     val pair = value.toIPPair()
@@ -207,25 +179,12 @@ class Api private constructor() {
                             }
                         }
                         field = "http://${pair.first}:${pair.second}/"
-                        lastIpFile.writeText(field)
                         getInstance().createApiService()
                     }
                 }
 
             }
             get() {
-
-
-                if (BuildConfig.DEBUG) {
-                    val lastIpFile = App.lastIp
-                    if (lastIpFile.exists()) {
-                        val ip = lastIpFile.readText().trim()
-                        if (ip.isNotBlank()) {
-                            return ip
-                        }
-                    }
-                }
-
                 return defaultIp
             }
 
