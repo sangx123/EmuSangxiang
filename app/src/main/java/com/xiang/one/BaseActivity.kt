@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.gyf.barlibrary.ImmersionBar
 import io.reactivex.disposables.CompositeDisposable
 import org.jetbrains.anko.AnkoLogger
 import java.util.*
@@ -34,7 +35,7 @@ abstract class BaseActivity : AppCompatActivity(),AnkoLogger {
         super.onCreate(savedInstanceState)
         mActivities.add(this)
         mDisposables = CompositeDisposable()
-
+        //ImmersionBar.with(this).fitsSystemWindows(true).init()
         /*
         mProgress.setOnDismissListener(object : DialogInterface.OnDismissListener{
             override fun onDismiss(p0: DialogInterface?) {
@@ -78,6 +79,7 @@ abstract class BaseActivity : AppCompatActivity(),AnkoLogger {
     override fun onDestroy() {
         mActivities.remove(this)
         mDisposables.dispose()
+       // ImmersionBar.with(this).destroy()
         super.onDestroy()
     }
 

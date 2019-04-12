@@ -87,7 +87,11 @@
                 app:kvl_text_warning="无限制"
                 android:layout_height="wrap_content">
             </com.xiang.one.widgets.KeyValueLayout>
-
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
@@ -144,13 +148,18 @@
                 app:kvl_has_right_arrow="false"
                 android:layout_height="wrap_content">
             </com.xiang.one.widgets.KeyValueLayout>
-
+            </LinearLayout>
+            <com.xiang.one.widgets.KeyValueLayout
+                android:id="@+id/mUploadImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:kvl_text_hint="上传图片"
+                ></com.xiang.one.widgets.KeyValueLayout>
             <Button
                 android:id="@+id/btn_submit"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="21dp"
+                android:layout_margin="15dp"
                 android:background="@drawable/bg_btn_login_selected"
                 android:text="确认发布"
                 android:textColor="@color/white"

@@ -2,6 +2,8 @@ package com.xiang.one.utils.recycleView;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -73,10 +75,15 @@ public class RecycleViewHelper<T> {
          this(context,mRecyclerView,null);
     }
     public  HorizontalDividerItemDecoration setHorizontalDividerItemDecoration(boolean showLastDivider){
+        Paint paint = new Paint();
+        paint.setStrokeWidth(5f);
+        paint.setColor(Color.BLUE);
+        paint.setAntiAlias(true);
         if(showLastDivider)
-           return new HorizontalDividerItemDecoration.Builder(mActivity).showLastDivider().build();
+           return new HorizontalDividerItemDecoration.Builder(mActivity).paint(paint).showLastDivider().build();
         else {
-           return new HorizontalDividerItemDecoration.Builder(mActivity).build();
+
+           return new HorizontalDividerItemDecoration.Builder(mActivity).paint(paint).build();
         }
     }
     public  HorizontalDividerItemDecoration setHorizontalDividerItemDecoration(){

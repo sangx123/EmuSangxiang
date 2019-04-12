@@ -6,6 +6,7 @@
         <item name="colorPrimary">#327FC2</item>
         <item name="colorAccent">#FF5449</item>
         <item name="themedCircleBg">@drawable/circle_bg_pink</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
 

@@ -40,8 +40,7 @@ class ToolBar constructor(context: Context, attrs: AttributeSet? = null, defStyl
 
     init {
         LayoutInflater.from(context).inflate(R.layout.common_tool_bar, this, true)
-
-        val a = context.theme.obtainStyledAttributes(attrs, R.styleable.ToolBar, defStyleAttr, 0)
+        val a = context.obtainStyledAttributes(attrs, R.styleable.ToolBar)
         val n = a.indexCount
         for (i in 0 until n) {
             val attr = a.getIndex(i)
@@ -113,10 +112,10 @@ class ToolBar constructor(context: Context, attrs: AttributeSet? = null, defStyl
 
     }
 
-    override fun onAttachedToWindow() {
-        super.onAttachedToWindow()
-        requestFocus()
-    }
+//    override fun onAttachedToWindow() {
+//        super.onAttachedToWindow()
+//        requestFocus()
+//    }
 
     fun setLineColor(color: Int) {
         mLine.setBackgroundColor(resources.getColor(color))

@@ -17,6 +17,7 @@ import com.xiang.one.BaseFragment
 
 import com.xiang.one.R
 import com.xiang.one.network.Api
+import com.xiang.one.network.error.RxUtils
 import com.xiang.one.network.model.BaseResult
 import com.xiang.one.ui.taobao.TaoBaoHomeTaskParam
 import com.xiang.one.ui.taobao.TaobaoTask
@@ -79,6 +80,7 @@ class HomeFragment : BaseFragment() {
             taoBaoHomeTaskParam.pageSize=pageSize
             taoBaoHomeTaskParam.pageNumber=pageIndex
             Api.getApiService().getTaoBaoHomeTask(taoBaoHomeTaskParam)
+                    .compose(RxUtils.handleGlobalError<BaseResult<List<TaobaoTask>>>(activity!!))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(object : Observer<BaseResult<List<TaobaoTask>>> {

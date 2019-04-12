@@ -18,6 +18,11 @@ import io.reactivex.schedulers.Schedulers
 
 import kotlinx.android.synthetic.main.activity_recycle_view.*
 import kotlin.collections.ArrayList
+import com.xiang.one.utils.recycleView.HorizontalDividerItemDecoration
+import android.graphics.DashPathEffect
+import android.graphics.Color
+import android.graphics.Paint
+
 
 class RecycleViewActivity :BaseActivity() {
     lateinit var mAdapter:BaseQuickAdapter<ContactsResult.UserItem,BaseViewHolder>
@@ -25,7 +30,7 @@ class RecycleViewActivity :BaseActivity() {
     private lateinit var mRecycleViewHelper:RecycleViewHelper<ContactsResult.UserItem>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recycle_view)
+        setContentView(com.xiang.one.R.layout.activity_recycle_view)
         mToolbar.setRightOnClickListener(View.OnClickListener {
             mAdapter.setNewData(null)
         })
@@ -36,6 +41,7 @@ class RecycleViewActivity :BaseActivity() {
 
         }
         mRecyclerView.adapter=mAdapter
+
 //        mRecycleViewHelper=RecycleViewHelper(this,mRecyclerView,mSwipeRefreshLayout,true)
 //        mRecycleViewHelper.setRecycleViewEmptyDataClickListener {
 //            initData()

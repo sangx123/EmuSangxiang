@@ -18,6 +18,9 @@ import org.jetbrains.anko.toast
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
+/**
+ * 发布淘宝任务
+ */
 class PublishTaoBaoTaskActivity : BaseActivity() {
     var jialiao:Boolean=false
     var liulanqita:Boolean=false
@@ -60,6 +63,9 @@ class PublishTaoBaoTaskActivity : BaseActivity() {
         kv_zhenshiqianshou.onClick {
             zhenshiqianshou=!zhenshiqianshou
             kv_zhenshiqianshou.setLeftIcon(zhenshiqianshou)
+        }
+        mUploadImg.onClick {
+
         }
 
         btn_submit.onClick {

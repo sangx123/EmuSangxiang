@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentActivity
 import android.util.Log
 import com.xiang.one.network.model.BaseResult
 import io.reactivex.Observable
+import org.jetbrains.anko.toast
 import org.json.JSONException
 import java.net.ConnectException
 
@@ -53,7 +54,8 @@ object RxUtils {
                         Log.w("RxUtils", "全局异常捕获-TokenExpiredException！")
                     }
                     else -> {
-
+                        Log.e("RxUtils", "全局异常捕获-TokenExpiredException！")
+                        activity.toast("1231")
                     }
                 }
             }
